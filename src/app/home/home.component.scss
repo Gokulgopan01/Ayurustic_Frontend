@@ -1,0 +1,1742 @@
+// Colors
+$gold: #D4AF37;
+$light-gold: #F4E4A6;
+$dark-gold: #B8860B;
+$white: #FFFFFF;
+$off-white: #F8F8F8;
+$black: #000000;
+$gray: #333333;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Animations
+@keyframes flipIn {
+  0% {
+    transform: perspective(400px) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes boxReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Navigation Styles - UPDATED WITH GOLD ICONS
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 1000;
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+
+  &.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  // Add background color on scroll
+  &.scrolled {
+    background-color: rgba($white, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba($gold, 0.2);
+    padding: 1rem 2rem;
+    
+    .icon-circle {
+      background-color: $white !important;
+      border-color: $gold !important;
+      color: $gold !important;
+      
+      &:hover {
+        background-color: $gold !important;
+        color: $white !important;
+      }
+    }
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%; 
+    padding: 0 2rem;
+    margin: 0;
+  }
+
+  // Left Section - Brand Name
+  .nav-left {
+    flex: 1;
+
+    .brand-name {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $white;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-family: 'Playfair Display', serif;
+      transition: color 0.3s ease;
+      text-shadow: 2px 2px 4px rgba($black, 0.5);
+
+      .scrolled & {
+        color: $gold;
+        text-shadow: none;
+      }
+    }
+  }
+
+  // Middle Section - Navigation Links
+  .nav-middle {
+    display: flex;
+    gap: 1.5rem;
+    flex: 2;
+    justify-content: center;
+
+    .nav-link {
+      color: $white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+      text-shadow: 1px 1px 3px rgba($black, 0.5);
+
+      .scrolled & {
+        color: $gray;
+        text-shadow: none;
+      }
+
+      &:hover {
+        color: $gold;
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $gold;
+        transition: width 0.3s ease;
+      }
+    }
+
+    .dropdown {
+      position: relative;
+
+      &:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $white;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba($black, 0.1);
+        border: 1px solid rgba($gold, 0.1);
+        z-index: 1001;
+        border-radius: 4px;
+
+        a {
+          color: $gray;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: rgba($gold, 0.05);
+            color: $gold;
+            padding-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  // Right Section - Icons - UPDATED FOR GOLD VISIBILITY
+  .nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    .icon-circle {
+      @include flex-center;
+      width: 42px;
+      height: 42px;
+      background-color: rgba($white, 0.15); // More visible background
+      border-radius: 50%;
+      border: 1.5px solid $gold; // Gold border
+      color: $gold; // Gold icons
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba($black, 0.2); // Add shadow for visibility
+
+      &:hover {
+        background-color: $gold;
+        color: $white;
+        transform: scale(1.1);
+        border-color: $gold;
+        box-shadow: 0 6px 16px rgba($black, 0.3);
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// ###############################################################################################################
+
+// Carousel Styles
+.carousel-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+      rgba($black, 0.1) 0%,
+      rgba($black, 0.2) 50%,
+      rgba($black, 0.4) 100%);
+  }
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: $white;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem; /* optional padding */
+  margin: 0;
+  z-index: 2;
+
+  .brand-title {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 10px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    color: $gold;
+
+    &.animate-flip {
+      animation: flipIn 1.5s ease-out forwards;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: $light-gold;
+
+    &.animate-box {
+      animation: boxReveal 1.2s ease-out 0.5s forwards;
+      clip-path: inset(0 100% 0 0);
+      opacity: 0;
+    }
+  }
+
+  .description {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: slideInUp 1s ease-out 1s forwards;
+  }
+
+  .tagline-container {
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+
+    .tagline-main {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: $gold;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .tagline-sub {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: $light-gold;
+      letter-spacing: 1px;
+    }
+  }
+
+  .additional-tagline {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2s forwards;
+  }
+}
+
+// Shop Now Button
+.shop-now-btn {
+  background-color: $gold;
+    color: $white;
+  border: 2px solid $gold;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: slideInUp 1s ease-out 2.5s forwards;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($gold, 0.1), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    
+    background-color: $white;
+  color: $gold;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba($black, 0.2);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Carousel Controls
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba($white, 0.1);
+  border: 1px solid rgba($gold, 0.3);
+  color: $gold;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  @include flex-center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+
+  &:hover {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  i {
+    font-size: 1.5rem;
+  }
+
+  &.prev {
+    left: 2rem;
+  }
+
+  &.next {
+    right: 2rem;
+  }
+}
+
+// Carousel Indicators
+.carousel-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+
+  button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid $gold;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+
+    &:hover {
+      background: rgba($gold, 0.5);
+    }
+
+    &.active {
+      background: $gold;
+      transform: scale(1.2);
+    }
+  }
+}
+
+
+// Responsive Styles
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 1.5rem;
+
+    .nav-middle {
+      gap: 1rem;
+    }
+  }
+
+  .carousel-content {
+    .brand-title {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    .nav-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-left, .nav-middle, .nav-right {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .nav-left {
+      order: 1;
+    }
+
+    .nav-middle {
+      order: 2;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .nav-right {
+      order: 3;
+    }
+  }
+
+  .carousel-content {
+    .brand-title {
+      font-size: 2.5rem;
+      letter-spacing: 5px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+    }
+
+    .tagline-container {
+      .tagline-main {
+        font-size: 1.5rem;
+      }
+      .tagline-sub {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+
+    .nav-middle {
+      display: none; // Hide navigation on mobile, add hamburger menu if needed
+    }
+
+    .nav-left {
+      .brand-name {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+      }
+    }
+
+    .nav-right {
+      .icon-circle {
+        width: 40px;
+        height: 40px;
+        
+        i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  .carousel-content {
+    .brand-title {
+      font-size: 2rem;
+      letter-spacing: 3px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .description {
+      font-size: 0.9rem;
+    }
+
+    .tagline-container {
+      .tagline-main {
+        font-size: 1.2rem;
+      }
+      .tagline-sub {
+        font-size: 1rem;
+      }
+    }
+
+    .additional-tagline {
+      font-size: 0.9rem;
+    }
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+
+    &.prev {
+      left: 1rem;
+    }
+
+    &.next {
+      right: 1rem;
+    }
+  }
+
+  .shop-now-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    .nav-left {
+      .brand-name {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+      }
+    }
+    
+    .nav-right {
+      .icon-circle {
+        width: 36px;
+        height: 36px;
+        
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .carousel-content {
+    .brand-title {
+      font-size: 1.5rem;
+    }
+
+    .tagline-container {
+      .tagline-main {
+        font-size: 1rem;
+      }
+      .tagline-sub {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .carousel-control {
+    width: 35px;
+    height: 35px;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+}
+
+// ###############################################################################################################
+
+
+// Premium Section Styles
+// Premium Section Styles
+.premium-section {
+  background-color: $white;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  // Two Photo Row
+  .two-photo-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+
+    .photo-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      height: 500px;
+      box-shadow: 0 10px 30px rgba($black, 0.1);
+      transition: all 0.5s ease;
+      
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba($black, 0.15);
+        
+        .premium-photo {
+          transform: scale(1.05);
+        }
+        
+        .photo-content {
+          transform: translateY(-10px);
+        }
+      }
+
+      .premium-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .photo-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba($black, 0.8), transparent);
+        color: $white;
+        padding: 2rem;
+        transition: transform 0.5s ease;
+
+        .photo-subtitle {
+          font-size: 1rem;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: $gold;
+          margin-bottom: 0.5rem;
+          opacity: 0.9;
+        }
+
+        .photo-title {
+          font-size: 1.8rem;
+          font-weight: 400;
+          letter-spacing: 1px;
+          margin-bottom: 1rem;
+          line-height: 1.3;
+          font-family: 'Playfair Display', serif;
+        }
+
+        .photo-description {
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 0.5px;
+          opacity: 0.9;
+          margin: 0 !important;
+          display: block !important;
+        }
+      }
+    }
+
+    .left-photo {
+      .photo-subtitle {
+        color: $light-gold;
+      }
+    }
+
+    .right-photo {
+      .photo-subtitle {
+        color: $gold;
+      }
+    }
+  }
+
+  // Single Photo Row - FIXED
+  .single-photo-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+    
+    .photo-wrapper {
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba($black, 0.1);
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 0.8s ease 0.3s;
+      
+      &.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .feature-photo {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    .content-wrapper {
+      padding: 2rem;
+      opacity: 1 !important; // Force visible
+      transform: translateX(0) !important;
+      
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: $gray;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+        line-height: 1.2;
+        font-family: 'Playfair Display', serif;
+        position: relative;
+        padding-bottom: 1rem;
+        display: block !important;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 60px;
+          height: 3px;
+          background-color: $gold;
+        }
+      }
+
+      .section-description {
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+        color: $gray !important;
+        margin-bottom: 3rem !important;
+        font-weight: 300 !important;
+        letter-spacing: 0.5px !important;
+        display: block !important;
+        opacity: 1 !important;
+      }
+
+      .shop-now-btn.secondary {
+        background-color: transparent;
+        color: $gold;
+        border: 2px solid $gold;
+        padding: 1rem 2.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: inline-block !important;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba($gold, 0.1), transparent);
+          transition: left 0.5s ease;
+          z-index: -1;
+        }
+
+        &:hover {
+          background-color: $gold;
+          color: $white;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba($black, 0.1);
+
+          &::before {
+            left: 100%;
+          }
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+
+// Responsive Styles for Premium Section
+@media (max-width: 992px) {
+  .premium-section {
+    padding: 3rem 1.5rem;
+
+    .two-photo-row {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+
+      .photo-container {
+        height: 400px;
+      }
+    }
+
+    .single-photo-row {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+
+      .photo-wrapper {
+        .feature-photo {
+          height: 400px;
+        }
+      }
+
+      .content-wrapper {
+        padding: 0;
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .section-description {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .premium-section {
+    padding: 2rem 1rem;
+
+    .two-photo-row {
+      .photo-container {
+        height: 350px;
+
+        .photo-content {
+          padding: 1.5rem;
+
+          .photo-title {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .single-photo-row {
+      .photo-wrapper {
+        .feature-photo {
+          height: 350px;
+        }
+      }
+
+      .content-wrapper {
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    width: 45px;
+    height: 45px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    
+    i {
+      font-size: 1.3rem;
+    }
+  }
+  
+  .premium-section {
+    .single-photo-row {
+      .photo-wrapper {
+        .feature-photo {
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-top-btn {
+    width: 40px;
+    height: 40px;
+    bottom: 1rem;
+    right: 1rem;
+    
+    i {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .premium-section {
+    .single-photo-row {
+      .photo-wrapper {
+        .feature-photo {
+          height: 300px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .premium-section {
+    .two-photo-row {
+      .photo-container {
+        height: 300px;
+
+        .photo-content {
+          padding: 1rem;
+
+          .photo-subtitle {
+            font-size: 0.9rem;
+          }
+
+          .photo-title {
+            font-size: 1.3rem;
+          }
+
+          .photo-description {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .single-photo-row {
+      .photo-wrapper {
+        .feature-photo {
+          height: 300px;
+        }
+      }
+
+      .content-wrapper {
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .section-description {
+          font-size: 0.95rem;
+        }
+
+        .shop-now-btn.secondary {
+          padding: 0.8rem 2rem;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+// Scroll to Top Button
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background-color: $gold;
+  color: $white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba($black, 0.2);
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    background-color: $dark-gold;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba($black, 0.3);
+  }
+  
+  i {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+//########################################################################################################################################################
+
+// Benefits Section Styles
+// Benefits Section Styles - SIMPLIFIED VERSION
+.benefits-section {
+  background-color: $white;
+  padding: 6rem 2rem;
+  position: relative;
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  
+  .benefits-photo {
+    position: sticky; // Makes photo stay in view while scrolling
+    top: 2rem;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba($black, 0.1);
+    height: fit-content;
+    
+    .benefits-image {
+      width: 100%;
+      height: 800px; // Fixed height for the photo
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+  
+  .benefits-content {
+    .benefits-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: $gray;
+      margin-bottom: 3rem;
+      line-height: 1.2;
+      
+      .title-line {
+        display: block;
+        
+        &.highlight {
+          color: $gold;
+          position: relative;
+          display: inline-block;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: $gold;
+          }
+        }
+      }
+    }
+    
+    .benefits-text {
+      margin-bottom: 3rem;
+      
+      .benefit-paragraph {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: $gray;
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+        
+        .bold-text {
+          font-weight: 600;
+          color: $dark-gold;
+        }
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    
+    .ayurvedic-benefits {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba($gold, 0.05) 0%, rgba($gold, 0.02) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba($gold, 0.1);
+      
+      .ayurvedic-title {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: $gray;
+        margin-bottom: 2rem;
+        font-family: 'Playfair Display', serif;
+        position: relative;
+        padding-bottom: 1rem;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 60px;
+          height: 2px;
+          background-color: $gold;
+        }
+      }
+      
+      .benefits-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        
+        .benefit-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          
+          .benefit-icon {
+            font-size: 1.5rem;
+            color: $gold;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+          }
+          
+          .benefit-details {
+            .benefit-name {
+              font-size: 1.1rem;
+              font-weight: 600;
+              color: $gray;
+              margin-bottom: 0.3rem;
+            }
+            
+            .benefit-desc {
+              font-size: 0.9rem;
+              color: #555;
+              line-height: 1.5;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    
+    .social-media {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba($gold, 0.08) 0%, rgba($gold, 0.03) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba($gold, 0.15);
+      
+      .social-title {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: $gray;
+        margin-bottom: 1.5rem;
+        font-family: 'Playfair Display', serif;
+      }
+      
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        
+        .social-icon {
+          width: 45px;
+          height: 45px;
+          background-color: $white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $gold;
+          border: 2px solid $gold;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          
+          i {
+            font-size: 1.2rem;
+          }
+          
+          &:hover {
+            background-color: $gold;
+            color: $white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba($gold, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive Styles for Benefits Section
+@media (max-width: 1200px) {
+  .benefits-section {
+    .benefits-grid {
+      gap: 3rem;
+    }
+    
+    .benefits-photo {
+      .benefits-image {
+        height: 700px;
+      }
+    }
+    
+    .benefits-content {
+      .benefits-title {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .benefits-section {
+    padding: 4rem 1.5rem;
+    
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .benefits-photo {
+      position: relative;
+      top: 0;
+      
+      .benefits-image {
+        height: 500px;
+      }
+    }
+    
+    .benefits-content {
+      .benefits-title {
+        font-size: 2.2rem;
+      }
+      
+      .ayurvedic-benefits {
+        .benefits-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-section {
+    padding: 3rem 1rem;
+    
+    .benefits-content {
+      .benefits-title {
+        font-size: 2rem;
+      }
+      
+      .benefits-text {
+        .benefit-paragraph {
+          font-size: 1rem;
+        }
+      }
+      
+      .ayurvedic-benefits {
+        padding: 1.5rem;
+        
+        .ayurvedic-title {
+          font-size: 1.5rem;
+        }
+      }
+      
+      .social-media {
+        padding: 1.5rem;
+        
+        .social-icons {
+          .social-icon {
+            width: 40px;
+            height: 40px;
+            
+            i {
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-section {
+    .benefits-photo {
+      .benefits-image {
+        height: 350px;
+      }
+    }
+    
+    .benefits-content {
+      .benefits-title {
+        font-size: 1.8rem;
+      }
+      
+      .benefits-text {
+        .benefit-paragraph {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+      }
+      
+      .social-media {
+        .social-icons {
+          flex-wrap: wrap;
+          gap: 1rem;
+          
+          .social-icon {
+            width: 38px;
+            height: 38px;
+            
+            i {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//#################################################################################################################################################################
+
+// Instagram Section Styles - FIXED VERSION
+.instagram-section {
+  background-color: $white;
+  padding: 4rem 2rem;
+  position: relative;
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .instagram-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    .instagram-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: $gray;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+    
+    .instagram-subtitle {
+      font-size: 1.2rem;
+      color: $gold;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+  
+  .instagram-carousel-wrapper {
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .instagram-carousel {
+    position: relative;
+    width: 100%;
+    
+    .carousel-container {
+      overflow: hidden;
+      margin: 0 60px; // Space for arrows
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 200%; // 2 slides of 100% each
+      
+      .instagram-post {
+        flex: 0 0 25%; // Each photo takes 25% (4 photos per slide)
+        padding: 0 15px; // Space between photos
+        box-sizing: border-box;
+        
+        .post-container {
+          position: relative;
+          overflow: hidden;
+          border-radius: 8px;
+          aspect-ratio: 1/1; // Perfect square
+          background: #f9f9f9;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          
+          &:hover {
+            .instagram-image {
+              transform: scale(1.05);
+            }
+            
+            .post-overlay {
+              opacity: 1;
+            }
+          }
+          
+          .instagram-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+          }
+          
+          .post-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.2); // gold with 20% opacity
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            
+            i {
+              font-size: 2rem;
+              color: white;
+              text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
+          }
+        }
+      }
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: $white;
+      border: 2px solid $gold;
+      border-radius: 50%;
+      color: $gold;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba($black, 0.15);
+      
+      &:hover {
+        background-color: $gold;
+        color: $white;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 16px rgba($gold, 0.3);
+      }
+      
+      &:active {
+        transform: translateY(-50%) scale(0.95);
+      }
+      
+      i {
+        font-size: 1.5rem;
+      }
+      
+      &.prev {
+        left: 0;
+      }
+      
+      &.next {
+        right: 0;
+      }
+    }
+  }
+}
+
+// Responsive Styles
+@media (max-width: 1200px) {
+  .instagram-section {
+    .instagram-carousel {
+      .carousel-container {
+        margin: 0 50px;
+      }
+      
+      .carousel-track {
+        .instagram-post {
+          padding: 0 12px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .instagram-section {
+    padding: 3rem 1.5rem;
+    
+    .instagram-header {
+      .instagram-title {
+        font-size: 2.2rem;
+      }
+      
+      .instagram-subtitle {
+        font-size: 1.1rem;
+      }
+    }
+    
+    .instagram-carousel {
+      .carousel-container {
+        margin: 0 40px;
+      }
+      
+      .carousel-track {
+        .instagram-post {
+          flex: 0 0 33.333%; // Show 3 photos on tablet
+          padding: 0 10px;
+        }
+      }
+      
+      .carousel-nav {
+        width: 45px;
+        height: 45px;
+        
+        i {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .instagram-section {
+    padding: 2.5rem 1rem;
+    
+    .instagram-header {
+      margin-bottom: 2rem;
+      
+      .instagram-title {
+        font-size: 2rem;
+      }
+      
+      .instagram-subtitle {
+        font-size: 1rem;
+      }
+    }
+    
+    .instagram-carousel {
+      .carousel-container {
+        margin: 0 35px;
+      }
+      
+      .carousel-track {
+        .instagram-post {
+          flex: 0 0 50%; // Show 2 photos on mobile
+          padding: 0 8px;
+        }
+      }
+      
+      .carousel-nav {
+        width: 40px;
+        height: 40px;
+        
+        i {
+          font-size: 1.2rem;
+        }
+        
+        &.prev {
+          left: -5px;
+        }
+        
+        &.next {
+          right: -5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .instagram-section {
+    .instagram-carousel {
+      .carousel-track {
+        .instagram-post {
+          flex: 0 0 100%; // Show 1 photo on small mobile
+          padding: 0;
+          
+          .post-container {
+            border-radius: 6px;
+          }
+        }
+      }
+      
+      .carousel-nav {
+        display: none; // Hide arrows on very small screens
+      }
+    }
+  }
+}

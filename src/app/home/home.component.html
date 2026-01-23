@@ -1,0 +1,299 @@
+<!-- Navigation Bar - Hidden on scroll -->
+<nav class="navbar" [class.hidden]="isScrolled">
+  <div class="nav-container">
+    <!-- Left Section - Brand Name -->
+    <div class="nav-left">
+      <div class="brand-name">AYURUSTIC</div>
+    </div>
+
+    <!-- Middle Section - Navigation Links -->
+    <div class="nav-middle">
+      <a href="#" class="nav-link">HOME</a>
+      <a href="#" class="nav-link">ABOUT US</a>
+      <a href="#" class="nav-link">SHOP</a>
+      <div class="dropdown">
+        <a href="#" class="nav-link">PILLOWCASE</a>
+        <div class="dropdown-content">
+          <a href="#">Silk Pillowcases</a>
+          <a href="#">Satin Pillowcases</a>
+          <a href="#">Cotton Pillowcases</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#" class="nav-link">HAIR BONNET</a>
+        <div class="dropdown-content">
+          <a href="#">Silk Bonnets</a>
+          <a href="#">Satin Bonnets</a>
+        </div>
+      </div>
+      <a href="#" class="nav-link">CLOTHES</a>
+      <a href="#" class="nav-link">ACCESSORIES</a>
+    </div>
+
+    <!-- Right Section - Icons -->
+    <div class="nav-right">
+      <div class="icon-circle">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="icon-circle">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <div class="icon-circle">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!--####################################################################################################################-->
+
+<!-- Main Carousel -->
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let item of carouselItems; let i = index" 
+           class="carousel-item" 
+           [class.active]="i === currentSlide">
+        <div class="carousel-image" [ngStyle]="{'background-image': 'url(' + item.image + ')'}"></div>
+        
+        <!-- Content Overlay -->
+        <div class="carousel-content">
+          <h1 class="brand-title animate-flip">{{item.title}}</h1>
+          <h2 class="subtitle animate-box">{{item.subtitle}}</h2>
+          <p class="description">{{item.description}}</p>
+          
+          <!-- Tagline -->
+          <div class="tagline-container">
+            <p class="tagline-main">From Nature's Lap -</p>
+            <p class="tagline-sub">A Gift of Soulful Care</p>
+          </div>
+          
+          <!-- Additional Tagline -->
+          <p class="additional-tagline">{{item.tagline}}</p>
+          
+          <!-- Shop Now Button -->
+          <button class="shop-now-btn" (click)="shopNow()">
+            SHOP NOW
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control prev" (click)="prevSlide()">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="carousel-control next" (click)="nextSlide()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+      <button *ngFor="let item of carouselItems; let i = index" 
+              [class.active]="i === currentSlide" 
+              (click)="goToSlide(i)">
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll Indicator -->
+<div class="scroll-indicator">
+  <i class="fas fa-chevron-down"></i>
+</div>
+
+
+<!--####################################################################################################################-->
+
+<!-- New Premium Section -->
+<section class="premium-section">
+  <div class="container">
+    <!-- Row with two photos -->
+    <div class="two-photo-row">
+      <div class="photo-container left-photo">
+        <img src="assets/photo6.jpg" alt="Premium Silk" class="premium-photo">
+        <div class="photo-content">
+          <h3 class="photo-subtitle">PREMIUM</h3>
+          <h2 class="photo-title">The Finest 100% Pure Mulberry Silk</h2>
+          <p class="photo-description">Collected from premium silkworms.</p>
+        </div>
+      </div>
+      
+      <div class="photo-container right-photo">
+        <img src="assets/photo7.jpg" alt="Grade 6A Silk" class="premium-photo">
+        <div class="photo-content">
+          <h3 class="photo-subtitle">GRADE 6A</h3>
+          <h2 class="photo-title">The Highest Grade 6A Long Silk Fibers</h2>
+          <p class="photo-description">Only 5% silk in the world meets this grade 6A standard.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row with photo on left and content on right -->
+    <div class="single-photo-row" #photoSection>
+      <div class="photo-wrapper" [class.visible]="isPhotoVisible">
+        <img src="assets/photo8.jpg" alt="AYURUSTIC Anti-Aging Products" class="feature-photo">
+      </div>
+      
+      <div class="content-wrapper">
+        <h1 class="section-title">AYURUSTIC ANTI-AGING PRODUCTS</h1>
+        <p class="section-description">
+          Unlock your skin's youth potential and see it spring back with new bounce, 
+          glow with radiant vitality. Own a beautiful skin by using Vellada Mulberry 
+          silk Pillowcase, mulberry silk bed sheet and mulberry silk scrunchies.
+        </p>
+        <button class="shop-now-btn secondary" (click)="shopNow()">
+          SHOP NOW
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--##################################################################################################################################-->
+
+<!-- Benefits Section -->
+<!-- Benefits Section -->
+<section class="benefits-section" #benefitsSection>
+  <div class="container">
+    <div class="benefits-grid" [class.visible]="isBenefitsVisible">
+      <!-- Left Column: Photo -->
+      <div class="benefits-photo">
+        <img src="assets/photo9.jpg" alt="Vellada Mulberry Silk Benefits" class="benefits-image">
+      </div>
+      
+      <!-- Right Column: Content - Same height as photo -->
+      <div class="benefits-content">
+        <!-- Main Title -->
+        <div class="benefits-header">
+          <h2 class="benefits-title">
+            <span class="title-line">VELLADA MULBERRY</span>
+            <span class="title-line highlight">SILK MAKES MAGIC</span>
+          </h2>
+        </div>
+        
+        <!-- Scrollable Content Area -->
+        <div class="content-scrollable">
+          <!-- Main Text Content -->
+          <div class="benefits-text">
+            <p class="benefit-paragraph">
+              Vellada Mulberry silk PILLOWCASE is guaranteed to prevent sleep lines and wrinkles. 
+              You'll notice your skin will be fresher, softer, and more hydrated. 
+              <span class="bold-text">HAIR FRIZZ AND TANGLES</span> - Our silk pillowcase lets your hair glide 
+              across the pillowcase, reducing bed head, hair breakage and split ends.
+            </p>
+            
+            <p class="benefit-paragraph">
+              Vellada luxury mulberry silk pillow covers are made of 100% pure natural mulberry silk. 
+              22 Momme (600 Thread Count). The comfort and breathability of silk make you feel 
+              refreshed in the summer and smooth in winter. Silk fabric contains 18 kinds of amino 
+              acids, which are believed to be effective in stimulating the metabolism of skin cells 
+              and are very suitable for anti-aging. Silk never absorbs facial moisture and is 
+              perfect for people with sensitive skin.
+            </p>
+            
+            <p class="benefit-paragraph">
+              Vellada mulberry silk Pillowcase creates less friction of your beautiful curly hairstyle 
+              and reduces hair breakage than sleeping on cotton pillowcases - Silk ultra-Soft, Smooth, 
+              Breathable, Wrinkle-free, Will NOT absorb moisture to help retain your shiny hair, perfect 
+              for curly hair - silky pillowcases prevent hair from becoming knotted and matted. Great for 
+              preventing wrinkles, dry skin and frizzled hair, and morning bed head.
+            </p>
+          </div>
+          
+          <!-- Ayurvedic Benefits -->
+          <div class="ayurvedic-benefits">
+            <h3 class="ayurvedic-title">Ayurvedic Clothing Benefits</h3>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <i class="fas fa-leaf benefit-icon"></i>
+                <div class="benefit-details">
+                  <h4 class="benefit-name">Natural Healing</h4>
+                  <p class="benefit-desc">Silk contains natural proteins that promote skin cell regeneration</p>
+                </div>
+              </div>
+              
+              <div class="benefit-item">
+                <i class="fas fa-spa benefit-icon"></i>
+                <div class="benefit-details">
+                  <h4 class="benefit-name">Holistic Wellness</h4>
+                  <p class="benefit-desc">Promotes better sleep and overall wellbeing through natural fibers</p>
+                </div>
+              </div>
+              
+              <div class="benefit-item">
+                <i class="fas fa-heart benefit-icon"></i>
+                <div class="benefit-details">
+                  <h4 class="benefit-name">Skin Health</h4>
+                  <p class="benefit-desc">Prevents wrinkles and maintains skin's natural moisture balance</p>
+                </div>
+              </div>
+              
+              <div class="benefit-item">
+                <i class="fas fa-wind benefit-icon"></i>
+                <div class="benefit-details">
+                  <h4 class="benefit-name">Breathable Comfort</h4>
+                  <p class="benefit-desc">Regulates body temperature for comfort in all seasons</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Social Media Icons -->
+          <div class="social-media">
+            <h3 class="social-title">Follow Our Journey</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--############################################################################################################################################-->
+<!-- Instagram Section -->
+<section class="instagram-section">
+  <div class="container">
+    <div class="instagram-header">
+      <h2 class="instagram-title">SHOP OUR INSTAGRAM</h2>
+      <p class="instagram-subtitle">Ayuristic_official</p>
+    </div>
+    
+    <div class="instagram-carousel">
+      <div class="carousel-container">
+        <div class="carousel-track" [style.transform]="'translateX(' + translateValue + '%)'">
+          <!-- Instagram Posts - 8 total -->
+          <div class="instagram-post" *ngFor="let photo of instagramPhotos">
+            <div class="post-container">
+              <img [src]="photo.image" [alt]="photo.alt" class="instagram-image">
+              <div class="post-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Carousel Controls -->
+      <button class="carousel-nav prev" (click)="prevInstagram()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-nav next" (click)="nextInstagram()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
