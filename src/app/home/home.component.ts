@@ -14,22 +14,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isPhotoVisible: boolean = false;
   showScrollTop: boolean = false;
   isBenefitsVisible: boolean = false;
-
-  // Instagram Carousel
   currentInstagramSlide = 0;
   translateValue = 0;
-  totalSlides = 2;
 
-  instagramPhotos = [
-    { image: 'assets/photo10.jpg', alt: 'Instagram Post 1' },
-    { image: 'assets/photo11.jpg', alt: 'Instagram Post 2' },
-    { image: 'assets/photo12.jpg', alt: 'Instagram Post 3' },
-    { image: 'assets/photo13.jpg', alt: 'Instagram Post 4' },
-    { image: 'assets/photo14.jpg', alt: 'Instagram Post 5' },
-    { image: 'assets/photo15.jpg', alt: 'Instagram Post 6' },
-    { image: 'assets/photo16.jpg', alt: 'Instagram Post 7' },
-    { image: 'assets/photo17.jpg', alt: 'Instagram Post 8' }
-  ];
+  
   
   @ViewChild('photoSection') photoSection!: ElementRef;
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
@@ -148,30 +136,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
   shopNow(): void {
     console.log('Shop Now clicked');
     // Add your navigation logic here
-  }
-
-  // Instagram Carousel Methods
-   prevInstagram(): void {
-    if (this.currentInstagramSlide === 0) {
-      this.currentInstagramSlide = this.totalSlides - 1; // Go to last slide
-    } else {
-      this.currentInstagramSlide--;
-    }
-    this.translateValue = this.currentInstagramSlide * -50; // Each slide is 50% of total width
-  }
-  
-  nextInstagram(): void {
-    if (this.currentInstagramSlide === this.totalSlides - 1) {
-      this.currentInstagramSlide = 0; // Go to first slide
-    } else {
-      this.currentInstagramSlide++;
-    }
-    this.translateValue = this.currentInstagramSlide * -50; // Each slide is 50% of total width
-  }
-  
-  
-  goToInstagramSlide(index: number): void {
-    this.currentInstagramSlide = index;
-    this.translateValue = index * -100;
   }
 }

@@ -264,36 +264,9 @@
 </section>
 
 <!--############################################################################################################################################-->
-<!-- Instagram Section -->
-<section class="instagram-section">
-  <div class="container">
-    <div class="instagram-header">
-      <h2 class="instagram-title">SHOP OUR INSTAGRAM</h2>
-      <p class="instagram-subtitle">Ayuristic_official</p>
-    </div>
-    
-    <div class="instagram-carousel">
-      <div class="carousel-container">
-        <div class="carousel-track" [style.transform]="'translateX(' + translateValue + '%)'">
-          <!-- Instagram Posts - 8 total -->
-          <div class="instagram-post" *ngFor="let photo of instagramPhotos">
-            <div class="post-container">
-              <img [src]="photo.image" [alt]="photo.alt" class="instagram-image">
-              <div class="post-overlay">
-                <i class="fab fa-instagram"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Carousel Controls -->
-      <button class="carousel-nav prev" (click)="prevInstagram()">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="carousel-nav next" (click)="nextInstagram()">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </div>
-  </div>
-</section>
+
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top-btn" [class.visible]="showScrollTop" (click)="scrollToTop()">
+  <i class="fas fa-chevron-up"></i>
+</button>
