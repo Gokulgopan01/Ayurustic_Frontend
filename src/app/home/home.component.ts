@@ -15,12 +15,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   showScrollTop: boolean = false;
   isBenefitsVisible: boolean = false;
   currentInstagramSlide = 0;
+  isMenuOpen: boolean = false;
   translateValue = 0;
+  isDesktop = window.innerWidth >= 1024;
 
   
   
   @ViewChild('photoSection') photoSection!: ElementRef;
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.isDesktop = window.innerWidth >= 1024;
+  }
   
   carouselItems = [
     {
@@ -119,6 +126,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.nextSlide();
     }, 5000);
+  }
+
+  openMenu(): void {
+    this.isMenuOpen = true;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
 
   nextSlide(): void {

@@ -1,49 +1,55 @@
-<!-- Navigation Bar - Hidden on scroll -->
+<!-- NAVBAR ------------------------------------------------------------------------------------->
 <nav class="navbar" [class.hidden]="isScrolled">
   <div class="nav-container">
-    <!-- Left Section - Brand Name -->
+
+    <!-- MOBILE MENU BUTTON -->
+    <div class="mobile-menu-btn" (click)="isMenuOpen = true">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- BRAND -->
     <div class="nav-left">
       <div class="brand-name">AYURUSTIC</div>
     </div>
 
-    <!-- Middle Section - Navigation Links -->
-    <div class="nav-middle">
-      <a href="#" class="nav-link">HOME</a>
-      <a href="#" class="nav-link">ABOUT US</a>
-      <a href="#" class="nav-link">SHOP</a>
-      <div class="dropdown">
-        <a href="#" class="nav-link">PILLOWCASE</a>
-        <div class="dropdown-content">
-          <a href="#">Silk Pillowcases</a>
-          <a href="#">Satin Pillowcases</a>
-          <a href="#">Cotton Pillowcases</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <a href="#" class="nav-link">HAIR BONNET</a>
-        <div class="dropdown-content">
-          <a href="#">Silk Bonnets</a>
-          <a href="#">Satin Bonnets</a>
-        </div>
-      </div>
-      <a href="#" class="nav-link">CLOTHES</a>
-      <a href="#" class="nav-link">ACCESSORIES</a>
-    </div>
+    <!-- DESKTOP LINKS -->
+    <!-- DESKTOP LINKS -->
+<div class="nav-middle" *ngIf="isDesktop">
+  <a class="nav-link">HOME</a>
+  <a class="nav-link">ABOUT US</a>
+  <a class="nav-link">SHOP</a>
+  <a class="nav-link">CLOTHES</a>
+  <a class="nav-link">ACCESSORIES</a>
+</div>
 
-    <!-- Right Section - Icons -->
+    <!-- CART -->
     <div class="nav-right">
-      <div class="icon-circle">
-        <i class="fas fa-search"></i>
-      </div>
-      <div class="icon-circle">
+      <div class="icon-circle cart-icon">
         <i class="fas fa-shopping-cart"></i>
-      </div>
-      <div class="icon-circle">
-        <i class="fas fa-user"></i>
+        <span class="cart-count">0</span>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- MOBILE SLIDE MENU -->
+<div class="mobile-overlay" [class.active]="isMenuOpen" (click)="isMenuOpen=false"></div>
+
+<aside class="mobile-drawer" [class.open]="isMenuOpen">
+  <div class="drawer-header">
+    <span class="close-btn" (click)="isMenuOpen=false">&times;</span>
+    <input type="text" placeholder="Search products..." />
+  </div>
+
+  <div class="drawer-links">
+    <a>HOME</a>
+    <a>ABOUT US</a>
+    <a>SHOP</a>
+    <a>CLOTHES</a>
+    <a>ACCESSORIES</a>
+  </div>
+</aside>
+
 
 <!--####################################################################################################################-->
 
@@ -58,9 +64,7 @@
         
         <!-- Content Overlay -->
         <div class="carousel-content">
-          <h1 class="brand-title animate-flip">{{item.title}}</h1>
-          <h2 class="subtitle animate-box">{{item.subtitle}}</h2>
-          <p class="description">{{item.description}}</p>
+          
           
           <!-- Tagline -->
           <div class="tagline-container">
@@ -68,11 +72,9 @@
             <p class="tagline-sub">A Gift of Soulful Care</p>
           </div>
           
-          <!-- Additional Tagline -->
-          <p class="additional-tagline">{{item.tagline}}</p>
           
           <!-- Shop Now Button -->
-          <button class="shop-now-btn" (click)="shopNow()">
+          <button class="shop-now-btn animate-flip" (click)="shopNow()">
             SHOP NOW
           </button>
         </div>
@@ -109,42 +111,50 @@
 <section class="premium-section">
   <div class="container">
     <!-- Row with two photos -->
-    <div class="two-photo-row">
-      <div class="photo-container left-photo">
-        <img src="assets/photo6.jpg" alt="Premium Silk" class="premium-photo">
-        <div class="photo-content">
-          <h3 class="photo-subtitle">PREMIUM</h3>
-          <h2 class="photo-title">The Finest 100% Pure Mulberry Silk</h2>
-          <p class="photo-description">Collected from premium silkworms.</p>
-        </div>
-      </div>
-      
-      <div class="photo-container right-photo">
-        <img src="assets/photo7.jpg" alt="Grade 6A Silk" class="premium-photo">
-        <div class="photo-content">
-          <h3 class="photo-subtitle">GRADE 6A</h3>
-          <h2 class="photo-title">The Highest Grade 6A Long Silk Fibers</h2>
-          <p class="photo-description">Only 5% silk in the world meets this grade 6A standard.</p>
-        </div>
-      </div>
-    </div>
+    
+    <div class="premium-grid">
 
-    <!-- Row with photo on left and content on right -->
-    <div class="single-photo-row" #photoSection>
-      <div class="photo-wrapper" [class.visible]="isPhotoVisible">
-        <img src="assets/photo8.jpg" alt="AYURUSTIC Anti-Aging Products" class="feature-photo">
+      <!-- CARD 1 -->
+      <div class="premium-card">
+        <div class="image-wrap">
+          <img src="assets/photo6.jpg" alt="Premium Silk">
+
+          <!-- GOLD SUBTITLE BOX -->
+          <div class="badge">WELLNESS</div>
+        </div>
+
+        <!-- CONTENT BELOW IMAGE -->
+        <div class="card-content">
+          <h3>Carefully Crafted to keep your fabric pure,
+            soft and gentle on your skin.</h3>
+        </div>
       </div>
-      
-      <div class="content-wrapper">
-        <h1 class="section-title">AYURUSTIC ANTI-AGING PRODUCTS</h1>
-        <p class="section-description">
-          Unlock your skin's youth potential and see it spring back with new bounce, 
-          glow with radiant vitality. Own a beautiful skin by using Vellada Mulberry 
-          silk Pillowcase, mulberry silk bed sheet and mulberry silk scrunchies.
-        </p>
-        <button class="shop-now-btn secondary" (click)="shopNow()">
-          SHOP NOW
-        </button>
+
+      <div class="premium-card">
+        <div class="image-wrap">
+          <img src="assets/photo7.jpg" alt="Grade 6A Silk">
+
+          <!-- GOLD SUBTITLE BOX -->
+          <div class="badge">LUXURY</div>
+        </div>
+
+        <div class="card-content">
+          <h3>100% mulberry silk feels smooth, reduces friction,
+             and makes every night a luxurious experience.</h3>
+        </div>
+      </div>
+      <div class="premium-card">
+        <div class="image-wrap">
+          <img src="assets/photo8.jpg" alt="Premium Silk">
+
+          <!-- GOLD SUBTITLE BOX -->
+          <div class="badge">HERITAGE</div>
+        </div>
+
+        <!-- CONTENT BELOW IMAGE -->
+        <div class="card-content">
+          <h3>Inspired by fabrics once favored by royal households, crafted with timeless Ayurvedic traditions.</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -152,7 +162,6 @@
 
 <!--##################################################################################################################################-->
 
-<!-- Benefits Section -->
 <!-- Benefits Section -->
 <section class="benefits-section" #benefitsSection>
   <div class="container">
@@ -167,8 +176,7 @@
         <!-- Main Title -->
         <div class="benefits-header">
           <h2 class="benefits-title">
-            <span class="title-line">VELLADA MULBERRY</span>
-            <span class="title-line highlight">SILK MAKES MAGIC</span>
+            <span class="title-line">AYURUSTIC Wellness-inspired lifestyle products</span>
           </h2>
         </div>
         
@@ -177,63 +185,57 @@
           <!-- Main Text Content -->
           <div class="benefits-text">
             <p class="benefit-paragraph">
-              Vellada Mulberry silk PILLOWCASE is guaranteed to prevent sleep lines and wrinkles. 
-              You'll notice your skin will be fresher, softer, and more hydrated. 
-              <span class="bold-text">HAIR FRIZZ AND TANGLES</span> - Our silk pillowcase lets your hair glide 
-              across the pillowcase, reducing bed head, hair breakage and split ends.
-            </p>
-            
-            <p class="benefit-paragraph">
-              Vellada luxury mulberry silk pillow covers are made of 100% pure natural mulberry silk. 
-              22 Momme (600 Thread Count). The comfort and breathability of silk make you feel 
-              refreshed in the summer and smooth in winter. Silk fabric contains 18 kinds of amino 
-              acids, which are believed to be effective in stimulating the metabolism of skin cells 
-              and are very suitable for anti-aging. Silk never absorbs facial moisture and is 
-              perfect for people with sensitive skin.
-            </p>
-            
-            <p class="benefit-paragraph">
-              Vellada mulberry silk Pillowcase creates less friction of your beautiful curly hairstyle 
-              and reduces hair breakage than sleeping on cotton pillowcases - Silk ultra-Soft, Smooth, 
-              Breathable, Wrinkle-free, Will NOT absorb moisture to help retain your shiny hair, perfect 
-              for curly hair - silky pillowcases prevent hair from becoming knotted and matted. Great for 
-              preventing wrinkles, dry skin and frizzled hair, and morning bed head.
+              Inspired by Ayurvedic wisdom, Ayurvastra emphasizes harmony — between <span class="bold-text">Nature, </span>
+              <span class="bold-text">Body,</span> and <span class="bold-text">Environment,</span>. 
+              While not a medical product, the philosophy behind Ayurvastra values gentleness, balance,
+               and mindful living, which naturally aligns with skin comfort and everyday wellbeing.
             </p>
           </div>
+          <button class="shop-now-btn secondary" (click)="shopNow()">
+          SHOP NOW
+        </button>
           
           <!-- Ayurvedic Benefits -->
           <div class="ayurvedic-benefits">
-            <h3 class="ayurvedic-title">Ayurvedic Clothing Benefits</h3>
+            <h3 class="ayurvedic-title">Ayurvastra Cloth Benefits</h3>
             <div class="benefits-list">
               <div class="benefit-item">
                 <i class="fas fa-leaf benefit-icon"></i>
                 <div class="benefit-details">
-                  <h4 class="benefit-name">Natural Healing</h4>
-                  <p class="benefit-desc">Silk contains natural proteins that promote skin cell regeneration</p>
+                  <h4 class="benefit-name">Eco-conscious & sustainable</h4>
+                  <p class="benefit-desc">Crafted using natural fibers and plant-based dyeing processes inspired by traditional practices</p>
                 </div>
               </div>
               
               <div class="benefit-item">
                 <i class="fas fa-spa benefit-icon"></i>
                 <div class="benefit-details">
-                  <h4 class="benefit-name">Holistic Wellness</h4>
-                  <p class="benefit-desc">Promotes better sleep and overall wellbeing through natural fibers</p>
+                  <h4 class="benefit-name">Soft, breathable & comfortable</h4>
+                  <p class="benefit-desc">Naturally lightweight and smooth, designed for all-day comfort</p>
                 </div>
               </div>
               
               <div class="benefit-item">
                 <i class="fas fa-heart benefit-icon"></i>
                 <div class="benefit-details">
-                  <h4 class="benefit-name">Skin Health</h4>
-                  <p class="benefit-desc">Prevents wrinkles and maintains skin's natural moisture balance</p>
+                  <h4 class="benefit-name">Hypoallergenic (generally considered)</h4>
+                  <p class="benefit-desc">Made with natural fibers and gentle processes that are commonly suitable for sensitive skin</p>
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <i class="fas fa-heart benefit-icon"></i>
+                <div class="benefit-details">
+                  <h4 class="benefit-name">Gentle on skin</h4>
+                  <p class="benefit-desc">Designed to feel calm, smooth, and kind against the skin</p>
                 </div>
               </div>
               
               <div class="benefit-item">
                 <i class="fas fa-wind benefit-icon"></i>
                 <div class="benefit-details">
-                  <h4 class="benefit-name">Breathable Comfort</h4>
-                  <p class="benefit-desc">Regulates body temperature for comfort in all seasons</p>
+                  <h4 class="benefit-name">Free from harsh synthetic chemicals</h4>
+                  <p class="benefit-desc">Dyed without conventional chemical dyes, focusing on plant- and herb-based formulations</p>
                 </div>
               </div>
             </div>
@@ -264,6 +266,33 @@
 </section>
 
 <!--############################################################################################################################################-->
+<!--Bottom navbar -------------------------------------->
+
+<!-- MOBILE BOTTOM NAVBAR -->
+<nav class="mobile-bottom-nav">
+  <a class="nav-item active">
+    <i class="fas fa-store"></i>
+    <span>Shop</span>
+  </a>
+
+  <a class="nav-item">
+    <i class="fas fa-heart"></i>
+    <span>Wishlist</span>
+  </a>
+
+  <a class="nav-item cart">
+    <i class="fas fa-shopping-cart"></i>
+    <span>Cart</span>
+    <span class="badge">0</span>
+  </a>
+
+  <a class="nav-item">
+    <i class="fas fa-user"></i>
+    <span>Account</span>
+  </a>
+</nav>
+
+
 
 
 <!-- Scroll to Top Button -->
