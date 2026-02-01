@@ -90,6 +90,7 @@ $text-gray: #555;
     padding: 1rem 2rem;
     
     .icon-circle {
+      overflow: hidden; 
       background-color: $white !important;
       border-color: $gold !important;
       color: $gold !important;
@@ -216,38 +217,40 @@ $text-gray: #555;
 
   // Right Section - Icons - UPDATED FOR GOLD VISIBILITY
   .nav-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-
     .icon-circle {
       @include flex-center;
       width: 42px;
       height: 42px;
-      background-color: rgba($white, 0.15); // More visible background
+      background-color: rgba($white, 0.15);
       border-radius: 50%;
-      border: 1.5px solid $gold; // Gold border
-      color: $gold; // Gold icons
+      border: 1.5px solid $gold;
       cursor: pointer;
       transition: all 0.3s ease;
       backdrop-filter: blur(8px);
-      box-shadow: 0 4px 12px rgba($black, 0.2); // Add shadow for visibility
+      box-shadow: 0 4px 12px rgba($black, 0.2);
+
+      // IMAGE ICON SUPPORT
+      .icon-img {
+       width: 18px;          // force size
+    height: 18px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+      }
 
       &:hover {
         background-color: $gold;
-        color: $white;
         transform: scale(1.1);
-        border-color: $gold;
         box-shadow: 0 6px 16px rgba($black, 0.3);
-      }
 
-      i {
-        font-size: 1.2rem;
+        .icon-img {
+          filter: brightness(0) invert(1); // white on hover
+        }
       }
     }
   }
-}
+  }
 .mobile-menu-btn {
   display: none;
   font-size: 1.6rem;
@@ -273,6 +276,7 @@ $text-gray: #555;
     justify-content: center;
   }
 }
+
 .mobile-overlay {
   position: fixed;
   inset: 0;
@@ -1578,7 +1582,6 @@ $text-gray: #555;
 
 //Mobile bottom nav-------------------------------------------------------------------------------------------------------
 /* ================= MOBILE BOTTOM NAV ================= */
-
 .mobile-bottom-nav {
   position: fixed;
   bottom: 0;
@@ -1596,13 +1599,13 @@ $text-gray: #555;
   box-shadow: 0 -4px 14px rgba($black, 0.12);
 }
 
+/* ================= NAV ITEM ================= */
+
 .mobile-bottom-nav .nav-item {
   flex: 1;
   text-align: center;
   text-decoration: none;
   color: $black;
-  font-size: 0.7rem;
-  letter-spacing: 0.4px;
 
   display: flex;
   flex-direction: column;
@@ -1610,29 +1613,50 @@ $text-gray: #555;
   justify-content: center;
   gap: 4px;
 
+  position: relative;
   transition: transform 0.2s ease;
 }
 
-.mobile-bottom-nav .nav-item i {
-  font-size: 1.3rem;
-  color: $black; /* ✅ ICONS BLACK */
+/* ================= ICON IMAGE ================= */
+
+.mobile-bottom-nav .nav-item img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
 }
 
+/* ================= TEXT ================= */
+
 .mobile-bottom-nav .nav-item span {
-  color: $black; /* ✅ TEXT BLACK */
+  font-size: 0.7rem;
+  letter-spacing: 0.3px;
+  color: $black;
 }
+
+/* ================= HOVER ================= */
 
 .mobile-bottom-nav .nav-item:hover {
   transform: translateY(-1px);
 }
 
-/* ================= CART COUNT ONLY GOLD ================= */
+/* ================= ACTIVE STATE ================= */
+
+.mobile-bottom-nav .nav-item.active img {
+  transform: scale(1.1);
+}
+
+.mobile-bottom-nav .nav-item.active span {
+  font-weight: 600;
+}
+
+/* ================= CART BADGE ================= */
 
 .mobile-bottom-nav .nav-item.cart .badge {
   position: absolute;
   top: 6px;
-  right: 30%;
-  background: $gold;   /* ✅ ONLY GOLD PART */
+  right: 32%;
+  background: $gold;
   color: $white;
   font-size: 0.6rem;
   width: 16px;
@@ -1651,9 +1675,52 @@ $text-gray: #555;
   }
 
   body {
-    padding-bottom: 70px; /* prevent overlap */
+    padding-bottom: 70px;
   }
 }
+
+/* ================= SMALL DEVICES (≤ 489px) ================= */
+
+@media (max-width: 489px) {
+  .mobile-bottom-nav {
+    height: 60px;
+  }
+
+  .mobile-bottom-nav .nav-item img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-bottom-nav .nav-item span {
+    font-size: 0.65rem;
+  }
+}
+
+/* ================= EXTRA SMALL DEVICES (≤ 369px) ================= */
+
+@media (max-width: 369px) {
+  .mobile-bottom-nav {
+    height: 56px;
+  }
+
+  .mobile-bottom-nav .nav-item img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-bottom-nav .nav-item span {
+    font-size: 0.6rem;
+  }
+
+  .mobile-bottom-nav .nav-item.cart .badge {
+    width: 14px;
+    height: 14px;
+    font-size: 0.55rem;
+    top: 4px;
+  }
+}
+
+/* ================= DESKTOP HIDE ================= */
 
 @media (min-width: 769px) {
   .mobile-bottom-nav {
