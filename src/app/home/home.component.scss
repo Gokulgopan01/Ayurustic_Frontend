@@ -29,6 +29,7 @@ $text-gray: #555;
     transform: perspective(400px) rotateY(90deg);
     opacity: 0;
   }
+
   100% {
     transform: perspective(400px) rotateY(0deg);
     opacity: 1;
@@ -40,6 +41,7 @@ $text-gray: #555;
     clip-path: inset(0 100% 0 0);
     opacity: 0;
   }
+
   100% {
     clip-path: inset(0 0 0 0);
     opacity: 1;
@@ -51,6 +53,7 @@ $text-gray: #555;
     transform: translateY(30px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -61,6 +64,7 @@ $text-gray: #555;
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -82,19 +86,20 @@ $text-gray: #555;
     transform: translateY(-100%);
     opacity: 0;
   }
+
   // Add background color on scroll
   &.scrolled {
     background-color: rgba($white, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba($gold, 0.2);
     padding: 1rem 2rem;
-    
+
     .icon-circle {
-      overflow: hidden; 
+      overflow: hidden;
       background-color: $white !important;
       border-color: $gold !important;
       color: $gold !important;
-      
+
       &:hover {
         background-color: $gold !important;
         color: $white !important;
@@ -106,7 +111,7 @@ $text-gray: #555;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%; 
+    max-width: 100%;
     padding: 0 2rem;
     margin: 0;
   }
@@ -231,12 +236,12 @@ $text-gray: #555;
 
       // IMAGE ICON SUPPORT
       .icon-img {
-       width: 18px;          // force size
-    height: 18px;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    display: block;
+        width: 18px; // force size
+        height: 18px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
       }
 
       &:hover {
@@ -250,7 +255,8 @@ $text-gray: #555;
       }
     }
   }
-  }
+}
+
 .mobile-menu-btn {
   display: none;
   font-size: 1.6rem;
@@ -309,30 +315,30 @@ $text-gray: #555;
   }
 
   .drawer-header {
-  position: relative;
-  padding: 1rem;
-  border-bottom: 1px solid rgba($gold, 0.2);
-  box-sizing: border-box;
-
-  input {
-    width: 100%;
+    position: relative;
+    padding: 1rem;
+    border-bottom: 1px solid rgba($gold, 0.2);
     box-sizing: border-box;
-    padding: 0.7rem 0.8rem;
-    border: 1px solid rgba($gold, 0.4);
-    font-size: 0.9rem;
-    outline: none;
-  }
 
-  .close-btn {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 1.8rem;
-    color: $gold;
-    cursor: pointer;
-    line-height: 1;
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba($gold, 0.4);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.8rem;
+      color: $gold;
+      cursor: pointer;
+      line-height: 1;
+    }
   }
-}
 
   .drawer-links {
     display: flex;
@@ -408,10 +414,10 @@ $text-gray: #555;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, 
-      rgba($black, 0.1) 0%,
-      rgba($black, 0.2) 50%,
-      rgba($black, 0.4) 100%);
+    background: linear-gradient(to bottom,
+        rgba($black, 0.1) 0%,
+        rgba($black, 0.2) 50%,
+        rgba($black, 0.4) 100%);
   }
 }
 
@@ -424,7 +430,8 @@ $text-gray: #555;
   color: $white;
   width: 100%;
   max-width: 100%;
-  padding: 0 2rem; /* optional padding */
+  padding: 0 2rem;
+  /* optional padding */
   margin: 0;
   z-index: 2;
 
@@ -506,7 +513,7 @@ $text-gray: #555;
 // Shop Now Button
 .shop-now-btn {
   background-color: $gold;
-    color: $white;
+  color: $white;
   border: 2px solid $gold;
   padding: 1rem 3rem;
   font-size: 1rem;
@@ -534,9 +541,9 @@ $text-gray: #555;
   }
 
   &:hover {
-    
+
     background-color: $white;
-  color: $gold;
+    color: $gold;
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba($black, 0.2);
 
@@ -616,6 +623,7 @@ $text-gray: #555;
     }
   }
 }
+
 .nav-middle {
   display: none;
 }
@@ -696,8 +704,9 @@ $text-gray: #555;
     justify-content: flex-end;
   }
 
-  .carousel-container{
-    min-height: 70vh;   /* 👈 60% of screen */
+  .carousel-container {
+    min-height: 70vh;
+    /* 👈 60% of screen */
     height: 70vh;
     overflow: hidden;
   }
@@ -720,6 +729,7 @@ $text-gray: #555;
       .tagline-main {
         font-size: 1.2rem;
       }
+
       .tagline-sub {
         font-size: 1rem;
       }
@@ -758,12 +768,12 @@ $text-gray: #555;
         letter-spacing: 2px;
       }
     }
-    
+
     .nav-right {
       .icon-circle {
         width: 36px;
         height: 36px;
-        
+
         i {
           font-size: 1rem;
         }
@@ -780,6 +790,7 @@ $text-gray: #555;
       .tagline-main {
         font-size: 1rem;
       }
+
       .tagline-sub {
         font-size: 0.9rem;
       }
@@ -821,14 +832,16 @@ $text-gray: #555;
 
   .premium-card {
     display: flex;
-    flex-direction: column;}
-  
+    flex-direction: column;
+  }
+
   .image-wrap {
     position: relative;
-    overflow: visible; /* 👈 THIS IS THE KEY */
+    overflow: visible;
+    /* 👈 THIS IS THE KEY */
     margin-bottom: 5px;
   }
-  
+
 
   .image-wrap img {
     width: 100%;
@@ -842,7 +855,8 @@ $text-gray: #555;
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translate(-50%, 50%); /* 👈 50% outside */
+    transform: translate(-50%, 50%);
+    /* 👈 50% outside */
     background: #c9a24d;
     color: #fff;
     padding: 0.6rem 2.2rem;
@@ -884,7 +898,7 @@ $text-gray: #555;
     gap: 4rem;
     align-items: center;
     margin-top: 3rem;
-    
+
     .photo-wrapper {
       overflow: hidden;
       border-radius: 12px;
@@ -892,29 +906,29 @@ $text-gray: #555;
       opacity: 0;
       transform: translateX(-100px);
       transition: all 0.8s ease 0.3s;
-      
+
       &.visible {
         opacity: 1;
         transform: translateX(0);
       }
-      
+
       .feature-photo {
         width: 100%;
         height: 600px;
         object-fit: cover;
         transition: transform 0.8s ease;
-        
+
         &:hover {
           transform: scale(1.05);
         }
       }
     }
-    
+
     .content-wrapper {
       padding: 2rem;
       opacity: 1 !important; // Force visible
       transform: translateX(0) !important;
-      
+
       .section-title {
         font-size: 2.5rem;
         font-weight: 300;
@@ -1057,17 +1071,17 @@ $text-gray: #555;
     }
 
     .premium-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
 
-  .image-wrap img {
-    height: 360px;
-  }
+    .image-wrap img {
+      height: 360px;
+    }
 
-  .card-content h3 {
-    font-size: 1.15rem;
-  }
+    .card-content h3 {
+      font-size: 1.15rem;
+    }
   }
 }
 
@@ -1078,12 +1092,12 @@ $text-gray: #555;
     height: 45px;
     bottom: 1.5rem;
     right: 1.5rem;
-    
+
     i {
       font-size: 1.3rem;
     }
   }
-  
+
   .premium-section {
     .single-photo-row {
       .photo-wrapper {
@@ -1102,12 +1116,12 @@ $text-gray: #555;
     height: 40px;
     bottom: 1rem;
     right: 1rem;
-    
+
     i {
       font-size: 1.1rem;
     }
   }
-  
+
   .premium-section {
     .single-photo-row {
       .photo-wrapper {
@@ -1220,18 +1234,18 @@ $text-gray: #555;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 12px rgba($black, 0.2);
-  
+
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   &:hover {
     background-color: $dark-gold;
     transform: translateY(-5px);
     box-shadow: 0 6px 16px rgba($black, 0.3);
   }
-  
+
   i {
     font-size: 1.5rem;
   }
@@ -1247,19 +1261,19 @@ $text-gray: #555;
   background-color: $white;
   padding: 6rem 2rem;
   position: relative;
-  
+
   .container {
     max-width: 1400px;
     margin: 0 auto;
   }
-  
+
   .benefits-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
   }
-  
+
   .benefits-photo {
     position: sticky; // Makes photo stay in view while scrolling
     top: 2rem;
@@ -1267,19 +1281,19 @@ $text-gray: #555;
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba($black, 0.1);
     height: fit-content;
-    
+
     .benefits-image {
       width: 100%;
       height: 800px; // Fixed height for the photo
       object-fit: cover;
       transition: transform 0.8s ease;
-      
+
       &:hover {
         transform: scale(1.03);
       }
     }
   }
-  
+
   .benefits-content {
     .benefits-title {
       font-family: 'Playfair Display', serif;
@@ -1288,15 +1302,15 @@ $text-gray: #555;
       color: $gray;
       margin-bottom: 3rem;
       line-height: 1.2;
-      
+
       .title-line {
         display: block;
-        
+
         &.highlight {
           color: $gold;
           position: relative;
           display: inline-block;
-          
+
           &::after {
             content: '';
             position: absolute;
@@ -1309,10 +1323,10 @@ $text-gray: #555;
         }
       }
     }
-    
+
     .benefits-text {
       margin-bottom: 3rem;
-      
+
       .benefit-paragraph {
         font-size: 1.1rem;
         line-height: 1.8;
@@ -1320,25 +1334,25 @@ $text-gray: #555;
         margin-bottom: 1.5rem;
         font-weight: 300;
         letter-spacing: 0.3px;
-        
+
         .bold-text {
           font-weight: 600;
           color: $dark-gold;
         }
-        
+
         &:last-child {
           margin-bottom: 0;
         }
       }
     }
-    
+
     .ayurvedic-benefits {
       margin-bottom: 3rem;
       padding: 2rem;
       background: linear-gradient(135deg, rgba($gold, 0.05) 0%, rgba($gold, 0.02) 100%);
       border-radius: 12px;
       border: 1px solid rgba($gold, 0.1);
-      
+
       .ayurvedic-title {
         font-size: 1.8rem;
         font-weight: 400;
@@ -1347,7 +1361,7 @@ $text-gray: #555;
         font-family: 'Playfair Display', serif;
         position: relative;
         padding-bottom: 1rem;
-        
+
         &::after {
           content: '';
           position: absolute;
@@ -1358,24 +1372,24 @@ $text-gray: #555;
           background-color: $gold;
         }
       }
-      
+
       .benefits-list {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
-        
+
         .benefit-item {
           display: flex;
           align-items: flex-start;
           gap: 1rem;
-          
+
           .benefit-icon {
             font-size: 1.5rem;
             color: $gold;
             margin-top: 0.2rem;
             flex-shrink: 0;
           }
-          
+
           .benefit-details {
             .benefit-name {
               font-size: 1.1rem;
@@ -1383,7 +1397,7 @@ $text-gray: #555;
               color: $gray;
               margin-bottom: 0.3rem;
             }
-            
+
             .benefit-desc {
               font-size: 0.9rem;
               color: #555;
@@ -1394,14 +1408,14 @@ $text-gray: #555;
         }
       }
     }
-    
+
     .social-media {
       text-align: center;
       padding: 2rem;
       background: linear-gradient(135deg, rgba($gold, 0.08) 0%, rgba($gold, 0.03) 100%);
       border-radius: 12px;
       border: 1px solid rgba($gold, 0.15);
-      
+
       .social-title {
         font-size: 1.5rem;
         font-weight: 400;
@@ -1409,12 +1423,12 @@ $text-gray: #555;
         margin-bottom: 1.5rem;
         font-family: 'Playfair Display', serif;
       }
-      
+
       .social-icons {
         display: flex;
         justify-content: center;
         gap: 1.5rem;
-        
+
         .social-icon {
           width: 45px;
           height: 45px;
@@ -1427,11 +1441,11 @@ $text-gray: #555;
           border: 2px solid $gold;
           transition: all 0.3s ease;
           text-decoration: none;
-          
+
           i {
             font-size: 1.2rem;
           }
-          
+
           &:hover {
             background-color: $gold;
             color: $white;
@@ -1450,13 +1464,13 @@ $text-gray: #555;
     .benefits-grid {
       gap: 3rem;
     }
-    
+
     .benefits-photo {
       .benefits-image {
         height: 700px;
       }
     }
-    
+
     .benefits-content {
       .benefits-title {
         font-size: 2.5rem;
@@ -1468,26 +1482,26 @@ $text-gray: #555;
 @media (max-width: 992px) {
   .benefits-section {
     padding: 4rem 1.5rem;
-    
+
     .benefits-grid {
       grid-template-columns: 1fr;
       gap: 3rem;
     }
-    
+
     .benefits-photo {
       position: relative;
       top: 0;
-      
+
       .benefits-image {
         height: 500px;
       }
     }
-    
+
     .benefits-content {
       .benefits-title {
         font-size: 2.2rem;
       }
-      
+
       .ayurvedic-benefits {
         .benefits-list {
           grid-template-columns: 1fr;
@@ -1500,34 +1514,34 @@ $text-gray: #555;
 @media (max-width: 768px) {
   .benefits-section {
     padding: 3rem 1rem;
-    
+
     .benefits-content {
       .benefits-title {
         font-size: 2rem;
       }
-      
+
       .benefits-text {
         .benefit-paragraph {
           font-size: 1rem;
         }
       }
-      
+
       .ayurvedic-benefits {
         padding: 1.5rem;
-        
+
         .ayurvedic-title {
           font-size: 1.5rem;
         }
       }
-      
+
       .social-media {
         padding: 1.5rem;
-        
+
         .social-icons {
           .social-icon {
             width: 40px;
             height: 40px;
-            
+
             i {
               font-size: 1.1rem;
             }
@@ -1545,28 +1559,28 @@ $text-gray: #555;
         height: 350px;
       }
     }
-    
+
     .benefits-content {
       .benefits-title {
         font-size: 1.8rem;
       }
-      
+
       .benefits-text {
         .benefit-paragraph {
           font-size: 0.95rem;
           line-height: 1.6;
         }
       }
-      
+
       .social-media {
         .social-icons {
           flex-wrap: wrap;
           gap: 1rem;
-          
+
           .social-icon {
             width: 38px;
             height: 38px;
-            
+
             i {
               font-size: 1rem;
             }
@@ -1728,5 +1742,638 @@ $text-gray: #555;
   }
 }
 
+/* Gallery Carousel Section - -----------------------------------------------------------------------------------------------------------------------------Side by Side Layout */
+/* Gallery Carousel Section - Flip Card Layout */
+.gallery-carousel-section {
+  margin-top: 80px;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
 
-//#################################################################################################################################################################
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #f0f0f0, transparent);
+  }
+}
+
+.gallery-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #333333;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #d4af37;
+    margin: 10px auto 0;
+  }
+}
+
+.gallery-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #666666;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Carousel Container */
+.gallery-carousel-container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 60px;
+  /* Increased padding for mobile nav buttons */
+}
+
+.gallery-content-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Track */
+.gallery-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* Slides */
+.gallery-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  /* Prevent spillover */
+}
+
+.slide-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image Container */
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 400px;
+}
+
+.gallery-image {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  object-fit: contain;
+  background-color: #ffffff;
+}
+
+/* Content Container */
+.content-container {
+  flex: 1;
+  height: 400px;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* Front and Back Sides */
+.content-front,
+.content-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  background: white;
+  box-sizing: border-box;
+}
+
+.content-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+
+  &.flipped {
+    transform: rotateY(180deg);
+  }
+}
+
+.content-back {
+  transform: rotateY(180deg);
+
+  &.flipped {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Front Side Content */
+.dye-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #333333;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  width: 100%;
+}
+
+.dye-details {
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.detail-item {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #555555;
+  font-size: 0.95rem;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: #333333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Back Side Content */
+.back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+
+  .dye-title {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.dye-description {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.description-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #666666;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Description Toggle */
+.description-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #d4af37;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  user-select: none;
+  padding: 10px 0;
+  border-top: 1px solid #f5f5f5;
+  margin-top: auto;
+
+  &:hover {
+    color: #b8941f;
+  }
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.content-back .description-toggle {
+  border-top: none;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Navigation Buttons */
+.gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke: #333333;
+  }
+
+  &:hover {
+    background: #333333;
+    border-color: #333333;
+
+    svg {
+      stroke: #ffffff;
+    }
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+}
+
+.gallery-prev-btn {
+  left: 0;
+}
+
+.gallery-next-btn {
+  right: 0;
+}
+
+/* Indicators */
+.gallery-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.gallery-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #eeeeee;
+    transform: scale(1.2);
+  }
+
+  &.active {
+    background: #333333;
+    border-color: #333333;
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive Design - Side by Side on ALL Screens */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .gallery-carousel-section {
+    margin-top: 60px;
+    padding: 40px 15px;
+  }
+
+  .gallery-title {
+    font-size: 1.8rem;
+  }
+
+  .gallery-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+
+  .gallery-carousel-container {
+    padding: 0 50px;
+    /* Reduced padding for tablets */
+  }
+
+  .slide-content {
+    gap: 30px;
+    /* Reduced gap */
+  }
+
+  .image-container,
+  .content-container {
+    height: 350px;
+    /* Reduced height for tablets */
+  }
+
+  .gallery-image {
+    max-width: 100%;
+  }
+
+  .dye-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .detail-label {
+    min-width: 140px;
+  }
+
+  .gallery-nav-btn {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+/* Mobile (577px and below) */
+@media (max-width: 577px) {
+  .gallery-carousel-section {
+    margin-top: 50px;
+    padding: 30px 15px;
+  }
+
+  .gallery-title {
+    font-size: 1.6rem;
+  }
+
+  .gallery-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+  }
+
+  .gallery-carousel-container {
+    padding: 0 45px;
+    /* Keep side-by-side layout */
+  }
+
+  .slide-content {
+    gap: 25px;
+    /* Further reduced gap */
+  }
+
+  .image-container,
+  .content-container {
+    height: 300px;
+    /* Reduced height for mobile */
+  }
+
+  .content-front,
+  .content-back {
+    padding: 15px;
+  }
+
+  .dye-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+
+  .detail-item {
+    margin-bottom: 10px;
+  }
+
+  .detail-label {
+    min-width: 130px;
+    font-size: 0.9rem;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+  }
+
+  .description-toggle {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+
+  .description-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .gallery-nav-btn {
+    width: 34px;
+    height: 34px;
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+/* Small Mobile (369px and below) - MAINTAIN SIDE-BY-SIDE */
+@media (max-width: 369px) {
+  .gallery-carousel-section {
+    margin-top: 40px;
+    padding: 25px 10px;
+  }
+
+  .gallery-title {
+    font-size: 1.4rem;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.3rem;
+
+    &::after {
+      width: 40px;
+      height: 1px;
+      margin: 8px auto 0;
+    }
+  }
+
+  .gallery-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+  }
+
+  .gallery-carousel-container {
+    padding: 0 40px;
+    /* Still side-by-side */
+  }
+
+  .slide-content {
+    gap: 20px;
+    /* Minimum gap for very small screens */
+  }
+
+  .image-container,
+  .content-container {
+    height: 250px;
+    /* Compact height for small screens */
+  }
+
+  .content-front,
+  .content-back {
+    padding: 12px;
+  }
+
+  .dye-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .dye-details {
+    margin-bottom: 20px;
+  }
+
+  .detail-item {
+    margin-bottom: 8px;
+    flex-direction: row;
+    /* Keep horizontal layout */
+  }
+
+  .detail-label {
+    min-width: 110px;
+    /* Reduced width */
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .detail-value {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .description-toggle {
+    font-size: 0.8rem;
+    padding: 6px 0;
+  }
+
+  .toggle-icon {
+    font-size: 0.7rem;
+  }
+
+  .description-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .gallery-nav-btn {
+    width: 32px;
+    height: 32px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .gallery-indicators {
+    margin-top: 30px;
+  }
+
+  .gallery-indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Extra Small Screens (320px and below) - STILL SIDE-BY-SIDE */
+@media (max-width: 320px) {
+  .gallery-carousel-container {
+    padding: 0 35px;
+    /* Keep side-by-side */
+  }
+
+  .slide-content {
+    gap: 15px;
+    /* Very small gap */
+  }
+
+  .image-container,
+  .content-container {
+    height: 220px;
+    /* Very compact height */
+  }
+
+  .content-front,
+  .content-back {
+    padding: 10px;
+  }
+
+  .dye-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+  }
+
+  .detail-label {
+    min-width: 100px;
+    font-size: 0.75rem;
+  }
+
+  .detail-value {
+    font-size: 0.75rem;
+  }
+
+  .description-toggle {
+    font-size: 0.75rem;
+  }
+
+  .description-text {
+    font-size: 0.75rem;
+  }
+
+  /* Make details stack vertically only on very small screens */
+  .detail-item {
+    flex-direction: column;
+    margin-bottom: 6px;
+  }
+
+  .detail-label {
+    min-width: auto;
+    margin-bottom: 2px;
+    width: 100%;
+  }
+
+  .detail-value {
+    width: 100%;
+  }
+}
+
+//colour for dies---------------------------------
