@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isMenuOpen: boolean = false;
   translateValue = 0;
   isDesktop = window.innerWidth >= 1024;
+  isNavbarHidden: boolean = false;
+  lastScrollTop = 0;
 
   @ViewChild('photoSection') photoSection!: ElementRef;
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
@@ -182,11 +184,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || 0;
-    this.isScrolled = scrollPosition > 100; // Changed to 100 for navbar hide
-    this.showScrollTop = scrollPosition > 500; // Show button after 500px scroll
-    this.checkPhotoVisibility();
+    console.log('SCROLL FIRED');
+    const currentScroll =
+      window.pageYOffset || document.documentElement.scrollTop || 0;
+
+    // Background effect
+    this.isScrolled = currentScroll > 100;
+
+    // Hide navbar ONLY when scrolling down
+    if (currentScroll > this.lastScrollTop && currentScroll > 120) {
+      this.isNavbarHidden = true;
+    } else {
+      this.isNavbarHidden = false;
+    }
+
+    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
+
+
 
   checkPhotoVisibility(): void {
     if (this.photoSection) {
