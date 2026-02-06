@@ -11,16 +11,15 @@ import { CommonModule } from '@angular/common';
 
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   currentSlide = 0;
-  isScrolled: boolean = false;
+  // isScrolled removed
   isPhotoVisible: boolean = false;
-  showScrollTop: boolean = false;
+  showScrollTop: boolean = false; // Kept if you have a scroll-to-top button
   isBenefitsVisible: boolean = false;
   currentInstagramSlide = 0;
   isMenuOpen: boolean = false;
   translateValue = 0;
   isDesktop = window.innerWidth >= 1024;
-  isNavbarHidden: boolean = false;
-  lastScrollTop = 0;
+  // isNavbarHidden & lastScrollTop removed
 
   @ViewChild('photoSection') photoSection!: ElementRef;
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
@@ -184,21 +183,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
-    console.log('SCROLL FIRED');
-    const currentScroll =
-      window.pageYOffset || document.documentElement.scrollTop || 0;
-
-    // Background effect
-    this.isScrolled = currentScroll > 100;
-
-    // Hide navbar ONLY when scrolling down
-    if (currentScroll > this.lastScrollTop && currentScroll > 120) {
-      this.isNavbarHidden = true;
-    } else {
-      this.isNavbarHidden = false;
-    }
-
-    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    // Scroll logic removed for absolute navbar
+    this.checkPhotoVisibility();
   }
 
 

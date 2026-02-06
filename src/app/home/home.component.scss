@@ -84,40 +84,15 @@ $container-max-width: 1200px;
 
 // Navigation Styles - UPDATED WITH GOLD ICONS
 .navbar {
-  position: fixed;
+  position: absolute; // Changed from fixed to absolute
   top: 0;
   left: 0;
   right: 0;
-  background-color: transparent;
+  background-color: white;
   z-index: 1000;
   padding: 1.5rem 2rem;
   transition: all 0.3s ease;
-  transform: translateY(0);
-
-  &.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  // Add background color on scroll
-  &.scrolled {
-    background-color: rgba($white, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba($gold, 0.2);
-    padding: 1rem 2rem;
-
-    .icon-circle {
-      overflow: hidden;
-      background-color: $white !important;
-      border-color: $gold !important;
-      color: $gold !important;
-
-      &:hover {
-        background-color: $gold !important;
-        color: $white !important;
-      }
-    }
-  }
+  // transform: translateY(0); // Removed transform as it's not needed for static/absolute
 
   .nav-container {
     display: flex;
