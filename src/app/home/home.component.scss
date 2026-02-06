@@ -1928,7 +1928,7 @@ $text-gray: #555;
 }
 
 .detail-value {
-  color: #333333;
+  color: #070606;
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -1958,7 +1958,7 @@ $text-gray: #555;
 .description-text {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: #666666;
+  color: #000000;
   font-weight: 300;
   margin: 0;
 }
@@ -2169,15 +2169,23 @@ $text-gray: #555;
     justify-content: flex-start; // ⬅ important
   }
 
-  .image-container,
-  .content-container {
-    height: auto; // 🔥 remove clipping
-    min-height: unset;
-  }
-
   .content-front,
   .content-back {
-    height: auto;
+    position: relative !important;
+    height: auto !important;
+    transform: none !important;
+  }
+  .content-back {
+    display: none;
+  }
+
+  /* Show description when expanded */
+  .content-back.flipped {
+    display: block;
+  }
+
+  .content-front.flipped {
+    display: none;
   }
 
   .dye-title {
@@ -2407,5 +2415,64 @@ $text-gray: #555;
     width: 100%;
   }
 }
+
+@media (max-width: 468px) {
+  .dye-title {
+    font-size: 1.3rem;
+  }
+
+  .detail-label {
+    font-size: 0.78rem;
+  }
+
+  .detail-value {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .description-toggle {
+    font-size: 0.78rem;
+  }
+
+  .description-text {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+}
+@media (max-width: 360px) {
+  .dye-title {
+    font-size: 1.2rem;
+  }
+
+  .detail-label {
+    font-size: 0.72rem;
+  }
+
+  .detail-value {
+    font-size: 0.72rem;
+  }
+
+  .description-toggle {
+    font-size: 0.72rem;
+  }
+
+  .description-text {
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 320px) {
+  .dye-title {
+    font-size: 1.1rem;
+  }
+
+  .detail-label,
+  .detail-value,
+  .description-toggle,
+  .description-text {
+    font-size: 0.68rem;
+  }
+}
+
 
 //colour for dies---------------------------------
