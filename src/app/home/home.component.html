@@ -268,50 +268,58 @@
           <!-- Slides will be generated dynamically -->
           <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
             <div class="slide-content" [style.background]="getLightColor(item.titleColor)">
-              <!-- Plant Image - Increased height -->
+              <!-- Plant Image -->
               <div class="image-container">
                 <img [src]="item.image" [alt]="item.alt" class="gallery-image">
               </div>
               
-              <!-- Flip Container -->
-              <div class="flip-container" [class.flipped]="expandedDescriptions[i]">
-                
-                <!-- Front Side - Basic Info -->
-                <div class="content-front">
-                  <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+              <!-- Card Content -->
+              <div class="card-content">
+                <!-- Flip Container -->
+                <div class="flip-container" [class.flipped]="expandedDescriptions[i]">
                   
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">{{item.scientificName}}</span>
+                  <!-- Front Side - Basic Info -->
+                  <div class="content-front">
+                    <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+                    
+                    <div class="dye-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Scientific name:</span>
+                        <span class="detail-value">{{item.scientificName}}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Colour contribution:</span>
+                        <span class="detail-value">{{item.colorContribution}}</span>
+                      </div>
                     </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">{{item.colorContribution}}</span>
+                    
+                    <!-- Description Toggle Button - Now clearly visible -->
+                    <div class="description-toggle-wrapper">
+                      <div class="description-toggle" (click)="toggleDescription(i, $event)">
+                        <span class="toggle-text" [style.color]="item.titleColor">Show description</span>
+                        <span class="toggle-icon">▼</span>
+                      </div>
                     </div>
                   </div>
                   
-                  <!-- Moved description toggle here -->
-                  <div class="description-toggle-container">
-                    <div class="description-toggle" (click)="toggleDescription(i, $event)">
-                      <span class="toggle-text" [style.color]="item.titleColor">Show description</span>
-                      <span class="toggle-icon">▼</span>
+                  <!-- Back Side - Description -->
+                  <div class="content-back">
+                    <div class="back-header">
+                      <h3 class="dye-title" [style.color]="item.titleColor"></h3>
+                      <div class="description-toggle" (click)="toggleDescription(i, $event)">
+                        <!-- <span class="toggle-text" [style.color]="item.titleColor">Back to details</span> -->
+                        <span class="toggle-icon">▲</span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                
-                <!-- Back Side - Description -->
-                <div class="content-back">
-                  <div class="back-header">
-                    <h3 class="dye-title" [style.color]="item.titleColor">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(i, $event)">
-                      <span class="toggle-text" [style.color]="item.titleColor">Back to details</span>
-                      <span class="toggle-icon">▲</span>
+                    <div class="dye-description">
+                      <p class="description-text">{{item.description}}</p>
                     </div>
+                    <div class="description-toggle" (click)="toggleDescription(i, $event)">
+                        <span class="toggle-text" [style.color]="item.titleColor">Back to details</span>
+                        <span class="toggle-icon">▲</span>
+                      </div>
                   </div>
-                  <div class="dye-description">
-                    <p class="description-text">{{item.description}}</p>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -338,6 +346,11 @@
   </div>
 </section>
 
+
+
+
+
+<!--social media links ________________________________________________________________________________________________________________-->
 <div class="social-media">
   <h3 class="social-title">Follow Our Journey</h3>
   <div class="social-icons">
@@ -355,6 +368,7 @@
     </a>
   </div>
 </div>
+
 <!--Bottom navbar -----------------###########################################################################################--------------------->
 
 
