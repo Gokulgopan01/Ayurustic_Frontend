@@ -1,20 +1,20 @@
 <!-- NAVBAR ------------------------------------------------------------------------------------->
-<nav class="navbar">
+<nav class="navbar" @fadeInOnScroll>
   <div class="nav-container">
 
     <!-- MOBILE MENU BUTTON -->
-    <div class="mobile-menu-btn" (click)="isMenuOpen = true">
+    <div class="mobile-menu-btn" (click)="openMenu()" @iconBounce>
       <i class="fas fa-bars"></i>
     </div>
 
     <!-- BRAND -->
-    <div class="nav-left">
+    <div class="nav-left"  @textReveal>
       <div class="brand-name">AYURUSTIC</div>
     </div>
 
     <!-- DESKTOP LINKS -->
     <!-- DESKTOP LINKS -->
-    <div class="nav-middle" *ngIf="isDesktop">
+    <div class="nav-middle" *ngIf="isDesktop"  @listAnimation>
       <a class="nav-link">HOME</a>
       <a class="nav-link">ABOUT US</a>
       <a class="nav-link">SHOP</a>
@@ -23,7 +23,7 @@
     </div>
 
     <!-- CART -->
-    <div class="nav-right">
+    <div class="nav-right" @iconBounce>
       <div class="icon-circle cart-icon">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count">0</span>
@@ -33,20 +33,20 @@
 </nav>
 
 <!-- MOBILE SLIDE MENU -->
-<div class="mobile-overlay" [class.active]="isMenuOpen" (click)="isMenuOpen=false"></div>
+<div class="mobile-overlay" [@overlayAnimation] [class.active]="isMenuOpen" (click)="isMenuOpen=false"></div>
 
-<aside class="mobile-drawer" [class.open]="isMenuOpen">
+<aside class="mobile-drawer" [@menuAnimation]="isMenuOpen ? 'open' : 'closed'" [class.open]="isMenuOpen">
   <div class="drawer-header">
     <span class="close-btn" (click)="isMenuOpen=false">&times;</span>
     <input type="text" placeholder="Search products..." />
   </div>
 
   <div class="drawer-links">
-    <a>HOME</a>
-    <a>ABOUT US</a>
-    <a>SHOP</a>
-    <a>CLOTHES</a>
-    <a>ACCESSORIES</a>
+    <a @textReveal>HOME</a>
+    <a @textReveal>ABOUT US</a>
+    <a @textReveal>SHOP</a>
+    <a @textReveal>CLOTHES</a>
+    <a @textReveal>ACCESSORIES</a>
   </div>
 </aside>
 
@@ -54,10 +54,10 @@
 <!--####################################################################################################################-->
 
 <!-- Main Carousel -->
-<div class="carousel-container">
+<div class="carousel-container" @fadeInOnScroll>
   <div class="carousel">
     <div class="carousel-inner">
-      <div *ngFor="let item of carouselItems; let i = index" class="carousel-item" [class.active]="i === currentSlide">
+      <div *ngFor="let item of carouselItems; let i = index" class="carousel-item" [class.active]="i === currentSlide" [@carouselSlide]="currentSlide">
         <div class="carousel-image" [ngStyle]="{'background-image': 'url(' + item.image + ')'}"></div>
 
         <!-- Content Overlay -->
@@ -65,39 +65,40 @@
 
 
           <!-- Tagline -->
-          <div class="tagline-container">
+          <div class="tagline-container" @textReveal>
             <p class="tagline-main">From Nature's Lap -</p>
             <p class="tagline-sub">A Gift of Soulful Care</p>
           </div>
 
 
           <!-- Shop Now Button -->
-          <button class="shop-now-btn animate-flip" (click)="shopNow()">
+          <button class="shop-now-btn animate-flip" (click)="shopNow()" @buttonPulse>
             SHOP NOW
+            <span class="btn-ripple"></span>
           </button>
         </div>
       </div>
     </div>
 
     <!-- Carousel Controls -->
-    <button class="carousel-control prev" (click)="prevSlide()">
+    <button class="carousel-control prev" (click)="prevSlide()" @iconBounce>
       <i class="fas fa-chevron-left"></i>
     </button>
-    <button class="carousel-control next" (click)="nextSlide()">
+    <button class="carousel-control next" (click)="nextSlide()" @iconBounce>
       <i class="fas fa-chevron-right"></i>
     </button>
 
     <!-- Carousel Indicators -->
     <div class="carousel-indicators">
       <button *ngFor="let item of carouselItems; let i = index" [class.active]="i === currentSlide"
-        (click)="goToSlide(i)">
+        (click)="goToSlide(i)" @badgeFloat>
       </button>
     </div>
   </div>
 </div>
 
 <!-- Scroll Indicator -->
-<div class="scroll-indicator">
+<div class="scroll-indicator"  @iconBounce>
   <i class="fas fa-chevron-down"></i>
 </div>
 
@@ -105,19 +106,19 @@
 <!--####################################################################################################################-->
 
 <!-- New Premium Section -->
-<section class="premium-section">
+<section class="premium-section" #premiumSection @fadeInOnScroll>
   <div class="container">
     <!-- Row with two photos -->
 
     <div class="premium-grid">
 
       <!-- CARD 1 -->
-      <div class="premium-card">
+      <div class="premium-card" @cardEntrance>
         <div class="image-wrap">
           <img src="assets/wellness.jpg" alt="Premium Silk">
 
           <!-- GOLD SUBTITLE BOX -->
-          <div class="badge">WELLNESS</div>
+          <div class="badge" @badgeFloat>WELLNESS</div>
         </div>
 
         <!-- CONTENT BELOW IMAGE -->
@@ -127,12 +128,12 @@
         </div>
       </div>
 
-      <div class="premium-card">
+      <div class="premium-card" @cardEntrance>
         <div class="image-wrap">
           <img src="assets/luxury.jpg" alt="Grade 6A Silk">
 
           <!-- GOLD SUBTITLE BOX -->
-          <div class="badge">LUXURY</div>
+          <div class="badge" @badgeFloat>LUXURY</div>
         </div>
 
         <div class="card-content">
@@ -140,12 +141,12 @@
             and makes every night a luxurious experience.</h3>
         </div>
       </div>
-      <div class="premium-card">
+      <div class="premium-card" @cardEntrance>
         <div class="image-wrap">
           <img src="assets/photo8.jpg" alt="Premium Silk">
 
           <!-- GOLD SUBTITLE BOX -->
-          <div class="badge">HERITAGE</div>
+          <div class="badge" @badgeFloat>HERITAGE</div>
         </div>
 
         <!-- CONTENT BELOW IMAGE -->
@@ -160,11 +161,11 @@
 <!--##################################################################################################################################-->
 
 <!-- Benefits Section -->
-<section class="benefits-section" #benefitsSection>
+<section class="benefits-section" #benefitsSection @fadeInOnScroll>
   <div class="container">
     <div class="benefits-grid" [class.visible]="isBenefitsVisible">
       <!-- Left Column: Photo -->
-      <div class="benefits-photo">
+      <div class="benefits-photo" @cardEntrance>
         <img src="assets/photo9.jpg" alt="Vellada Mulberry Silk Benefits" class="benefits-image">
       </div>
 
@@ -172,7 +173,7 @@
       <div class="benefits-content">
         <!-- Main Title -->
         <div class="benefits-header">
-          <h2 class="benefits-title">
+          <h2 class="benefits-title" @textReveal>
             <span class="title-line">AYURUSTIC Wellness-inspired lifestyle products</span>
           </h2>
         </div>
@@ -181,7 +182,7 @@
         <div class="content-scrollable">
           <!-- Main Text Content -->
           <div class="benefits-text">
-            <p class="benefit-paragraph">
+            <p class="benefit-paragraph" @textReveal>
               Inspired by Ayurvedic wisdom, Ayurvastra emphasizes harmony — between <span class="bold-text">Nature,
               </span>
               <span class="bold-text">Body,</span> and <span class="bold-text">Environment,</span>.
@@ -189,15 +190,15 @@
               and mindful living, which naturally aligns with skin comfort and everyday wellbeing.
             </p>
           </div>
-          <button class="shop-now-btn secondary" (click)="shopNow()">
+          <button class="shop-now-btn secondary" (click)="shopNow()"@buttonPulse>
             SHOP NOW
           </button>
 
           <!-- Ayurvedic Benefits -->
           <div class="ayurvedic-benefits">
-            <h3 class="ayurvedic-title">Ayurvastra Cloth Benefits</h3>
+            <h3 class="ayurvedic-title" @textReveal>Ayurvastra Cloth Benefits</h3>
             <div class="benefits-list">
-              <div class="benefit-item">
+              <div class="benefit-item" @cardEntrance>
                 <i class="fas fa-leaf benefit-icon"></i>
                 <div class="benefit-details">
                   <h4 class="benefit-name">Eco-conscious & sustainable</h4>
@@ -206,7 +207,7 @@
                 </div>
               </div>
 
-              <div class="benefit-item">
+              <div class="benefit-item" @cardEntrance>
                 <i class="fas fa-spa benefit-icon"></i>
                 <div class="benefit-details">
                   <h4 class="benefit-name">Soft, breathable & comfortable</h4>
@@ -214,7 +215,7 @@
                 </div>
               </div>
 
-              <div class="benefit-item">
+              <div class="benefit-item" @cardEntrance>
                 <i class="fas fa-heart benefit-icon"></i>
                 <div class="benefit-details">
                   <h4 class="benefit-name">Hypoallergenic (generally considered)</h4>
@@ -223,7 +224,7 @@
                 </div>
               </div>
 
-              <div class="benefit-item">
+              <div class="benefit-item" @cardEntrance>
                 <i class="fas fa-heart benefit-icon"></i>
                 <div class="benefit-details">
                   <h4 class="benefit-name">Gentle on skin</h4>
@@ -231,7 +232,7 @@
                 </div>
               </div>
 
-              <div class="benefit-item">
+              <div class="benefit-item" @cardEntrance>
                 <i class="fas fa-wind benefit-icon"></i>
                 <div class="benefit-details">
                   <h4 class="benefit-name">Free from harsh synthetic chemicals</h4>
@@ -252,15 +253,15 @@
 <!-- Gallery Carousel Section -->
 <!-- home.component.html - Gallery Carousel Section -->
 <!-- home.component.html - Gallery Carousel Section -->
-<section class="gallery-carousel-section">
+<section class="gallery-carousel-section" @fadeInOnScroll>
   <div class="container">
-    <h2 class="section-title">Botanical Colour Inspirations</h2>
+    <h2 class="section-title" @textReveal>Botanical Colour Inspirations</h2>
     <div class="gallery-carousel-wrapper">
       
       <!-- Gallery Carousel Container -->
       <div class="gallery-carousel">
         <!-- Previous Button -->
-        <button class="carousel-nav prev" (click)="prevGallerySlide()" [attr.aria-label]="'Previous slide'">
+        <button class="carousel-nav prev" (click)="prevGallerySlide()" @iconBounce>
           ‹
         </button>
         
@@ -279,7 +280,7 @@
           <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
             <div class="slide-content" [style.background]="getLightColor(item.titleColor)">
               <!-- Plant Image -->
-              <div class="image-container">
+              <div class="image-container" [@cardFlip]>
                 <img [src]="item.image" [alt]="item.alt" class="gallery-image">
               </div>
               
@@ -332,12 +333,12 @@
         </div>
         
         <!-- Next Button -->
-        <button class="carousel-nav next" (click)="nextGallerySlide()" [attr.aria-label]="'Next slide'">
+        <button class="carousel-nav next" (click)="nextGallerySlide()"  @iconBounce [attr.aria-label]="'Next slide'">
           ›
         </button>
         
         <!-- Swipe Instructions for Mobile -->
-        <div class="swipe-instructions">
+        <div class="swipe-instructions" @textReveal>
           <span class="swipe-text">Swipe to navigate</span>
           <div class="swipe-icons">
             <span class="swipe-icon">←</span>
@@ -353,8 +354,9 @@
           class="dot" 
           [class.active]="i === currentGallerySlide"
           (click)="goToGallerySlide(i)"
-          [attr.aria-label]="'Go to slide ' + (i + 1)"
-        ></button>
+          @badgeFloat>
+          <span class="dot-pulse"></span>
+        </button>
       </div>
     </div>
   </div>
@@ -364,46 +366,43 @@
 
 
 <!--social media links ________________________________________________________________________________________________________________-->
-<div class="social-media">
-  <h3 class="social-title">Follow Our Journey</h3>
+<div class="social-media" @fadeInOnScroll>
+  <h3 class="social-title" @textReveal>Follow Our Journey</h3>
   <div class="social-icons">
-    <a href="#" class="social-icon">
+    <a href="#" class="social-icon" @iconBounce>
       <i class="fab fa-facebook-f"></i>
     </a>
-    <a href="#" class="social-icon">
+    <a href="#" class="social-icon" @iconBounce>
       <i class="fab fa-instagram"></i>
     </a>
-    <a href="#" class="social-icon">
+    <a href="#" class="social-icon" @iconBounce>
       <i class="fab fa-twitter"></i>
     </a>
-    <a href="#" class="social-icon">
+    <a href="#" class="social-icon" @iconBounce>
       <i class="fab fa-pinterest-p"></i>
     </a>
   </div>
 </div>
 
-<!--Bottom navbar -----------------###########################################################################################--------------------->
-
-
-<!-- MOBILE BOTTOM NAVBAR -->
-<nav class="mobile-bottom-nav">
-  <a class="nav-item active">
+<!-- Bottom Navbar -->
+<nav class="mobile-bottom-nav" @fadeInOnScroll>
+  <a class="nav-item active" @cardEntrance>
     <img src="assets/icons/shopping.png" alt="Shop" />
     <span>Shop</span>
   </a>
 
-  <a class="nav-item">
+  <a class="nav-item" @cardEntrance>
     <img src="assets/icons/heart.png" alt="Wishlist" />
     <span>Wishlist</span>
   </a>
 
-  <a class="nav-item cart">
+  <a class="nav-item cart" @buttonPulse>
     <img src="assets/icons/trolley.png" alt="Cart" />
     <span>Cart</span>
     <span class="badge">0</span>
   </a>
 
-  <a class="nav-item">
+  <a class="nav-item" @cardEntrance>
     <img src="assets/icons/user.png" alt="Account" />
     <span>Account</span>
   </a>

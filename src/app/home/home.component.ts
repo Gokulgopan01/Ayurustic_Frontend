@@ -1,19 +1,165 @@
 import { Component, OnInit, HostListener, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  query,
+  stagger,
+  keyframes,
+  group,
+  animateChild
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    // Menu Animation
+    trigger('menuAnimation', [
+      state('closed', style({
+        transform: 'translateX(-100%)',
+        opacity: 0
+      })),
+      state('open', style({
+        transform: 'translateX(0)',
+        opacity: 1
+      })),
+      transition('closed => open', [
+        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', style({ 
+          transform: 'translateX(0)', 
+          opacity: 1 
+        }))
+      ]),
+      transition('open => closed', [
+        animate('0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53)', style({ 
+          transform: 'translateX(-100%)', 
+          opacity: 0 
+        }))
+      ])
+    ]),
+
+    // Overlay Animation
+    trigger('overlayAnimation', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate('0.3s ease-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('0.3s ease-in', style({ opacity: 0 }))
+      ])
+    ]),
+
+    // Carousel Slide Animation
+    trigger('carouselSlide', [
+      transition(':increment', [
+        style({ opacity: 0.3, transform: 'scale(1.1) translateX(100px)' }),
+        animate('1.2s cubic-bezier(0.35, 0, 0.25, 1)', 
+          style({ opacity: 1, transform: 'scale(1) translateX(0)' }))
+      ]),
+      transition(':decrement', [
+        style({ opacity: 0.3, transform: 'scale(1.1) translateX(-100px)' }),
+        animate('1.2s cubic-bezier(0.35, 0, 0.25, 1)', 
+          style({ opacity: 1, transform: 'scale(1) translateX(0)' }))
+      ])
+    ]),
+
+    // Card Entrance Animation
+    trigger('cardEntrance', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.8) translateY(100px) rotate(5deg)' }),
+        animate('0.8s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+          style({ opacity: 1, transform: 'scale(1) translateY(0) rotate(0deg)' }))
+      ])
+    ]),
+
+    // Gallery Card Flip Animation
+    trigger('cardFlip', [
+      state('front', style({
+        transform: 'rotateY(0)',
+        opacity: 1
+      })),
+      state('back', style({
+        transform: 'rotateY(180deg)',
+        opacity: 1
+      })),
+      transition('front <=> back', [
+        animate('0.6s ease-in-out')
+      ])
+    ]),
+
+    // Text Reveal Animation
+    trigger('textReveal', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(30px)' }),
+        animate('0.8s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+          style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ]),
+
+    // Button Pulse Animation
+    trigger('buttonPulse', [
+      transition(':enter', [
+        style({ transform: 'scale(0)' }),
+        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', 
+          style({ transform: 'scale(1)' }))
+      ])
+    ]),
+
+    // Stagger Cards Animation
+    trigger('listAnimation', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateX(-50px)' }),
+          stagger(100, [
+            animate('0.5s cubic-bezier(0.35, 0, 0.25, 1)', 
+              style({ opacity: 1, transform: 'translateX(0)' }))
+          ])
+        ], { optional: true })
+      ])
+    ]),
+
+    // Fade In On Scroll
+    trigger('fadeInOnScroll', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(80px) scale(0.95)' }),
+        animate('1s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+          style({ opacity: 1, transform: 'translateY(0) scale(1)' }))
+      ])
+    ]),
+
+    // Badge Float Animation
+    trigger('badgeFloat', [
+      transition(':enter', [
+        style({ transform: 'translateY(20px) scale(0)', opacity: 0 }),
+        animate('0.6s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+          style({ transform: 'translateY(0) scale(1)', opacity: 1 }))
+      ])
+    ]),
+
+    // Icon Bounce Animation
+    trigger('iconBounce', [
+      transition(':enter', [
+        style({ transform: 'scale(0)', opacity: 0 }),
+        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', 
+          style({ transform: 'scale(1)', opacity: 1 }))
+      ])
+    ])
+  ]
 })
+
 
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   currentSlide = 0;
-  // isScrolled removed
   isPhotoVisible: boolean = false;
-  showScrollTop: boolean = false; // Kept if you have a scroll-to-top button
+  showScrollTop: boolean = false;
   isBenefitsVisible: boolean = false;
   currentInstagramSlide = 0;
   isMenuOpen: boolean = false;
@@ -26,7 +172,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   mouseStartX = 0;
   mouseEndX = 0;
   isMouseDown = false;
-  // isNavbarHidden & lastScrollTop removed
 
   @ViewChild('photoSection') photoSection!: ElementRef;
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
@@ -74,8 +219,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   ];
 
-  // Gallery carousel properties - ADDED
-  // In your component class, update the galleryItems array:
 
   galleryItems = [
     {
@@ -180,12 +323,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     // Clean up intervals when component is destroyed
-    if (this.mainCarouselInterval) {
-      clearInterval(this.mainCarouselInterval);
-    }
-    if (this.galleryInterval) {
-      clearInterval(this.galleryInterval);
-    }
+    if (this.mainCarouselInterval) clearInterval(this.mainCarouselInterval);
+    if (this.galleryInterval) clearInterval(this.galleryInterval);
   }
 
   @HostListener('window:scroll', [])
@@ -253,22 +392,22 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   handleTouchEnd(): void {
-    if (!this.touchStartX || !this.touchEndX) return;
-    
-    const distance = this.touchStartX - this.touchEndX;
-    const isLeftSwipe = distance > this.minSwipeDistance;
-    const isRightSwipe = distance < -this.minSwipeDistance;
-    
-    if (isLeftSwipe) {
-      this.nextGallerySlide();
-    } else if (isRightSwipe) {
-      this.prevGallerySlide();
-    }
-    
-    // Reset values
-    this.touchStartX = 0;
-    this.touchEndX = 0;
+  if (!this.touchStartX || !this.touchEndX) return;
+  
+  const distance = this.touchStartX - this.touchEndX;
+  const isLeftSwipe = distance > this.minSwipeDistance;
+  const isRightSwipe = distance < -this.minSwipeDistance;
+  
+  if (isLeftSwipe) {
+    this.nextGallerySlide();
+  } else if (isRightSwipe) {
+    this.prevGallerySlide();
   }
+  
+  // Reset values
+  this.touchStartX = 0;
+  this.touchEndX = 0;
+}
   handleMouseDown(event: MouseEvent): void {
     this.isMouseDown = true;
     this.mouseStartX = event.clientX;
@@ -309,7 +448,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   toggleDescription(index: number, event: Event): void {
-    event.stopPropagation(); // Prevent event bubbling
+    event.stopPropagation();
     this.expandedDescriptions[index] = !this.expandedDescriptions[index];
   }
 
@@ -338,6 +477,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.galleryInterval = setInterval(() => {
       this.nextGallerySlide();
     }, 7000);
+  }
+
+  isFlipped(index: number): string {
+    return this.expandedDescriptions[index] ? 'flipped' : 'default';
   }
 
   openMenu(): void {

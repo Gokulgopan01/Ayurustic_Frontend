@@ -1596,32 +1596,7 @@ $container-max-width: 1200px;
   }
 }
 
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: none;
-    background: #ccc;
-    cursor: pointer;
-    transition: all 0.3s;
-    
-    &.active {
-      background: #8B4513;
-      transform: scale(1.3);
-    }
-    
-    &:hover:not(.active) {
-      background: #aaa;
-      transform: scale(1.1);
-    }
-  }
-}
+
 
 /* Responsive Styles for Mobile Screens */
 @media (max-width: 570px) {
@@ -1777,14 +1752,7 @@ $container-max-width: 1200px;
     font-size: 1rem;
   }
   
-  .carousel-dots {
-    margin-top: 1.25rem;
-    
-    .dot {
-      width: 8px;
-      height: 8px;
-    }
-  }
+  
   
   .section-title {
     font-size: 1.3rem;
