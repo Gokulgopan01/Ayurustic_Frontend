@@ -250,414 +250,89 @@
 <!--############################################################################################################################################-->
 
 <!-- Gallery Carousel Section -->
+<!-- home.component.html - Gallery Carousel Section -->
 <section class="gallery-carousel-section">
-  <div class="gallery-wrapper">
-    <h2 class="gallery-title">Botanical Colour Inspirations</h2>
-    <p class="gallery-subtitle">Traditional plant-based dyes inspired by Ayurveda</p>
-
-    <div class="gallery-carousel-container">
-      <!-- Navigation Buttons -->
-      <button class="gallery-nav-btn gallery-prev-btn" (click)="prevGallerySlide()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </button>
-
-      <button class="gallery-nav-btn gallery-next-btn" (click)="nextGallerySlide()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </button>
-
-      <!-- Carousel Content -->
-      <div class="gallery-content-wrapper">
-        <div class="gallery-track" [style.transform]="'translateX(' + galleryTranslateValue + '%)'">
-          <!-- Slide 1 -->
-          <div class="gallery-slide">
-            <div class="slide-content">
+  <div class="container">
+    <h2 class="section-title">Natural Dyes Gallery</h2>
+    <div class="gallery-carousel-wrapper">
+      
+      <!-- Gallery Carousel Container -->
+      <div class="gallery-carousel">
+        <!-- Previous Button -->
+        <button class="carousel-nav prev" (click)="prevGallerySlide()" [attr.aria-label]="'Previous slide'">
+          ‹
+        </button>
+        
+        <!-- Slides Container -->
+        <div class="slides-container" [style.transform]="'translateX(' + galleryTranslateValue + '%)'">
+          <!-- Slides will be generated dynamically -->
+          <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
+            <div class="slide-content" [style.background]="getLightColor(item.titleColor)">
+              <!-- Plant Image - Increased height -->
               <div class="image-container">
-                <img src="assets/Lavender.jpeg" alt="Lavender" class="gallery-image">
+                <img [src]="item.image" [alt]="item.alt" class="gallery-image">
               </div>
-              <div class="content-container">
+              
+              <!-- Flip Container -->
+              <div class="flip-container" [class.flipped]="expandedDescriptions[i]">
+                
                 <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[0]">
-                  <h3 class="dye-title" style="color: #967BB6;">Lavender</h3>
+                <div class="content-front">
+                  <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+                  
                   <div class="dye-details">
                     <div class="detail-item">
                       <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Lavandula Angustifolia</span>
+                      <span class="detail-value">{{item.scientificName}}</span>
                     </div>
                     <div class="detail-item">
                       <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Very soft lilac, pale grey-purple</span>
+                      <span class="detail-value">{{item.colorContribution}}</span>
                     </div>
                   </div>
-                  <div class="description-toggle" (click)="toggleDescription(0, $event)">
-                    <span class="toggle-text" style="color: #967BB6;">See description</span>
-                    <span class="toggle-icon">▼</span>
+                  
+                  <!-- Moved description toggle here -->
+                  <div class="description-toggle-container">
+                    <div class="description-toggle" (click)="toggleDescription(i, $event)">
+                      <span class="toggle-text" [style.color]="item.titleColor">Show description</span>
+                      <span class="toggle-icon">▼</span>
+                    </div>
                   </div>
                 </div>
-
+                
                 <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[0]">
+                <div class="content-back">
                   <div class="back-header">
-                    <h3 class="dye-title" style="color: #967BB6;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(0, $event)">
-                      <span class="toggle-text" style="color: #967BB6;">Back</span>
+                    <h3 class="dye-title" [style.color]="item.titleColor">Description</h3>
+                    <div class="description-toggle" (click)="toggleDescription(i, $event)">
+                      <span class="toggle-text" [style.color]="item.titleColor">Back to details</span>
                       <span class="toggle-icon">▲</span>
                     </div>
                   </div>
                   <div class="dye-description">
-                    <p class="description-text">
-                      Lavender is admired for its gentle nature and refined presence. In Ayurvastra textiles, it
-                      contributes subtle tones and a sense of calm elegance. Its inclusion reflects a thoughtful
-                      approach to creating fabrics that feel soothing and refined.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/indigo.jpeg" alt="Turmeric" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[1]">
-                  <h3 class="dye-title" style="color: #4B0082;">Indigo</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Indigofera tinctoria</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Deep blue, indigo, midnight tones</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(1, $event)">
-                    <span class="toggle-text" style="color: #4B0082;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[1]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #4B0082;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(1, $event)">
-                      <span class="toggle-text" style="color: #4B0082;">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Indigo is one of the most revered natural dyes in textile history. Extracted from fermented
-                      leaves, it produces rich blue shades with remarkable depth and character. Indigo-based Ayurvastra
-                      fabrics carry a timeless quality, connecting ancient dyeing traditions with contemporary elegance.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/turmeric.jpeg" alt="Madder" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[2]">
-                  <h3 class="dye-title" style="color: #DAA520;">Turmeric</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Curcuma longa</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Golden yellow, warm mustard</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(2, $event)">
-                    <span class="toggle-text" style="color: #DAA520;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[2]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #DAA520;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(2, $event)">
-                      <span class="toggle-text" style="color: #DAA520;">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Turmeric has been used for generations as a natural source of vibrant yellow dye. Its warm,
-                      luminous tones bring brightness and vitality to fabric, while symbolizing purity and
-                      auspiciousness in traditional practices. In Ayurvastra, turmeric reflects a celebration of natural
-                      colour without synthetic intervention.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/Vettiver.jpeg" alt="Pomegranate" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[3]">
-                  <h3 class="dye-title" style="color: #8B4513;">Vettiver</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Chrysopogon zizanioides</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Soft beige, light brown tones</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                    <span class="toggle-text" style="color: #8B4513;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[3]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #8B4513;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                      <span class="toggle-text">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Vetiver roots have been traditionally valued in natural textile practices for their grounding,
-                      earthy qualities. In Ayurvastra-inspired dyeing, vetiver contributes subtle, understated shades
-                      that reflect nature’s calm palette. Its use represents balance, simplicity, and the quiet elegance
-                      of heritage craftsmanship.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--slide 5-->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/Thulsi.jpeg" alt="Pomegranate" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[3]">
-                  <h3 class="dye-title" style="color: #228B22;">Tulsi</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Ocimum tenuiflorum</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Soft greenish, muted brown hues</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                    <span class="toggle-text" style="color: #228B22;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[3]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #228B22;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                      <span class="toggle-text" style="color: #228B22;">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Tulsi holds deep cultural significance in traditional Indian life. In textile use, it contributes
-                      gentle, natural tones and represents harmony and mindfulness. Its inclusion in Ayurvastra reflects
-                      respect for plants that have long been woven into everyday rituals and traditions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--slide 6-->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/Ashoka.jpeg" alt="Pomegranate" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[3]">
-                  <h3 class="dye-title" style="color: #D2691E;">Ashoka</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Saraca asoca</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Warm brown, soft reddish-brown</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                    <span class="toggle-text" style="color: #D2691E;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[3]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #D2691E;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                      <span class="toggle-text" style="color: #D2691E;">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Ashoka bark has historically been used in natural dyeing to create warm, grounding shades. Its
-                      tones evoke earth and wood, adding depth and richness to fabric. Ashoka represents resilience and
-                      continuity within ancient botanical knowledge.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--slide 7-->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/Red_Sandalwood.jpeg" alt="Pomegranate" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[3]">
-                  <h3 class="dye-title" style="color: #B22222;">Red Sandalwood</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Pterocarpus santalinus</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Muted red, rose, terracotta tones</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                    <span class="toggle-text" style="color: #B22222;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[3]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #B22222;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(3, $event)">
-                      <span class="toggle-text" style="color: #B22222;">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Red sandalwood has long been valued for its ability to impart warm reddish hues to textiles. The
-                      resulting shades are soft yet distinctive, adding richness and sophistication while honoring
-                      classical natural dye traditions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 8 -->
-          <div class="gallery-slide">
-            <div class="slide-content">
-              <div class="image-container">
-                <img src="assets/Lekshmi_Tharu.jpeg" alt="Henna" class="gallery-image">
-              </div>
-              <div class="content-container">
-                <!-- Front Side - Basic Info -->
-                <div class="content-front" [class.flipped]="expandedDescriptions[4]">
-                  <h3 class="dye-title" style="color: #BDB76B;">Lekshmi Tharu</h3>
-                  <div class="dye-details">
-                    <div class="detail-item">
-                      <span class="detail-label">Scientific name:</span>
-                      <span class="detail-value">Regionally identified botanical</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">Colour contribution:</span>
-                      <span class="detail-value">Soft beige, warm brown, muted gold</span>
-                    </div>
-                  </div>
-                  <div class="description-toggle" (click)="toggleDescription(4, $event)">
-                    <span class="toggle-text" style="color: #BDB76B;">See description</span>
-                    <span class="toggle-icon">▼</span>
-                  </div>
-                </div>
-
-                <!-- Back Side - Description -->
-                <div class="content-back" [class.flipped]="expandedDescriptions[4]">
-                  <div class="back-header">
-                    <h3 class="dye-title" style="color: #BDB76B;">Description</h3>
-                    <div class="description-toggle" (click)="toggleDescription(4, $event)">
-                      <span class="toggle-text" style="color: #BDB76B;">Back</span>
-                      <span class="toggle-icon">▲</span>
-                    </div>
-                  </div>
-                  <div class="dye-description">
-                    <p class="description-text">
-                      Lekshmi Tharu is a locally recognized botanical used in traditional dyeing practices. It
-                      contributes gentle, natural hues and reflects the richness of regional plant knowledge and
-                      handcrafted textile heritage.
-                    </p>
+                    <p class="description-text">{{item.description}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Indicators -->
-      <div class="gallery-indicators">
-        <button *ngFor="let item of galleryItems; let i = index" class="gallery-indicator"
-          [class.active]="currentGallerySlide === i" (click)="goToGallerySlide(i)">
+        
+        <!-- Next Button -->
+        <button class="carousel-nav next" (click)="nextGallerySlide()" [attr.aria-label]="'Next slide'">
+          ›
         </button>
+      </div>
+      
+      <!-- Dots Indicator -->
+      <div class="carousel-dots">
+        <button 
+          *ngFor="let item of galleryItems; let i = index" 
+          class="dot" 
+          [class.active]="i === currentGallerySlide"
+          (click)="goToGallerySlide(i)"
+          [attr.aria-label]="'Go to slide ' + (i + 1)"
+        ></button>
       </div>
     </div>
   </div>

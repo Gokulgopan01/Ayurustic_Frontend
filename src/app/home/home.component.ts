@@ -224,6 +224,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  // Add this method to your HomeComponent class
+  getLightColor(color: string): string {
+    // Convert hex to rgba with transparency
+    return color + '15'; // Adds 15% opacity (0.09 alpha in hex)
+  }
+
   startCarousel(): void {
     this.mainCarouselInterval = setInterval(() => {
       this.nextSlide();
