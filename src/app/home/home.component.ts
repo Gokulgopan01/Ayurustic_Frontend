@@ -19,6 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isMenuOpen: boolean = false;
   translateValue = 0;
   isDesktop = window.innerWidth >= 1024;
+
+  touchStartX: number = 0;
+  touchEndX: number = 0;
+  minSwipeDistance: number = 50;
+  mouseStartX = 0;
+  mouseEndX = 0;
+  isMouseDown = false;
   // isNavbarHidden & lastScrollTop removed
 
   @ViewChild('photoSection') photoSection!: ElementRef;
@@ -224,7 +231,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  // Add this method to your HomeComponent class
+  // get light colors for description toggle - ADDED
   getLightColor(color: string): string {
     // Convert hex to rgba with transparency
     return color + '15'; // Adds 15% opacity (0.09 alpha in hex)
@@ -235,6 +242,59 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.nextSlide();
     }, 7000);
   }
+
+  // Add this method
+  handleTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  handleTouchMove(event: TouchEvent): void {
+    this.touchEndX = event.touches[0].clientX;
+  }
+
+  handleTouchEnd(): void {
+    if (!this.touchStartX || !this.touchEndX) return;
+    
+    const distance = this.touchStartX - this.touchEndX;
+    const isLeftSwipe = distance > this.minSwipeDistance;
+    const isRightSwipe = distance < -this.minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      this.nextGallerySlide();
+    } else if (isRightSwipe) {
+      this.prevGallerySlide();
+    }
+    
+    // Reset values
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+  }
+  handleMouseDown(event: MouseEvent): void {
+    this.isMouseDown = true;
+    this.mouseStartX = event.clientX;
+  }
+
+  handleMouseUp(event: MouseEvent): void {
+    if (!this.isMouseDown) return;
+    
+    this.isMouseDown = false;
+    this.mouseEndX = event.clientX;
+    
+    const distance = this.mouseStartX - this.mouseEndX;
+    const isLeftSwipe = distance > this.minSwipeDistance;
+    const isRightSwipe = distance < -this.minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      this.nextGallerySlide();
+    } else if (isRightSwipe) {
+      this.prevGallerySlide();
+    }
+  }
+
+  handleMouseLeave(): void {
+    this.isMouseDown = false;
+  }
+
 
   // Gallery Carousel Methods - ADDED
   startGalleryCarousel(): void {
