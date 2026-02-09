@@ -1283,7 +1283,8 @@ $container-max-width: 1200px;
 
 .gallery-carousel-wrapper {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .gallery-carousel {
@@ -1324,7 +1325,7 @@ $container-max-width: 1200px;
 
 .slide-content.is-active {
   transform: translateY(-10px) scale(1.06);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
 }
 
 .slide-content:not(.is-active) {
