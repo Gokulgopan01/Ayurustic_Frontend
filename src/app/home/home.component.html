@@ -250,9 +250,8 @@
 
 <!--############################################################################################################################################-->
 
-<!-- Gallery Carousel Section -->
-<!-- home.component.html - Gallery Carousel Section -->
-<!-- home.component.html - Gallery Carousel Section -->
+
+<!-- home.component.html - Gallery Carousel Section __________________________________________________________________________-->
 <section class="gallery-carousel-section" @fadeInOnScroll>
   <div class="container">
     <h2 class="section-title" @textReveal>Botanical Colour Inspirations</h2>
@@ -278,7 +277,7 @@
         >
           <!-- Slides will be generated dynamically -->
           <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
-            <div class="slide-content" [style.background]="getLightColor(item.titleColor)">
+            <div class="slide-content"  [class.is-active]="i === currentGallerySlide">
               <!-- Plant Image -->
               <div class="image-container" [@cardFlip]>
                 <img [src]="item.image" [alt]="item.alt" class="gallery-image">
@@ -336,28 +335,20 @@
         <button class="carousel-nav next" (click)="nextGallerySlide()"  @iconBounce [attr.aria-label]="'Next slide'">
           ›
         </button>
-        
-        <!-- Swipe Instructions for Mobile -->
-        <div class="swipe-instructions" @textReveal>
-          <span class="swipe-text">Swipe to navigate</span>
-          <div class="swipe-icons">
-            <span class="swipe-icon">←</span>
-            <span class="swipe-icon">→</span>
-          </div>
-        </div>
       </div>
       
       <!-- Dots Indicator -->
-      <div class="carousel-dots">
-        <button 
-          *ngFor="let item of galleryItems; let i = index" 
-          class="dot" 
-          [class.active]="i === currentGallerySlide"
-          (click)="goToGallerySlide(i)"
-          @badgeFloat>
-          <span class="dot-pulse"></span>
+      <div class="slide-progress">
+        <button
+          *ngFor="let g of galleryItems; let gi = index"
+          class="slide-progress__bar"
+          [class.is-active]="gi === currentGallerySlide"
+          [style.backgroundColor]="g.titleColor"
+          (click)="goToGallerySlide(gi)">
         </button>
       </div>
+
+
     </div>
   </div>
 </section>

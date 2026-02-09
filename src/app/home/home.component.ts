@@ -222,7 +222,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   galleryItems = [
     {
-      image: 'assets/Lavender.jpeg',
+      image: 'assets/Lavender.png',
       alt: 'Lavender',
       title: 'Lavender',
       titleColor: '#967BB6',
@@ -232,7 +232,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Lavender is admired for its gentle nature and refined presence. In Ayurvastra textiles, it contributes subtle tones and a sense of calm elegance. Its inclusion reflects a thoughtful approach to creating fabrics that feel soothing and refined.'
     },
     {
-      image: 'assets/indigo.jpeg',
+      image: 'assets/indigo.png',
       alt: 'Indigo',
       title: 'Indigo',
       titleColor: '#4B0082',
@@ -242,7 +242,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Indigo is one of the most revered natural dyes in textile history. Extracted from fermented leaves, it produces rich blue shades with remarkable depth and character. Indigo-based Ayurvastra fabrics carry a timeless quality, connecting ancient dyeing traditions with contemporary elegance.'
     },
     {
-      image: 'assets/turmeric.jpeg',
+      image: 'assets/turmeric.png',
       alt: 'Turmeric',
       title: 'Turmeric',
       titleColor: '#DAA520',
@@ -252,7 +252,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Turmeric has been used for generations as a natural source of vibrant yellow dye. Its warm, luminous tones bring brightness and vitality to fabric, while symbolizing purity and auspiciousness in traditional practices. In Ayurvastra, turmeric reflects a celebration of natural colour without synthetic intervention.'
     },
     {
-      image: 'assets/Vettiver.jpeg',
+      image: 'assets/Vettiver.png',
       alt: 'Vettiver',
       title: 'Vettiver',
       titleColor: '#8B4513',
@@ -262,7 +262,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Vetiver roots have been traditionally valued in natural textile practices for their grounding, earthy qualities. In Ayurvastra-inspired dyeing, vetiver contributes subtle, understated shades that reflect nature’s calm palette. Its use represents balance, simplicity, and the quiet elegance of heritage craftsmanship.'
     },
     {
-      image: 'assets/Thulsi.jpeg',
+      image: 'assets/Thulsi.png',
       alt: 'Tulsi',
       title: 'Tulsi',
       titleColor: '#228B22',
@@ -272,7 +272,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Tulsi holds deep cultural significance in traditional Indian life. In textile use, it contributes gentle, natural tones and represents harmony and mindfulness. Its inclusion in Ayurvastra reflects respect for plants that have long been woven into everyday rituals and traditions.'
     },
     {
-      image: 'assets/Ashoka.jpeg',
+      image: 'assets/Ashoka.png',
       alt: 'Ashoka',
       title: 'Ashoka',
       titleColor: '#D2691E',
@@ -282,7 +282,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Ashoka bark has historically been used in natural dyeing to create warm, grounding shades. Its tones evoke earth and wood, adding depth and richness to fabric. Ashoka represents resilience and continuity within ancient botanical knowledge.'
     },
     {
-      image: 'assets/Red_Sandalwood.jpeg',
+      image: 'assets/Red_Sandalwood.png',
       alt: 'Red Sandalwood',
       title: 'Red Sandalwood',
       titleColor: '#B22222',
@@ -292,7 +292,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Red sandalwood has long been valued for its ability to impart warm reddish hues to textiles. The resulting shades are soft yet distinctive, adding richness and sophistication while honoring classical natural dye traditions.'
     },
     {
-      image: 'assets/Lekshmi_Tharu.jpeg',
+      image: 'assets/Lekshmi_Tharu.png',
       alt: 'Lekshmi Tharu',
       title: 'Lekshmi Tharu',
       titleColor: '#BDB76B',

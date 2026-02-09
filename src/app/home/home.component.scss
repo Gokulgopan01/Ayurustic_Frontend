@@ -1261,10 +1261,9 @@ $container-max-width: 1200px;
 }
 
 /* home.component.scss - Gallery Carousel Styles __________________________________________________________________________________________________*/
-/* home.component.scss - Gallery Carousel Styles - Image Container Updates */
 .gallery-carousel-section {
   padding: 1rem 0 2rem;
-  background: #f9f7f2;
+  background: #ffffff;
   
   .container {
     max-width: 1200px;
@@ -1309,13 +1308,28 @@ $container-max-width: 1200px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+ 
   height: 100%;
   position: relative;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent; 
   display: flex;
   flex-direction: column;
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+
+}
+
+.slide-content.is-active {
+  transform: translateY(-10px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+}
+
+.slide-content:not(.is-active) {
+  transform: scale(0.97);
+  opacity: 0.85;
 }
 
 /* UPDATED: Image Container - More height to show more photo */
@@ -1934,6 +1948,37 @@ $container-max-width: 1200px;
 }
 
 
+/* ===== SLIDE PROGRESS BAR ===== */
+
+.slide-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Base rectangle */
+.slide-progress__bar {
+  all: unset;                     // 💥 kills inherited button styles
+  width: 26px;
+  height: 6px;
+  border-radius: 4px;
+  opacity: 0.35;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+/* Active rectangle */
+.slide-progress__bar.is-active {
+  width: 48px;
+  height: 8px;
+  opacity: 1;
+}
+
+
+
+
 //socil media icons hover effect---------------------------------------------------------------------------------------------------------
 
 .social-media {
@@ -2151,29 +2196,6 @@ $container-max-width: 1200px;
       }
     }
     
-    .follower-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #e0e0e0;
-        transition: all 0.3s ease;
-        
-        &.active {
-          background: #8B4513;
-          transform: scale(1.2);
-          animation: pulseDot 2s infinite;
-          
-          &:nth-child(1) { animation-delay: 0s; }
-          &:nth-child(2) { animation-delay: 0.4s; }
-          &:nth-child(3) { animation-delay: 0.8s; }
-        }
-      }
-    }
   }
   
   .social-cta {
