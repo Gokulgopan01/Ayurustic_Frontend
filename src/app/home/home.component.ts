@@ -10,7 +10,7 @@ import {
   stagger,
   keyframes,
   group,
-  animateChild
+  animateChild,
 } from '@angular/animations';
 
 @Component({
@@ -31,15 +31,15 @@ import {
         opacity: 1
       })),
       transition('closed => open', [
-        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', style({ 
-          transform: 'translateX(0)', 
-          opacity: 1 
+        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', style({
+          transform: 'translateX(0)',
+          opacity: 1
         }))
       ]),
       transition('open => closed', [
-        animate('0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53)', style({ 
-          transform: 'translateX(-100%)', 
-          opacity: 0 
+        animate('0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53)', style({
+          transform: 'translateX(-100%)',
+          opacity: 0
         }))
       ])
     ]),
@@ -61,12 +61,12 @@ import {
     trigger('carouselSlide', [
       transition(':increment', [
         style({ opacity: 0.3, transform: 'scale(1.1) translateX(100px)' }),
-        animate('1.2s cubic-bezier(0.35, 0, 0.25, 1)', 
+        animate('1.2s cubic-bezier(0.35, 0, 0.25, 1)',
           style({ opacity: 1, transform: 'scale(1) translateX(0)' }))
       ]),
       transition(':decrement', [
         style({ opacity: 0.3, transform: 'scale(1.1) translateX(-100px)' }),
-        animate('1.2s cubic-bezier(0.35, 0, 0.25, 1)', 
+        animate('1.2s cubic-bezier(0.35, 0, 0.25, 1)',
           style({ opacity: 1, transform: 'scale(1) translateX(0)' }))
       ])
     ]),
@@ -75,7 +75,7 @@ import {
     trigger('cardEntrance', [
       transition(':enter', [
         style({ opacity: 0, transform: 'scale(0.8) translateY(100px) rotate(5deg)' }),
-        animate('0.8s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+        animate('0.8s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
           style({ opacity: 1, transform: 'scale(1) translateY(0) rotate(0deg)' }))
       ])
     ]),
@@ -99,7 +99,7 @@ import {
     trigger('textReveal', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(30px)' }),
-        animate('0.8s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+        animate('0.8s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
           style({ opacity: 1, transform: 'translateY(0)' }))
       ])
     ]),
@@ -108,7 +108,7 @@ import {
     trigger('buttonPulse', [
       transition(':enter', [
         style({ transform: 'scale(0)' }),
-        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', 
+        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
           style({ transform: 'scale(1)' }))
       ])
     ]),
@@ -119,19 +119,36 @@ import {
         query(':enter', [
           style({ opacity: 0, transform: 'translateX(-50px)' }),
           stagger(100, [
-            animate('0.5s cubic-bezier(0.35, 0, 0.25, 1)', 
+            animate('0.5s cubic-bezier(0.35, 0, 0.25, 1)',
               style({ opacity: 1, transform: 'translateX(0)' }))
           ])
         ], { optional: true })
       ])
     ]),
 
-    // Fade In On Scroll
+    // Fade In On Scroll (General)
     trigger('fadeInOnScroll', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(80px) scale(0.95)' }),
-        animate('1s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)', 
-          style({ opacity: 1, transform: 'translateY(0) scale(1)' }))
+        style({ opacity: 0, transform: 'translateY(50px)' }),
+        animate('0.8s ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ]),
+
+    // Fade In Up (Triggered by state)
+    trigger('fadeInUp', [
+      state('hidden', style({ opacity: 0, transform: 'translateY(50px)' })),
+      state('visible', style({ opacity: 1, transform: 'translateY(0)' })),
+      transition('hidden => visible', [
+        animate('0.8s ease-out')
+      ])
+    ]),
+
+    // Fade In Left (Triggered by state) - For Benefits Section
+    trigger('fadeInLeft', [
+      state('hidden', style({ opacity: 0, transform: 'translateX(-50px)' })),
+      state('visible', style({ opacity: 1, transform: 'translateX(0)' })),
+      transition('hidden => visible', [
+        animate('0.8s ease-out')
       ])
     ]),
 
@@ -139,7 +156,7 @@ import {
     trigger('badgeFloat', [
       transition(':enter', [
         style({ transform: 'translateY(20px) scale(0)', opacity: 0 }),
-        animate('0.6s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)', 
+        animate('0.6s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
           style({ transform: 'translateY(0) scale(1)', opacity: 1 }))
       ])
     ]),
@@ -148,7 +165,7 @@ import {
     trigger('iconBounce', [
       transition(':enter', [
         style({ transform: 'scale(0)', opacity: 0 }),
-        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)', 
+        animate('0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
           style({ transform: 'scale(1)', opacity: 1 }))
       ])
     ])
@@ -158,9 +175,11 @@ import {
 
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   currentSlide = 0;
-  isPhotoVisible: boolean = false;
-  showScrollTop: boolean = false;
+  isPhotoVisible: boolean = false; // Kept for backward compatibility if used elsewhere, but mainly replaced by specific ones below
+  isPremiumVisible: boolean = false;
   isBenefitsVisible: boolean = false;
+  isSocialVisible: boolean = false;
+  showScrollTop: boolean = false;
   currentInstagramSlide = 0;
   isMenuOpen: boolean = false;
   translateValue = 0;
@@ -173,8 +192,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   mouseEndX = 0;
   isMouseDown = false;
 
-  @ViewChild('photoSection') photoSection!: ElementRef;
+  @ViewChild('photoSection') photoSection!: ElementRef; // Kept if needed, but we will use specific ones
+  @ViewChild('premiumSection') premiumSection!: ElementRef;
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
+  @ViewChild('socialSection') socialSection!: ElementRef;
 
   @HostListener('window:resize')
   onResize() {
@@ -301,6 +322,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   expandedDescriptions: boolean[] = new Array(this.galleryItems.length).fill(false);
   private galleryInterval: any;
   private mainCarouselInterval: any;
+  private observer!: IntersectionObserver;
 
   ngOnInit(): void {
     this.startCarousel();
@@ -308,10 +330,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    // Check visibility on initial load
-    setTimeout(() => {
-      this.checkPhotoVisibility();
-    }, 100);
+    this.initScrollAnimations();
   }
 
   ngOnDestroy(): void {
@@ -320,48 +339,27 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.galleryInterval) clearInterval(this.galleryInterval);
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    const navbar = document.querySelector('.navbar');
+  initScrollAnimations() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            this.observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
 
-    if (window.scrollY > 50) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
-    }
-
-    this.checkPhotoVisibility();
+    document.querySelectorAll('.reveal').forEach(el => {
+      this.observer.observe(el);
+    });
   }
 
 
-
-  checkPhotoVisibility(): void {
-    if (this.photoSection) {
-      const element = this.photoSection.nativeElement;
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-      // Check if the photo section is in viewport
-      const isInViewport = rect.top <= windowHeight && rect.bottom >= 0;
-
-      if (isInViewport) {
-        this.isPhotoVisible = true;
-      }
-    }
-
-    // Also check benefits section
-    if (this.benefitsSection) {
-      const element = this.benefitsSection.nativeElement;
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-      const isInViewport = rect.top <= windowHeight * 0.8 && rect.bottom >= 0;
-
-      if (isInViewport) {
-        this.isBenefitsVisible = true;
-      }
-    }
-  }
 
   scrollToTop(): void {
     window.scrollTo({
@@ -392,22 +390,22 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   handleTouchEnd(): void {
-  if (!this.touchStartX || !this.touchEndX) return;
-  
-  const distance = this.touchStartX - this.touchEndX;
-  const isLeftSwipe = distance > this.minSwipeDistance;
-  const isRightSwipe = distance < -this.minSwipeDistance;
-  
-  if (isLeftSwipe) {
-    this.nextGallerySlide();
-  } else if (isRightSwipe) {
-    this.prevGallerySlide();
+    if (!this.touchStartX || !this.touchEndX) return;
+
+    const distance = this.touchStartX - this.touchEndX;
+    const isLeftSwipe = distance > this.minSwipeDistance;
+    const isRightSwipe = distance < -this.minSwipeDistance;
+
+    if (isLeftSwipe) {
+      this.nextGallerySlide();
+    } else if (isRightSwipe) {
+      this.prevGallerySlide();
+    }
+
+    // Reset values
+    this.touchStartX = 0;
+    this.touchEndX = 0;
   }
-  
-  // Reset values
-  this.touchStartX = 0;
-  this.touchEndX = 0;
-}
   handleMouseDown(event: MouseEvent): void {
     this.isMouseDown = true;
     this.mouseStartX = event.clientX;
@@ -415,14 +413,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleMouseUp(event: MouseEvent): void {
     if (!this.isMouseDown) return;
-    
+
     this.isMouseDown = false;
     this.mouseEndX = event.clientX;
-    
+
     const distance = this.mouseStartX - this.mouseEndX;
     const isLeftSwipe = distance > this.minSwipeDistance;
     const isRightSwipe = distance < -this.minSwipeDistance;
-    
+
     if (isLeftSwipe) {
       this.nextGallerySlide();
     } else if (isRightSwipe) {
@@ -463,19 +461,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // Add this method to handle proper pixel-based translation
-updateGalleryTranslateValue(): void {
-  // Calculate based on slide width + gap
-  const slideWidth = window.innerWidth >= 1280 ? 360 : 
-                    window.innerWidth >= 1024 ? 340 : 
-                    window.innerWidth >= 380 ? 340 : 300;
-  const gap = window.innerWidth >= 1024 ? 24 : 
-             window.innerWidth >= 380 ? 20 : 16;
-  
-  this.galleryTranslateValue = -(this.currentGallerySlide * (slideWidth + gap));
-  
-  // Restart the interval for continuous autoplay
-  this.restartGalleryInterval();
-}
+  updateGalleryTranslateValue(): void {
+    // Calculate based on slide width + gap
+    const slideWidth = window.innerWidth >= 1280 ? 360 :
+      window.innerWidth >= 1024 ? 340 :
+        window.innerWidth >= 380 ? 340 : 300;
+    const gap = window.innerWidth >= 1024 ? 24 :
+      window.innerWidth >= 380 ? 20 : 16;
+
+    this.galleryTranslateValue = -(this.currentGallerySlide * (slideWidth + gap));
+
+    // Restart the interval for continuous autoplay
+    this.restartGalleryInterval();
+  }
 
   restartGalleryInterval(): void {
     if (this.galleryInterval) {
