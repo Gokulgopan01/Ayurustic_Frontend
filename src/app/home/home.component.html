@@ -250,24 +250,29 @@
 
 <!--############################################################################################################################################-->
 
+<!-- home.component.html - Gallery Carousel Section -->
+<section class="gallery-carousel-section" style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
+  <div class="container" style="width:100%; text-align:center;">
+    <h2 class="ayurvedic-title">Botanical Colour Inspirations</h2>
 
-<!-- home.component.html - Gallery Carousel Section __________________________________________________________________________-->
-<section class="gallery-carousel-section" @fadeInOnScroll>
-  <div class="container">
-    <h2 class="section-title" @textReveal>Botanical Colour Inspirations</h2>
     <div class="gallery-carousel-wrapper">
       
       <!-- Gallery Carousel Container -->
       <div class="gallery-carousel">
-        <!-- Previous Button -->
-        <button class="carousel-nav prev" (click)="prevGallerySlide()" @iconBounce>
-          ‹
-        </button>
+        <!-- Navigation Arrows - Now inside container -->
+        <div class="carousel-navigation">
+          <button class="carousel-nav prev" (click)="prevGallerySlide()" @iconBounce>
+            ‹
+          </button>
+          <button class="carousel-nav next" (click)="nextGallerySlide()" @iconBounce>
+            ›
+          </button>
+        </div>
         
-        <!-- Slides Container - Add touch events here -->
+        <!-- Slides Container -->
         <div 
           class="slides-container" 
-          [style.transform]="'translateX(' + galleryTranslateValue + '%)'"
+          [style.transform]="'translateX(' + galleryTranslateValue + 'px)'"
           (touchstart)="handleTouchStart($event)"
           (touchmove)="handleTouchMove($event)"
           (touchend)="handleTouchEnd()"
@@ -275,12 +280,13 @@
           (mouseup)="handleMouseUp($event)"
           (mouseleave)="handleMouseLeave()"
         >
-          <!-- Slides will be generated dynamically -->
           <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
-            <div class="slide-content"  [class.is-active]="i === currentGallerySlide">
-              <!-- Plant Image -->
-              <div class="image-container" [@cardFlip]>
-                <img [src]="item.image" [alt]="item.alt" class="gallery-image">
+            <div class="slide-content" [style.borderColor]="item.titleColor">
+              <!-- Plant Image - Full 375x375 visible -->
+              <div class="image-wrapper">
+                <div class="image-container">
+                  <img [src]="item.image" [alt]="item.alt" class="gallery-image">
+                </div>
               </div>
               
               <!-- Card Content -->
@@ -303,11 +309,11 @@
                       </div>
                     </div>
                     
-                    <!-- Description Toggle Button - Now clearly visible -->
+                    <!-- Description Toggle Button -->
                     <div class="description-toggle-wrapper">
-                      <div class="description-toggle" (click)="toggleDescription(i, $event)">
-                        <span class="toggle-text" [style.color]="item.titleColor">Show description</span>
-                        <span class="toggle-icon">▼</span>
+                      <div class="description-toggle" (click)="toggleDescription(i, $event)"[attr.style]="'--btnColor:' + item.titleColor">
+                       <span class="toggle-text">Show Description</span>
+                      <span class="toggle-icon">▼</span>
                       </div>
                     </div>
                   </div>
@@ -315,11 +321,14 @@
                   <!-- Back Side - Description -->
                   <div class="content-back">
                     <div class="back-header">
-                      <h3 class="dye-title" [style.color]="item.titleColor"></h3>
-                      <div class="description-toggle" (click)="toggleDescription(i, $event)">
-                        <span class="toggle-text" [style.color]="item.titleColor">Back to details</span>
-                        <span class="toggle-icon">▲</span>
-                      </div>
+                      <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+                       <div
+                          class="description-toggle"
+                          (click)="toggleDescription(i, $event)"
+                          [attr.style]="'--btnColor:' + item.titleColor">
+                      <span class="toggle-text">Back</span>
+                      <span class="toggle-icon">▼</span>
+                    </div>
                     </div>
                     <div class="dye-description">
                       <p class="description-text">{{item.description}}</p>
@@ -330,11 +339,6 @@
             </div>
           </div>
         </div>
-        
-        <!-- Next Button -->
-        <button class="carousel-nav next" (click)="nextGallerySlide()"  @iconBounce [attr.aria-label]="'Next slide'">
-          ›
-        </button>
       </div>
       
       <!-- Dots Indicator -->
@@ -347,13 +351,9 @@
           (click)="goToGallerySlide(gi)">
         </button>
       </div>
-
-
     </div>
   </div>
 </section>
-
-
 
 
 <!--social media links ________________________________________________________________________________________________________________-->

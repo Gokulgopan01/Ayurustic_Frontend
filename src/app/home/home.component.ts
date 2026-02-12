@@ -183,40 +183,33 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   carouselItems = [
     {
-      image: 'assets/photo1.jpg',
+      image: 'assets/home_cor1.jpeg',
       title: 'AYURUSTIC VENTURES',
       subtitle: 'Fine Products',
       description: 'IT\'S A GIFT FOR SOMEONE SPECIAL',
       tagline: 'WE BELIEVE THAT FIBERS GROWN FROM NATURE ARE PERFECT THE WAY'
     },
     {
-      image: 'assets/photo2.jpg',
+      image: 'assets/home_cor2.jpeg',
       title: 'LUXURY COLLECTION',
       subtitle: 'Premium Quality',
       description: 'ELEGANCE REDEFINED',
       tagline: 'FROM NATURE\'S LAP TO YOUR HOME'
     },
     {
-      image: 'assets/photo3.jpg',
+      image: 'assets/home_cros3.jpeg',
       title: 'ARTISAN CRAFTS',
       subtitle: 'Handmade Excellence',
       description: 'TIMELESS BEAUTY',
       tagline: 'WHERE TRADITION MEETS MODERN DESIGN'
     },
     {
-      image: 'assets/photo4.jpg',
+      image: 'assets/home_cor4.jpeg',
       title: 'SILK DREAMS',
       subtitle: 'Pure Comfort',
       description: 'SLEEP IN STYLE',
       tagline: 'NATURAL FIBERS FOR RESTFUL NIGHTS'
     },
-    {
-      image: 'assets/photo5.jpg',
-      title: 'GOLDEN TOUCH',
-      subtitle: 'Luxury Defined',
-      description: 'PERFECTION IN EVERY DETAIL',
-      tagline: 'CRAFTED WITH LOVE AND PRECISION'
-    }
   ];
 
 
@@ -329,7 +322,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
-    // Scroll logic removed for absolute navbar
+    const navbar = document.querySelector('.navbar');
+
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+
     this.checkPhotoVisibility();
   }
 
@@ -462,13 +462,20 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.updateGalleryTranslateValue();
   }
 
-  updateGalleryTranslateValue(): void {
-    // Calculate translate value based on current slide
-    this.galleryTranslateValue = -this.currentGallerySlide * 100;
-
-    // Restart the interval for continuous autoplay
-    this.restartGalleryInterval();
-  }
+  // Add this method to handle proper pixel-based translation
+updateGalleryTranslateValue(): void {
+  // Calculate based on slide width + gap
+  const slideWidth = window.innerWidth >= 1280 ? 360 : 
+                    window.innerWidth >= 1024 ? 340 : 
+                    window.innerWidth >= 380 ? 340 : 300;
+  const gap = window.innerWidth >= 1024 ? 24 : 
+             window.innerWidth >= 380 ? 20 : 16;
+  
+  this.galleryTranslateValue = -(this.currentGallerySlide * (slideWidth + gap));
+  
+  // Restart the interval for continuous autoplay
+  this.restartGalleryInterval();
+}
 
   restartGalleryInterval(): void {
     if (this.galleryInterval) {
