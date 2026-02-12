@@ -4,12 +4,12 @@
 
     <!-- MOBILE MENU BUTTON -->
     <div class="mobile-menu-btn" (click)="openMenu()">
-      <i class="fas fa-bars"></i>
+      <img src="assets/icons/3d/menu.svg" class="icon-3d nav-icon" alt="Menu">
     </div>
 
     <!-- BRAND -->
     <div class="nav-left">
-      <div class="brand-name">AYURUSTIC</div>
+      <img src="assets/logo/ayurustic-logo.svg" alt="Ayurustic" class="brand-logo">
     </div>
 
     <!-- DESKTOP LINKS -->
@@ -24,7 +24,7 @@
     <!-- CART -->
     <div class="nav-right">
       <div class="icon-circle cart-icon">
-        <i class="fas fa-shopping-cart"></i>
+        <img src="assets/icons/3d/cart.svg" class="icon-3d nav-icon" alt="Cart" style="width: 20px; height: 20px;">
         <span class="cart-count">0</span>
       </div>
     </div>
@@ -82,11 +82,11 @@
 
     <!-- Controls -->
     <button class="carousel-control prev" (click)="prevSlide()">
-      <i class="fas fa-chevron-left"></i>
+      <img src="assets/icons/3d/arrow-left.svg" class="icon-3d nav-icon" alt="Prev">
     </button>
 
     <button class="carousel-control next" (click)="nextSlide()">
-      <i class="fas fa-chevron-right"></i>
+      <img src="assets/icons/3d/arrow-right.svg" class="icon-3d nav-icon" alt="Next">
     </button>
 
     <!-- Indicators -->
@@ -102,7 +102,7 @@
 
 <!-- Scroll Indicator -->
 <div class="scroll-indicator">
-  <i class="fas fa-chevron-down"></i>
+  <img src="assets/icons/3d/arrow-down.svg" class="icon-3d nav-icon" alt="Scroll Down">
 </div>
 
 
@@ -203,7 +203,7 @@
             <h3 class="ayurvedic-title">Ayurvastra Cloth Benefits</h3>
             <div class="benefits-list reveal stagger">
               <div class="benefit-item reveal scale">
-                <i class="fas fa-leaf benefit-icon"></i>
+                <img src="assets/icons/3d/leaf.svg" class="icon-3d benefit-icon-3d" alt="Eco">
                 <div class="benefit-details">
                   <h4 class="benefit-name">Eco-conscious & sustainable</h4>
                   <p class="benefit-desc">Crafted using natural fibers and plant-based dyeing processes inspired by
@@ -212,7 +212,7 @@
               </div>
 
               <div class="benefit-item">
-                <i class="fas fa-spa benefit-icon"></i>
+                <img src="assets/icons/3d/lotus.svg" class="icon-3d benefit-icon-3d" alt="Soft">
                 <div class="benefit-details">
                   <h4 class="benefit-name">Soft, breathable & comfortable</h4>
                   <p class="benefit-desc">Naturally lightweight and smooth, designed for all-day comfort</p>
@@ -220,7 +220,7 @@
               </div>
 
               <div class="benefit-item">
-                <i class="fas fa-heart benefit-icon"></i>
+                <img src="assets/icons/3d/heart.svg" class="icon-3d benefit-icon-3d" alt="Hypoallergenic">
                 <div class="benefit-details">
                   <h4 class="benefit-name">Hypoallergenic (generally considered)</h4>
                   <p class="benefit-desc">Made with natural fibers and gentle processes that are commonly suitable for
@@ -229,7 +229,7 @@
               </div>
 
               <div class="benefit-item">
-                <i class="fas fa-heart benefit-icon"></i>
+                <img src="assets/icons/3d/heart.svg" class="icon-3d benefit-icon-3d" alt="Gentle">
                 <div class="benefit-details">
                   <h4 class="benefit-name">Gentle on skin</h4>
                   <p class="benefit-desc">Designed to feel calm, smooth, and kind against the skin</p>
@@ -237,7 +237,7 @@
               </div>
 
               <div class="benefit-item">
-                <i class="fas fa-wind benefit-icon"></i>
+                <img src="assets/icons/3d/wind.svg" class="icon-3d benefit-icon-3d" alt="No Chemicals">
                 <div class="benefit-details">
                   <h4 class="benefit-name">Free from harsh synthetic chemicals</h4>
                   <p class="benefit-desc">Dyed without conventional chemical dyes, focusing on plant- and herb-based
@@ -351,44 +351,82 @@
 
 
 <!--social media links ________________________________________________________________________________________________________________-->
-<div class="social-media" #socialSection>
-  <h3 class="social-title">Follow Our Journey</h3>
-  <div class="social-icons">
-    <a href="#" class="social-icon">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="social-icon">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="#" class="social-icon">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <a href="#" class="social-icon">
-      <i class="fab fa-pinterest-p"></i>
-    </a>
+<footer class="premium-footer">
+  <div class="particles-layer">
+    <!-- 12 particles – you can duplicate more if you want denser effect -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
-</div>
+
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h2 class="brand-name">Ayurustic</h2>
+      <p class="tagline">Pure. Natural. Luxurious.</p>
+    </div>
+
+    <div class="social-section">
+      <h3 class="social-title">Follow Our Journey</h3>
+      <div class="social-icons">
+        <a href="#" class="social-link" aria-label="Facebook" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="X / Twitter" target="_blank">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="Pinterest" target="_blank">
+          <i class="fab fa-pinterest-p"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="copyright">
+      © <span class="year">2026</span> Ayurustic — All Rights Reserved
+    </div>
+    <div class="made-with">
+      Crafted with <span class="heart">♥</span> in Kerala
+    </div>
+  </div>
+</footer>
 
 <!-- Bottom Navbar -->
 <nav class="mobile-bottom-nav">
   <a class="nav-item active">
-    <img src="assets/icons/shopping.png" alt="Shop" />
+    <!-- <img src="assets/icons/shopping.png" alt="Shop" /> -->
+    <img src="assets/icons/3d/shopping.svg" alt="Shop" />
     <span>Shop</span>
   </a>
 
   <a class="nav-item">
-    <img src="assets/icons/heart.png" alt="Wishlist" />
+    <!-- <img src="assets/icons/heart.png" alt="Wishlist" /> -->
+    <img src="assets/icons/3d/heart.svg" alt="Wishlist" />
     <span>Wishlist</span>
   </a>
 
   <a class="nav-item cart">
-    <img src="assets/icons/trolley.png" alt="Cart" />
+    <!-- <img src="assets/icons/trolley.png" alt="Cart" /> -->
+    <img src="assets/icons/3d/cart.svg" alt="Cart" />
     <span>Cart</span>
     <span class="badge">0</span>
   </a>
 
   <a class="nav-item">
-    <img src="assets/icons/user.png" alt="Account" />
+    <!-- <img src="assets/icons/user.png" alt="Account" /> -->
+    <img src="assets/icons/3d/user.svg" alt="Account" />
     <span>Account</span>
   </a>
 </nav>

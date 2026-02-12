@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4E4A6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.3)" />
+    </filter>
+  </defs>
+  <path d="M16 20H40C44 20 48 16 48 12C48 8 44 4 40 4M12 32H52C56 32 60 36 60 40C60 44 56 48 52 48M8 44H32C36 44 40 48 40 52C40 56 36 60 32 60" stroke="url(#gold-grad)" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#shadow)"/>
+</svg>

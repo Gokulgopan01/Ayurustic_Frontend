@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4E4A6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.3)" />
+    </filter>
+  </defs>
+  <path d="M32 8C19 8 8 19 8 32C8 42 14 50 22 54C22 52 22 50 22 48L18 32C18 32 19 30 19 30C20 32 20 34 20 34C24 48 36 44 36 34C36 26 28 22 22 26C16 30 18 38 22 38C24 38 26 36 26 34C26 30 24 28 22 28C20 28 19 30 19 32C19 32 16 40 22 40C30 40 32 30 28 24C26 20 20 20 16 26C14 30 14 36 18 40" stroke="url(#gold-grad)" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#shadow)"/>
+  <circle cx="32" cy="32" r="24" stroke="url(#gold-grad)" stroke-width="2" filter="url(#shadow)"/>
+</svg>
