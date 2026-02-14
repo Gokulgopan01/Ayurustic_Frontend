@@ -1,5 +1,8 @@
 import { Component, OnInit, HostListener, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
 import {
   trigger,
   state,
@@ -16,7 +19,7 @@ import {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
@@ -172,8 +175,10 @@ import {
   ]
 })
 
-
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  constructor(private router: Router) {}
+
   currentSlide = 0;
   isPhotoVisible: boolean = false; // Kept for backward compatibility if used elsewhere, but mainly replaced by specific ones below
   isPremiumVisible: boolean = false;
@@ -511,5 +516,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   shopNow(): void {
     console.log('Shop Now clicked');
     // Add your navigation logic here
+  }
+
+  exploreCraft(): void {
+    this.router.navigate(['/discover']);
+    
   }
 }

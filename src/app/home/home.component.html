@@ -14,11 +14,12 @@
 
     <!-- DESKTOP LINKS -->
     <div class="nav-middle" *ngIf="isDesktop">
-      <a class="nav-link">HOME</a>
-      <a class="nav-link">ABOUT US</a>
-      <a class="nav-link">SHOP</a>
-      <a class="nav-link">CLOTHES</a>
-      <a class="nav-link">ACCESSORIES</a>
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">ABOUT US</a>
+      <a class="nav-link" routerLink="/shop" routerLinkActive="active">SHOP</a>
+      <a class="nav-link" routerLink="/clothes" routerLinkActive="active">CLOTHES</a>
+      <a class="nav-link" routerLink="/accessories" routerLinkActive="active">ACCESSORIES</a>
+      <a class="nav-link" routerLink="/discover" routerLinkActive="active">DISCOVER</a>
     </div>
 
     <!-- CART -->
@@ -41,11 +42,12 @@
   </div>
 
   <div class="drawer-links">
-    <a>HOME</a>
-    <a>ABOUT US</a>
-    <a>SHOP</a>
-    <a>CLOTHES</a>
-    <a>ACCESSORIES</a>
+    <a routerLink="/home" (click)="closeMenu()">HOME</a>
+    <a routerLink="/about" (click)="closeMenu()">ABOUT US</a>
+    <a routerLink="/shop" (click)="closeMenu()">SHOP</a>
+    <a routerLink="/clothes" (click)="closeMenu()">CLOTHES</a>
+    <a routerLink="/accessories" (click)="closeMenu()">ACCESSORIES</a>
+    <a routerLink="/discover" (click)="closeMenu()">DISCOVER</a>
   </div>
 </aside>
 
@@ -98,69 +100,108 @@
 </div>
 
 
-<!-- Scroll Indicator -->
-<div class="scroll-indicator">
-  <img src="assets/icons/3d/arrow-down.svg" class="icon-3d nav-icon" alt="Scroll Down">
-</div>
-
-
 <!--####################################################################################################################-->
+<!--Discover section__________________________________________________________________________-->
+<section class="hero-simple">
+  <button class="btn-explore" (click)="exploreCraft()">
+    Explore the Craft
+  </button>
+</section>
 
-<!-- New Premium Section -->
-<section class="premium-section reveal up" #premiumSection>
 
-  <div class="container">
-    <!-- Row with two photos -->
+<!--##################################################################################################################################-->
 
-    <div class="premium-grid">
+<!-- Gallery Carousel Section -->
+<section class="gallery-carousel-section reveal-section"
+  style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
+  <div class="container" style="width:100%; text-align:center;">
+    <h2 class="ayurvedic-title reveal-text">Botanical Colour Inspirations</h2>
 
-      <!-- CARD 1 -->
-      <div class="premium-card reveal left">
-        <div class="image-wrap">
-          <img src="assets/wellness.jpg" alt="Premium Silk">
+    <div class="gallery-carousel-wrapper">
 
-          <!-- GOLD SUBTITLE BOX -->
-          <div class="badge">WELLNESS</div>
+      <!-- Gallery Carousel Container -->
+      <div class="gallery-carousel">
+        <!-- Navigation Arrows - Now inside container -->
+        <div class="carousel-navigation">
+          <button class="carousel-nav prev" (click)="prevGallerySlide()">
+            ‹
+          </button>
+          <button class="carousel-nav next" (click)="nextGallerySlide()">
+            ›
+          </button>
         </div>
 
-        <!-- CONTENT BELOW IMAGE -->
-        <div class="card-content">
-          <h3>Carefully Crafted to keep your fabric pure,
-            soft and gentle on your skin.</h3>
+        <!-- Slides Container -->
+        <div class="slides-container" [style.transform]="'translateX(' + galleryTranslateValue + 'px)'"
+          (touchstart)="handleTouchStart($event)" (touchmove)="handleTouchMove($event)" (touchend)="handleTouchEnd()"
+          (mousedown)="handleMouseDown($event)" (mouseup)="handleMouseUp($event)" (mouseleave)="handleMouseLeave()">
+          <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
+            <div class="slide-content" [style.borderColor]="item.titleColor">
+              <!-- Image on left side -->
+              <div class="image-wrapper">
+                <div class="image-container">
+                  <img [src]="item.image" [alt]="item.alt" class="gallery-image">
+                </div>
+              </div>
+
+              <!-- Card Content on right side -->
+              <div class="card-content">
+                <!-- Flip Container -->
+                <div class="flip-container" [class.flipped]="expandedDescriptions[i]">
+
+                  <!-- Front Side - Basic Info -->
+                  <div class="content-front">
+                    <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+                    
+                    <div class="scientific-name">{{item.scientificName}}</div>
+                    
+                    <div class="section-divider" [style.backgroundColor]="item.titleColor"></div>
+                    
+                    <div class="color-contribution">{{item.colorContribution}}</div>
+
+                    <!-- Description Toggle Button -->
+                    <div class="description-toggle-wrapper">
+                      <div class="description-toggle" (click)="toggleDescription(i, $event)"
+                        [attr.style]="'--btnColor:' + item.titleColor">
+                        <span class="toggle-text">Show Description</span>
+                        <span class="toggle-icon">▼</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Back Side - Description -->
+                  <div class="content-back">
+                    <div class="back-header">
+                      <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+                      <div class="description-toggle back-toggle" (click)="toggleDescription(i, $event)"
+                        [attr.style]="'--btnColor:' + item.titleColor">
+                        <span class="toggle-text">Back</span>
+                        <span class="toggle-icon">▼</span>
+                      </div>
+                    </div>
+                    <div class="dye-description">
+                      <p class="description-text">{{item.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="premium-card reveal up">
-        <div class="image-wrap">
-          <img src="assets/luxury.jpg" alt="Grade 6A Silk">
-
-          <!-- GOLD SUBTITLE BOX -->
-          <div class="badge">LUXURY</div>
-        </div>
-
-        <div class="card-content">
-          <h3>100% mulberry silk feels smooth, reduces friction,
-            and makes every night a luxurious experience.</h3>
-        </div>
-      </div>
-      <div class="premium-card reveal right">
-        <div class="image-wrap">
-          <img src="assets/heritage.jpg" alt="Premium Silk">
-
-          <!-- GOLD SUBTITLE BOX -->
-          <div class="badge">HERITAGE</div>
-        </div>
-
-        <!-- CONTENT BELOW IMAGE -->
-        <div class="card-content">
-          <h3>Inspired by fabrics once favored by royal households, crafted with timeless Ayurvedic traditions.</h3>
-        </div>
+      <!-- Dots Indicator -->
+      <div class="slide-progress">
+        <button *ngFor="let g of galleryItems; let gi = index" class="slide-progress__bar"
+          [class.is-active]="gi === currentGallerySlide" [style.backgroundColor]="g.titleColor"
+          (click)="goToGallerySlide(gi)">
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<!--##################################################################################################################################-->
+<!--    -__________________________________________________________________________________________________-->
 
 <!-- Benefits Section -->
 <section class="benefits-section" #benefitsSection>
@@ -252,100 +293,6 @@
 
 <!--############################################################################################################################################-->
 
-<!-- Gallery Carousel Section -->
-<section class="gallery-carousel-section reveal-section"
-  style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
-  <div class="container" style="width:100%; text-align:center;">
-    <h2 class="ayurvedic-title reveal-text">Botanical Colour Inspirations</h2>
-
-    <div class="gallery-carousel-wrapper">
-
-      <!-- Gallery Carousel Container -->
-      <div class="gallery-carousel">
-        <!-- Navigation Arrows - Now inside container -->
-        <div class="carousel-navigation">
-          <button class="carousel-nav prev" (click)="prevGallerySlide()">
-            ‹
-          </button>
-          <button class="carousel-nav next" (click)="nextGallerySlide()">
-            ›
-          </button>
-        </div>
-
-        <!-- Slides Container -->
-        <div class="slides-container" [style.transform]="'translateX(' + galleryTranslateValue + 'px)'"
-          (touchstart)="handleTouchStart($event)" (touchmove)="handleTouchMove($event)" (touchend)="handleTouchEnd()"
-          (mousedown)="handleMouseDown($event)" (mouseup)="handleMouseUp($event)" (mouseleave)="handleMouseLeave()">
-          <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
-            <div class="slide-content" [style.borderColor]="item.titleColor">
-              <!-- Plant Image - Full 375x375 visible -->
-              <div class="image-wrapper">
-                <div class="image-container">
-                  <img [src]="item.image" [alt]="item.alt" class="gallery-image">
-                </div>
-              </div>
-
-              <!-- Card Content -->
-              <div class="card-content">
-                <!-- Flip Container -->
-                <div class="flip-container" [class.flipped]="expandedDescriptions[i]">
-
-                  <!-- Front Side - Basic Info -->
-                  <div class="content-front">
-                    <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
-
-                    <div class="dye-details">
-                      <div class="detail-item">
-                        <span class="detail-label">Scientific name:</span>
-                        <span class="detail-value">{{item.scientificName}}</span>
-                      </div>
-                      <div class="detail-item">
-                        <span class="detail-label">Colour contribution:</span>
-                        <span class="detail-value">{{item.colorContribution}}</span>
-                      </div>
-                    </div>
-
-                    <!-- Description Toggle Button -->
-                    <div class="description-toggle-wrapper">
-                      <div class="description-toggle" (click)="toggleDescription(i, $event)"
-                        [attr.style]="'--btnColor:' + item.titleColor">
-                        <span class="toggle-text">Show Description</span>
-                        <span class="toggle-icon">▼</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Back Side - Description -->
-                  <div class="content-back">
-                    <div class="back-header">
-                      <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
-                      <div class="description-toggle" (click)="toggleDescription(i, $event)"
-                        [attr.style]="'--btnColor:' + item.titleColor">
-                        <span class="toggle-text">Back</span>
-                        <span class="toggle-icon">▼</span>
-                      </div>
-                    </div>
-                    <div class="dye-description">
-                      <p class="description-text">{{item.description}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dots Indicator -->
-      <div class="slide-progress">
-        <button *ngFor="let g of galleryItems; let gi = index" class="slide-progress__bar"
-          [class.is-active]="gi === currentGallerySlide" [style.backgroundColor]="g.titleColor"
-          (click)="goToGallerySlide(gi)">
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!--social media links ________________________________________________________________________________________________________________-->
