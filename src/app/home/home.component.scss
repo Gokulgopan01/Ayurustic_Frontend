@@ -60,14 +60,24 @@ $container-max-width: 1200px;
   }
 
   &.nav-icon {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
+
+    @media (max-width: 768px) {
+      width: 28px;
+      height: 28px;
+    }
   }
 
   &.benefit-icon-3d {
-    width: 54px;
-    height: 54px;
+    width: 70px;
+    height: 70px;
     margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &.social-icon-3d {
@@ -271,7 +281,7 @@ $container-max-width: 1200px;
     flex: 1;
 
     .brand-logo {
-      height: 40px;
+      height: 60px; // Increased from 40px
       width: auto;
       object-fit: contain;
       transition: all 0.3s ease;
@@ -279,6 +289,7 @@ $container-max-width: 1200px;
 
       .scrolled & {
         filter: none; // Adjust if needed for scrolled state
+        height: 50px; // Slightly smaller on scroll but larger than before
       }
     }
   }
@@ -291,7 +302,7 @@ $container-max-width: 1200px;
     justify-content: center;
 
     .nav-link {
-      color: $white;
+      color: $black;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
@@ -367,14 +378,26 @@ $container-max-width: 1200px;
   }
 
   // Right Section - Icons - UPDATED FOR GOLD VISIBILITY
-  // .nav-right {
-  //   .icon-circle {
-  //     display: none;
-  //   font-size: 1.6rem;
-  //   color: $gold;
-  //   cursor: pointer;
-  //   }
-  // }
+  .nav-right {
+    .icon-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px; // Consistent larger size
+      height: 50px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      // Initially transparent or as designed
+      background-color: rgba($white, 0.1);
+    }
+
+    // Target the icon inside specifically if needed, but .nav-icon is global
+    .nav-icon {
+      width: 36px; // Larger icon inside circle
+      height: 36px;
+    }
+  }
 }
 
 .drawer-links a {
@@ -433,6 +456,8 @@ $container-max-width: 1200px;
   background-color: rgba($white, 0.15); // same as original
   border: 1.5px solid $gold;
   backdrop-filter: blur(8px);
+  width: 50px; // Explicit size matches base
+  height: 50px;
 }
 
 .mobile-menu-btn {
@@ -605,7 +630,7 @@ $container-max-width: 1200px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: $luxury-green;
+  color: $soft-gold;
   width: 100%;
   max-width: 100%;
   padding: 0 2rem;
@@ -617,22 +642,45 @@ $container-max-width: 1200px;
     animation: fadeIn 1s ease-out 1.5s forwards;
 
     .tagline-main {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: $soft-gold;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 22px; // space for divider
+    }
+
+    /* divider line */
+    .tagline-main::before {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 190px; // exact proportion from image
+      height: 1.5px;
+      background-color: $soft-gold; // using your existing color
+      opacity: .9;
+    }
+
+    /* center dot */
+    .tagline-main::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 7px;
+      height: 7px;
+      background-color: $soft-gold;
+      border-radius: 50%;
     }
 
     .tagline-sub {
-       font-size: 3rem;
+      font-size: 3rem;
       font-weight: 500;
       color: $luxury-green;
       letter-spacing: 0.3px;
       line-height: 1.2;
       font-family: 'Playfair Display', serif;
+
       &:nth-child(3) {
         font-size: 2.2rem;
         font-weight: 400;
@@ -659,7 +707,7 @@ $container-max-width: 1200px;
 .shop-now-btn {
   background-color: $luxury-green;
   color: white;
-  border: 1.5px solid $soft-gold;
+  border: 1px solid $soft-gold;
   padding: 0.9rem 2.4rem;
   font-size: 1rem;
   font-weight: 500;
@@ -687,7 +735,7 @@ $container-max-width: 1200px;
     background-color: white;
     color: $luxury-green;
     transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(0,0,0,.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .15);
 
     &::before {
       left: 100%;
@@ -722,8 +770,19 @@ $container-max-width: 1200px;
     transform: translateY(-50%) scale(1.1);
   }
 
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+
+    @media (max-width: 768px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   i {
-    font-size: 1.5rem;
+    display: none; // Hide old font icon if present
   }
 
   &.prev {
@@ -833,7 +892,7 @@ $container-max-width: 1200px;
     text-align: center;
 
     .brand-logo {
-      height: 28px;
+      height: 40px; // Increased from 28px
     }
   }
 
@@ -905,17 +964,22 @@ $container-max-width: 1200px;
   .navbar {
     .nav-left {
       .brand-logo {
-        height: 24px;
+        height: 36px; // Increased from 24px
       }
     }
 
     .nav-right {
       .icon-circle {
-        width: 36px;
-        height: 36px;
+        width: 44px; // Increased from 36px
+        height: 44px;
 
         i {
-          font-size: 1rem;
+          font-size: 1.2rem;
+        }
+
+        .nav-icon {
+          width: 28px;
+          height: 28px;
         }
       }
     }
@@ -968,6 +1032,11 @@ $container-max-width: 1200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); // Changed to 3 columns to match the 3 cards in HTML
     gap: 3rem;
+
+    // Specific requested breakpoint adjustment for 560px
+    @media (max-width: 560px) {
+      gap: 1.5rem;
+    }
 
     @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
@@ -1304,8 +1373,8 @@ $container-max-width: 1200px;
 /* ================= ICON IMAGE ================= */
 
 .mobile-bottom-nav .nav-item img {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   transition: transform 0.2s ease;
 }
@@ -1367,12 +1436,12 @@ $container-max-width: 1200px;
 
 @media (max-width: 489px) {
   .mobile-bottom-nav {
-    height: 60px;
+    height: 64px; // Increased height
   }
 
   .mobile-bottom-nav .nav-item img {
-    width: 20px;
-    height: 20px;
+    width: 26px; // Increased size
+    height: 26px;
   }
 
   .mobile-bottom-nav .nav-item span {
@@ -1384,12 +1453,12 @@ $container-max-width: 1200px;
 
 @media (max-width: 369px) {
   .mobile-bottom-nav {
-    height: 56px;
+    height: 60px; // Increased height
   }
 
   .mobile-bottom-nav .nav-item img {
-    width: 18px;
-    height: 18px;
+    width: 24px; // Increased size
+    height: 24px;
   }
 
   .mobile-bottom-nav .nav-item span {
@@ -2735,6 +2804,7 @@ $almost-black: #0f0f0f;
 
 .premium-footer {
   position: relative;
+  margin-bottom: 80px;
   background: linear-gradient(145deg, $green-dark 0%, #0d2f23 100%);
   color: $cream;
   padding: 6rem 5% 3rem;
