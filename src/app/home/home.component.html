@@ -24,8 +24,8 @@
     <!-- CART -->
     <div class="nav-right">
       <div class="icon-circle cart-icon">
-        <img src="assets/icons/3d/cart.svg" class="icon-3d nav-icon" alt="Cart" style="width: 20px; height: 20px;">
-        <span class="cart-count">0</span>
+        <img src="assets/icons/3d/cart.svg" class="icon-3d nav-icon" alt="Cart">
+        <!-- <span class="cart-count">0</span> -->
       </div>
     </div>
   </div>
@@ -60,22 +60,20 @@
     <div class="carousel-inner">
 
       <div *ngFor="let item of carouselItems; let i = index" class="carousel-item" [class.active]="i === currentSlide">
-
         <div class="carousel-image" [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
         </div>
-
-        <div class="carousel-content" *ngIf="i === currentSlide">
+      </div>
+      <div class="carousel-content">
           <div class="tagline-container">
-            <p class="tagline-main">From Nature's Lap -</p>
-            <p class="tagline-sub">A Gift of Soulful Care</p>
+            <p class="tagline-main"><b><i>Herbal Wisdom in Every Thread</i></b></p>
+            <p class="tagline-sub"><b>100% Mulberry Silk.</b></p>
+            <p class="tagline-sub"><b>Naturally Dyed</b></p>
           </div>
 
           <button class="shop-now-btn animate-flip" (click)="shopNow()">
-            SHOP NOW
+            Discover Now
             <span class="btn-ripple"></span>
           </button>
-        </div>
-
       </div>
 
     </div>
@@ -147,7 +145,7 @@
       </div>
       <div class="premium-card reveal right">
         <div class="image-wrap">
-          <img src="assets/photo8.jpg" alt="Premium Silk">
+          <img src="assets/heritage.jpg" alt="Premium Silk">
 
           <!-- GOLD SUBTITLE BOX -->
           <div class="badge">HERITAGE</div>
@@ -170,7 +168,7 @@
     <div class="benefits-grid">
       <!-- Left Column: Photo -->
       <div class="benefits-photo reveal left">
-        <img src="assets/photo9.jpg" alt="Vellada Mulberry Silk Benefits" class="benefits-image">
+        <img src="assets/inspired.jpg" alt="Vellada Mulberry Silk Benefits" class="benefits-image">
       </div>
 
       <!-- Right Column: Content - Same height as photo -->
@@ -413,7 +411,7 @@
 
   <a class="nav-item">
     <!-- <img src="assets/icons/heart.png" alt="Wishlist" /> -->
-    <img src="assets/icons/3d/heart.svg" alt="Wishlist" />
+    <img src="assets/icons/3d/whishlist.svg" alt="Wishlist" />
     <span>Wishlist</span>
   </a>
 

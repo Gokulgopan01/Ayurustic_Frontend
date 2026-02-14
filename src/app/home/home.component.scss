@@ -1,5 +1,5 @@
 // Colors
-$gold: #D4AF37;
+$gold: #b89b3e;
 $light-gold: #F4E4A6;
 $dark-gold: #B8860B;
 $white: #FFFFFF;
@@ -7,6 +7,17 @@ $off-white: #F8F8F8;
 $black: #000000;
 $gray: #333333;
 $text-gray: #555;
+$dark-luxury-green: #0F3D2E;
+
+//tagline themes used
+$luxury-green: #2F4A3C;
+$deep-green: #24392E;
+$soft-gold: #C6A15B;
+$muted-gold: #B89B5E;
+$cream-white: #F7F4EF;
+$charcoal: #3A3A3A;
+
+
 
 // Spacing Variables
 $section-padding-desktop: 5rem 2rem;
@@ -356,40 +367,14 @@ $container-max-width: 1200px;
   }
 
   // Right Section - Icons - UPDATED FOR GOLD VISIBILITY
-  .nav-right {
-    .icon-circle {
-      @include flex-center;
-      width: 42px;
-      height: 42px;
-      background-color: rgba($white, 0.15);
-      border-radius: 50%;
-      border: 1.5px solid $gold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 12px rgba($black, 0.2);
-
-      // IMAGE ICON SUPPORT
-      .icon-img {
-        width: 18px; // force size
-        height: 18px;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        display: block;
-      }
-
-      &:hover {
-        background-color: $gold;
-        transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba($black, 0.3);
-
-        .icon-img {
-          filter: brightness(0) invert(1); // white on hover
-        }
-      }
-    }
-  }
+  // .nav-right {
+  //   .icon-circle {
+  //     display: none;
+  //   font-size: 1.6rem;
+  //   color: $gold;
+  //   cursor: pointer;
+  //   }
+  // }
 }
 
 .drawer-links a {
@@ -620,51 +605,11 @@ $container-max-width: 1200px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: $white;
+  color: $luxury-green;
   width: 100%;
   max-width: 100%;
   padding: 0 2rem;
-  /* optional padding */
-  margin: 0;
   z-index: 2;
-
-  .brand-title {
-    font-size: 4rem;
-    font-weight: 300;
-    letter-spacing: 10px;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    font-family: 'Playfair Display', serif;
-    color: $gold;
-
-    &.animate-flip {
-      animation: flipIn 1.5s ease-out forwards;
-    }
-  }
-
-  .subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 5px;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    color: $light-gold;
-
-    &.animate-box {
-      animation: boxReveal 1.2s ease-out 0.5s forwards;
-      clip-path: inset(0 100% 0 0);
-      opacity: 0;
-    }
-  }
-
-  .description {
-    font-size: 1.2rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: slideInUp 1s ease-out 1s forwards;
-  }
 
   .tagline-container {
     margin: 2rem 0;
@@ -672,32 +617,39 @@ $container-max-width: 1200px;
     animation: fadeIn 1s ease-out 1.5s forwards;
 
     .tagline-main {
-      font-size: 1.8rem;
+      font-size: 1.2rem;
       font-weight: 400;
-      color: $gold;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
+      color: $soft-gold;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
+      font-style: italic;
     }
 
     .tagline-sub {
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: $light-gold;
-      letter-spacing: 1px;
+       font-size: 3rem;
+      font-weight: 500;
+      color: $luxury-green;
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+      font-family: 'Playfair Display', serif;
+      &:nth-child(3) {
+        font-size: 2.2rem;
+        font-weight: 400;
+        margin-top: 0.5rem;
+      }
     }
   }
 
   .additional-tagline {
     font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
     line-height: 1.6;
     margin-bottom: 2rem;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
+    color: $charcoal;
     opacity: 0;
     animation: fadeIn 1s ease-out 2s forwards;
   }
@@ -705,22 +657,18 @@ $container-max-width: 1200px;
 
 // Shop Now Button
 .shop-now-btn {
-  background-color: $gold;
-  color: $white;
-  border: 2px solid $gold;
-  padding: 1rem 3rem;
+  background-color: $luxury-green;
+  color: white;
+  border: 1.5px solid $soft-gold;
+  padding: 0.9rem 2.4rem;
   font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  // opacity: 0; // Commented out to avoid flashes if animation is delayed or broken
-  // animation: slideInUp 1s ease-out 2.5s forwards; // Move animation to specific usage if needed or handle carefully
-  display: inline-block; // Ensure it respects text-align center
+  transition: all .35s ease;
+  display: inline-block;
   position: relative;
   overflow: hidden;
-  z-index: 1;
 
   &::before {
     content: '';
@@ -736,10 +684,10 @@ $container-max-width: 1200px;
 
   &:hover {
 
-    background-color: $white;
-    color: $gold;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba($black, 0.2);
+    background-color: white;
+    color: $luxury-green;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0,0,0,.15);
 
     &::before {
       left: 100%;
