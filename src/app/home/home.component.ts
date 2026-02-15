@@ -197,11 +197,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   mouseEndX = 0;
   isMouseDown = false;
 
-  //touch screen
-  private isDragging = false;
-  private startX = 0;
-  private currentTranslate = 0;
-  private prevTranslate = 0;
 
 
   @ViewChild('photoSection') photoSection!: ElementRef; // Kept if needed, but we will use specific ones
@@ -359,30 +354,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   ];
 
-  private snapToNearestSlide(): void {
-    const slideWidth = this.getSlideWidth() + this.getGap();
-
-    this.currentGallerySlide = Math.round(
-      Math.abs(this.currentTranslate) / slideWidth
-    );
-
-    this.currentGallerySlide = Math.max(
-      0,
-      Math.min(this.currentGallerySlide, this.galleryItems.length - 1)
-    );
-
-    this.updateGalleryTranslateValue();
-  }
-
-  private getSlideWidth(): number {
-    return window.innerWidth >= 1024 ? 360 :
-      window.innerWidth >= 380 ? 340 : 300;
-  }
-
-  private getGap(): number {
-    return window.innerWidth >= 1024 ? 24 :
-      window.innerWidth >= 380 ? 20 : 16;
-  }
   currentGallerySlide = 0;
   galleryTranslateValue = 0;
   expandedDescriptions: boolean[] = new Array(this.galleryItems.length).fill(false);
@@ -448,51 +419,55 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Add this method
   handleTouchStart(event: TouchEvent): void {
-    this.isDragging = true;
-    this.startX = event.touches[0].clientX;
+    this.touchStartX = event.touches[0].clientX;
   }
 
   handleTouchMove(event: TouchEvent): void {
-    if (!this.isDragging) return;
-
-    const currentX = event.touches[0].clientX;
-    const diff = currentX - this.startX;
-
-    this.currentTranslate = this.prevTranslate + diff;
-    this.galleryTranslateValue = this.currentTranslate;
+    this.touchEndX = event.touches[0].clientX;
   }
 
   handleTouchEnd(): void {
-    this.isDragging = false;
-    this.snapToNearestSlide();
-  }
+    if (!this.touchStartX || !this.touchEndX) return;
 
+    const distance = this.touchStartX - this.touchEndX;
+    const isLeftSwipe = distance > this.minSwipeDistance;
+    const isRightSwipe = distance < -this.minSwipeDistance;
+
+    if (isLeftSwipe) {
+      this.nextGallerySlide();
+    } else if (isRightSwipe) {
+      this.prevGallerySlide();
+    }
+
+    // Reset values
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+  }
   handleMouseDown(event: MouseEvent): void {
-    this.isDragging = true;
-    this.startX = event.clientX;
+    this.isMouseDown = true;
+    this.mouseStartX = event.clientX;
   }
 
+  handleMouseUp(event: MouseEvent): void {
+    if (!this.isMouseDown) return;
 
-  handleMouseUp(): void {
-    if (!this.isDragging) return;
-    this.isDragging = false;
-    this.snapToNearestSlide();
+    this.isMouseDown = false;
+    this.mouseEndX = event.clientX;
+
+    const distance = this.mouseStartX - this.mouseEndX;
+    const isLeftSwipe = distance > this.minSwipeDistance;
+    const isRightSwipe = distance < -this.minSwipeDistance;
+
+    if (isLeftSwipe) {
+      this.nextGallerySlide();
+    } else if (isRightSwipe) {
+      this.prevGallerySlide();
+    }
   }
 
   handleMouseLeave(): void {
-    if (this.isDragging) this.handleMouseUp();
+    this.isMouseDown = false;
   }
-
-  handleMouseMove(event: MouseEvent): void {
-    if (!this.isDragging) return;
-
-    const currentX = event.clientX;
-    const diff = currentX - this.startX;
-
-    this.currentTranslate = this.prevTranslate + diff;
-    this.galleryTranslateValue = this.currentTranslate;
-  }
-
 
 
   // Gallery Carousel Methods - ADDED
@@ -524,9 +499,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Add this method to handle proper pixel-based translation
   updateGalleryTranslateValue(): void {
-    const slideWidth = this.getSlideWidth() + this.getGap();
-    this.galleryTranslateValue = -(this.currentGallerySlide * slideWidth);
-    this.prevTranslate = this.galleryTranslateValue;
+    // Calculate based on slide width + gap
+    const slideWidth = window.innerWidth >= 1280 ? 360 :
+      window.innerWidth >= 1024 ? 340 :
+        window.innerWidth >= 380 ? 340 : 300;
+    const gap = window.innerWidth >= 1024 ? 24 :
+      window.innerWidth >= 380 ? 20 : 16;
+
+    this.galleryTranslateValue = -(this.currentGallerySlide * (slideWidth + gap));
+
+    // Restart the interval for continuous autoplay
     this.restartGalleryInterval();
   }
 

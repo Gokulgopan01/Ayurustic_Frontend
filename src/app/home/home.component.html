@@ -158,7 +158,7 @@
         <!-- Slides Container -->
         <div class="slides-container" [style.transform]="'translateX(' + galleryTranslateValue + 'px)'"
           (touchstart)="handleTouchStart($event)" (touchmove)="handleTouchMove($event)" (touchend)="handleTouchEnd()"
-          (mousedown)="handleMouseDown($event)" (mouseup)="handleMouseUp()" (mouseleave)="handleMouseLeave()">
+          (mousedown)="handleMouseDown($event)" (mouseup)="handleMouseUp($event)" (mouseleave)="handleMouseLeave()">
           <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
             <div class="slide-content" [style.borderColor]="item.titleColor">
               <!-- Image on left side -->
