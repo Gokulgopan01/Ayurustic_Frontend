@@ -1,0 +1,399 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-container">
+
+        <!-- MOBILE MENU BUTTON -->
+        <div class="mobile-menu-btn" (click)="openMenu()">
+            <img src="assets/icons/luxury/menu.svg" class="icon-3d nav-icon" alt="Menu">
+        </div>
+
+        <!-- BRAND -->
+        <div class="nav-left">
+            <img src="assets/logo/ayurus_logo_2.png" alt="Ayurustic" class="brand-logo">
+        </div>
+
+        <!-- DESKTOP LINKS -->
+        <div class="nav-middle" *ngIf="isDesktop">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <img src="assets/icons/luxury/home.svg" class="nav-menu-icon" alt=""> HOME
+            </a>
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">
+                <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
+            </a>
+            <a class="nav-link" routerLink="/shop" routerLinkActive="active">
+                <img src="assets/icons/luxury/shop_store.svg" class="nav-menu-icon" alt=""> SHOP
+            </a>
+            <a class="nav-link" routerLink="/clothes" routerLinkActive="active">
+                <img src="assets/icons/luxury/clothes.svg" class="nav-menu-icon" alt=""> CLOTHES
+            </a>
+            <a class="nav-link" routerLink="/accessories" routerLinkActive="active">
+                <img src="assets/icons/luxury/accessories.svg" class="nav-menu-icon" alt=""> ACCESSORIES
+            </a>
+            <a class="nav-link" routerLink="/discover" routerLinkActive="active">
+                <img src="assets/icons/luxury/discover.svg" class="nav-menu-icon" alt=""> DISCOVER
+            </a>
+        </div>
+
+        <!-- CART -->
+        <div class="nav-right">
+            <div class="icon-circle cart-icon" (click)="toggleCart()">
+                <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
+                <span class="cart-count" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- MOBILE SLIDE MENU -->
+<div class="mobile-overlay" [class.active]="isMenuOpen" (click)="isMenuOpen=false"></div>
+
+<aside class="mobile-drawer" [class.open]="isMenuOpen">
+    <div class="drawer-header">
+        <span class="close-btn" (click)="isMenuOpen=false">&times;</span>
+        <input type="text" placeholder="Search products..." />
+    </div>
+
+    <div class="drawer-links">
+        <a routerLink="/home" (click)="closeMenu()">
+            <img src="assets/icons/luxury/home.svg" class="drawer-icon" alt=""> HOME
+        </a>
+        <a routerLink="/about" (click)="closeMenu()">
+            <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
+        </a>
+        <a routerLink="/shop" (click)="closeMenu()">
+            <img src="assets/icons/luxury/shop_store.svg" class="drawer-icon" alt=""> SHOP
+        </a>
+        <a routerLink="/clothes" (click)="closeMenu()">
+            <img src="assets/icons/luxury/clothes.svg" class="drawer-icon" alt=""> CLOTHES
+        </a>
+        <a routerLink="/accessories" (click)="closeMenu()">
+            <img src="assets/icons/luxury/accessories.svg" class="drawer-icon" alt=""> ACCESSORIES
+        </a>
+        <a routerLink="/discover" (click)="closeMenu()">
+            <img src="assets/icons/luxury/discover.svg" class="drawer-icon" alt=""> DISCOVER
+        </a>
+    </div>
+</aside>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SHOP PAGE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<!-- Cart Notification Toast -->
+<div class="cart-toast" *ngIf="cartNotification" @fadeIn>
+    <span class="toast-icon">✓</span>
+    {{ cartNotification }}
+</div>
+
+<!-- Hero Banner -->
+<section class="shop-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">The Ayurustic Collection</h1>
+        <p class="hero-subtitle">Handcrafted Botanical Silk — Pure. Natural. Luxurious.</p>
+        <div class="hero-divider"></div>
+    </div>
+</section>
+
+<!-- Toolbar -->
+<section class="shop-toolbar">
+    <div class="toolbar-container">
+
+        <!-- Search -->
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search silk treasures..." [(ngModel)]="searchQuery">
+        </div>
+
+        <!-- Category Chips -->
+        <div class="category-chips">
+            <button *ngFor="let cat of categories" class="chip" [class.active]="selectedCategory === cat"
+                (click)="selectCategory(cat)">
+                {{ cat }}
+            </button>
+        </div>
+
+        <!-- Sort + Filter Controls -->
+        <div class="toolbar-controls">
+            <select [(ngModel)]="sortOption" class="sort-select">
+                <option value="default">Sort By</option>
+                <option value="price-low">Price: Low → High</option>
+                <option value="price-high">Price: High → Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="newest">Newest</option>
+            </select>
+
+            <button class="filter-btn" (click)="toggleFilters()">
+                <span class="filter-icon">☰</span> Filters
+            </button>
+
+            <div class="view-toggle">
+                <button [class.active]="viewMode === 'grid'" (click)="viewMode = 'grid'" title="Grid View">▦</button>
+                <button [class.active]="viewMode === 'list'" (click)="viewMode = 'list'" title="List View">☰</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expandable Filter Panel -->
+    <div class="filter-panel" *ngIf="showFilters" @slideUp>
+        <div class="filter-group">
+            <label class="filter-label">Max Price: ₹{{ priceRange | number }}</label>
+            <input type="range" min="1000" max="15000" step="500" [(ngModel)]="priceRange" class="price-slider">
+        </div>
+        <button class="clear-filters" (click)="clearFilters()">Clear All Filters</button>
+    </div>
+</section>
+
+<!-- Results Count -->
+<div class="results-bar">
+    <p>Showing <strong>{{ filteredProducts.length }}</strong> of {{ products.length }} products</p>
+</div>
+
+<!-- Product Grid -->
+<section class="products-section">
+    <div class="products-container" [class.list-view]="viewMode === 'list'" @listAnimation>
+
+        <div class="product-card" *ngFor="let product of filteredProducts" @cardEntrance>
+
+            <!-- Image -->
+            <div class="card-image-wrapper" (click)="openQuickView(product)">
+                <img [src]="product.image" [alt]="product.name" class="card-image">
+                <div class="card-overlay">
+                    <span class="quick-view-label">Quick View</span>
+                </div>
+                <span class="card-badge" *ngIf="product.badge">{{ product.badge }}</span>
+                <span class="discount-badge" *ngIf="getDiscount(product) > 0">
+                    -{{ getDiscount(product) }}%
+                </span>
+            </div>
+
+            <!-- Info -->
+            <div class="card-body">
+                <span class="card-category">{{ product.category }}</span>
+                <h3 class="card-title">{{ product.name }}</h3>
+                <p class="card-desc">{{ product.description | slice:0:80 }}...</p>
+
+                <!-- Rating -->
+                <div class="card-rating">
+                    <span class="stars">
+                        <span class="star" *ngFor="let s of getStars(product.rating)">★</span>
+                    </span>
+                    <span class="rating-text">{{ product.rating }} ({{ product.reviews }})</span>
+                </div>
+
+                <!-- Colors -->
+                <div class="color-swatches">
+                    <span class="swatch" *ngFor="let c of product.colors" [style.background]="c"></span>
+                </div>
+
+                <!-- Price -->
+                <div class="card-price">
+                    <span class="current-price">₹{{ product.price | number }}</span>
+                    <span class="original-price" *ngIf="product.originalPrice > product.price">
+                        ₹{{ product.originalPrice | number }}
+                    </span>
+                </div>
+
+                <!-- Actions -->
+                <div class="card-actions">
+                    <button class="btn-add-cart" [disabled]="!product.inStock" (click)="addToCart(product)">
+                        {{ product.inStock ? 'Add to Cart' : 'Out of Stock' }}
+                    </button>
+                    <button class="btn-wishlist" title="Add to Wishlist">♡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="filteredProducts.length === 0">
+            <div class="empty-icon">🍃</div>
+            <h3>No products found</h3>
+            <p>Try adjusting your filters or search query.</p>
+            <button class="btn-clear" (click)="clearFilters()">Clear Filters</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- QUICK VIEW MODAL -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" *ngIf="quickViewProduct" (click)="closeQuickView()" @fadeIn>
+    <div class="modal-content" (click)="$event.stopPropagation()" @slideUp>
+        <button class="modal-close" (click)="closeQuickView()">&times;</button>
+
+        <div class="modal-grid">
+            <!-- Image -->
+            <div class="modal-image-wrapper">
+                <img [src]="quickViewProduct.image" [alt]="quickViewProduct.name" class="modal-image">
+                <span class="card-badge" *ngIf="quickViewProduct.badge">{{ quickViewProduct.badge }}</span>
+            </div>
+
+            <!-- Details -->
+            <div class="modal-details">
+                <span class="modal-category">{{ quickViewProduct.category }}</span>
+                <h2 class="modal-title">{{ quickViewProduct.name }}</h2>
+
+                <div class="modal-rating">
+                    <span class="stars">
+                        <span class="star" *ngFor="let s of getStars(quickViewProduct.rating)">★</span>
+                    </span>
+                    <span>{{ quickViewProduct.rating }} · {{ quickViewProduct.reviews }} reviews</span>
+                </div>
+
+                <p class="modal-desc">{{ quickViewProduct.description }}</p>
+
+                <div class="modal-colors">
+                    <span class="label">Available Colours:</span>
+                    <div class="color-swatches large">
+                        <span class="swatch" *ngFor="let c of quickViewProduct.colors" [style.background]="c"></span>
+                    </div>
+                </div>
+
+                <div class="modal-price">
+                    <span class="current-price">₹{{ quickViewProduct.price | number }}</span>
+                    <span class="original-price" *ngIf="quickViewProduct.originalPrice > quickViewProduct.price">
+                        ₹{{ quickViewProduct.originalPrice | number }}
+                    </span>
+                    <span class="discount-tag" *ngIf="getDiscount(quickViewProduct) > 0">
+                        Save {{ getDiscount(quickViewProduct) }}%
+                    </span>
+                </div>
+
+                <div class="modal-stock" [class.out]="!quickViewProduct.inStock">
+                    {{ quickViewProduct.inStock ? '● In Stock' : '○ Out of Stock' }}
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-add-cart large" [disabled]="!quickViewProduct.inStock"
+                        (click)="addToCart(quickViewProduct)">
+                        {{ quickViewProduct.inStock ? 'Add to Cart' : 'Out of Stock' }}
+                    </button>
+                    <button class="btn-wishlist large">♡ Wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- CART SIDEBAR -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="cart-overlay" [class.open]="isCartOpen" (click)="isCartOpen = false"></div>
+
+<aside class="cart-sidebar" [class.open]="isCartOpen">
+    <div class="cart-header">
+        <h3>Your Cart <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span></h3>
+        <button class="cart-close" (click)="isCartOpen = false">&times;</button>
+    </div>
+
+    <div class="cart-items" *ngIf="cart.length > 0">
+        <div class="cart-item" *ngFor="let item of cart">
+            <img [src]="item.product.image" [alt]="item.product.name" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4>{{ item.product.name }}</h4>
+                <p class="cart-item-price">₹{{ item.product.price | number }}</p>
+                <div class="qty-controls">
+                    <button (click)="updateQuantity(item.product.id, -1)">−</button>
+                    <span>{{ item.quantity }}</span>
+                    <button (click)="updateQuantity(item.product.id, 1)">+</button>
+                </div>
+            </div>
+            <button class="cart-item-remove" (click)="removeFromCart(item.product.id)">✕</button>
+        </div>
+    </div>
+
+    <div class="cart-empty" *ngIf="cart.length === 0">
+        <div class="empty-cart-icon">🛒</div>
+        <p>Your cart is empty</p>
+    </div>
+
+    <div class="cart-footer" *ngIf="cart.length > 0">
+        <div class="cart-total">
+            <span>Total</span>
+            <strong>₹{{ cartTotal | number }}</strong>
+        </div>
+        <button class="btn-checkout">Proceed to Checkout</button>
+    </div>
+</aside>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<footer class="premium-footer">
+    <div class="particles-layer">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h2 class="brand-name">Ayurustic</h2>
+            <p class="tagline">Pure. Natural. Luxurious.</p>
+        </div>
+
+        <div class="social-section">
+            <h3 class="social-title">Follow Our Journey</h3>
+            <div class="social-icons">
+                <a href="#" class="social-link" aria-label="Facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="X / Twitter" target="_blank">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Pinterest" target="_blank">
+                    <i class="fab fa-pinterest-p"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="copyright">
+            © <span class="year">2026</span> Ayurustic — All Rights Reserved
+        </div>
+        <div class="made-with">
+            Crafted with <span class="heart">♥</span> in Kerala
+        </div>
+    </div>
+</footer>
+
+<!-- Bottom Navbar -->
+<nav class="mobile-bottom-nav">
+    <a class="nav-item" routerLink="/shop">
+        <img src="assets/icons/3d/shopping.svg" alt="Shop" />
+        <span>Shop</span>
+    </a>
+
+    <a class="nav-item">
+        <img src="assets/icons/3d/whishlist.svg" alt="Wishlist" />
+        <span>Wishlist</span>
+    </a>
+
+    <a class="nav-item cart" (click)="toggleCart()">
+        <img src="assets/icons/3d/cart.svg" alt="Cart" />
+        <span>Cart</span>
+        <span class="badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+    </a>
+
+    <a class="nav-item">
+        <img src="assets/icons/3d/user.svg" alt="Account" />
+        <span>Account</span>
+    </a>
+</nav>
