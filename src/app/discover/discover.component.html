@@ -1,10 +1,9 @@
-<!-- NAVBAR ------------------------------------------------------------------------------------->
 <nav class="navbar">
   <div class="nav-container">
 
     <!-- MOBILE MENU BUTTON -->
     <div class="mobile-menu-btn" (click)="openMenu()">
-      <img src="assets/icons/3d/menu.svg" class="icon-3d nav-icon" alt="Menu">
+      <img src="assets/icons/luxury/menu.svg" class="icon-3d nav-icon" alt="Menu">
     </div>
 
     <!-- BRAND -->
@@ -14,18 +13,30 @@
 
     <!-- DESKTOP LINKS -->
     <div class="nav-middle" *ngIf="isDesktop">
-      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
-      <a class="nav-link" routerLink="/about" routerLinkActive="active">ABOUT US</a>
-      <a class="nav-link" routerLink="/shop" routerLinkActive="active">SHOP</a>
-      <a class="nav-link" routerLink="/clothes" routerLinkActive="active">CLOTHES</a>
-      <a class="nav-link" routerLink="/accessories" routerLinkActive="active">ACCESSORIES</a>
-      <a class="nav-link" routerLink="/discover" routerLinkActive="active">DISCOVER</a>
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <img src="assets/icons/luxury/home.svg" class="nav-menu-icon" alt=""> HOME
+      </a>
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">
+        <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
+      </a>
+      <a class="nav-link" routerLink="/shop" routerLinkActive="active">
+        <img src="assets/icons/luxury/shop_store.svg" class="nav-menu-icon" alt=""> SHOP
+      </a>
+      <a class="nav-link" routerLink="/clothes" routerLinkActive="active">
+        <img src="assets/icons/luxury/clothes.svg" class="nav-menu-icon" alt=""> CLOTHES
+      </a>
+      <a class="nav-link" routerLink="/accessories" routerLinkActive="active">
+        <img src="assets/icons/luxury/accessories.svg" class="nav-menu-icon" alt=""> ACCESSORIES
+      </a>
+      <a class="nav-link" routerLink="/discover" routerLinkActive="active">
+        <img src="assets/icons/luxury/discover.svg" class="nav-menu-icon" alt=""> DISCOVER
+      </a>
     </div>
 
     <!-- CART -->
     <div class="nav-right">
       <div class="icon-circle cart-icon">
-        <img src="assets/icons/3d/cart.svg" class="icon-3d nav-icon" alt="Cart">
+        <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
         <!-- <span class="cart-count">0</span> -->
       </div>
     </div>
@@ -42,12 +53,24 @@
   </div>
 
   <div class="drawer-links">
-    <a routerLink="/home" (click)="closeMenu()">HOME</a>
-    <a routerLink="/about" (click)="closeMenu()">ABOUT US</a>
-    <a routerLink="/shop" (click)="closeMenu()">SHOP</a>
-    <a routerLink="/clothes" (click)="closeMenu()">CLOTHES</a>
-    <a routerLink="/accessories" (click)="closeMenu()">ACCESSORIES</a>
-    <a routerLink="/discover" (click)="closeMenu()">DISCOVER</a>
+    <a routerLink="/home" (click)="closeMenu()">
+      <img src="assets/icons/luxury/home.svg" class="drawer-icon" alt=""> HOME
+    </a>
+    <a routerLink="/about" (click)="closeMenu()">
+      <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
+    </a>
+    <a routerLink="/shop" (click)="closeMenu()">
+      <img src="assets/icons/luxury/shop_store.svg" class="drawer-icon" alt=""> SHOP
+    </a>
+    <a routerLink="/clothes" (click)="closeMenu()">
+      <img src="assets/icons/luxury/clothes.svg" class="drawer-icon" alt=""> CLOTHES
+    </a>
+    <a routerLink="/accessories" (click)="closeMenu()">
+      <img src="assets/icons/luxury/accessories.svg" class="drawer-icon" alt=""> ACCESSORIES
+    </a>
+    <a routerLink="/discover" (click)="closeMenu()">
+      <img src="assets/icons/luxury/discover.svg" class="drawer-icon" alt=""> DISCOVER
+    </a>
   </div>
 </aside>
 
@@ -64,17 +87,14 @@
     <!-- Section 1 -->
     <section class="craft-section reveal">
       <div class="section-image-wrapper">
-        <img 
-          src="/assets/luxury.jpg" 
-          alt="Botanical silk art" 
-          class="section-image"
-          (error)="onImageError($event)"
-        >
+        <img src="/assets/luxury.jpg" alt="Botanical silk art" class="section-image" (error)="onImageError($event)">
         <div class="fallback-placeholder">Botanical Silk</div>
       </div>
       <h2 class="section-subheading">The Art of Botanical Silk</h2>
       <p class="section-description">
-        At Ayurustic, craftsmanship begins with material integrity. Our Ayurvastra-inspired silk is created through a considered process that unites fine mulberry silk with plant-based colour traditions. Each piece reflects patience, precision, and respect for heritage techniques adapted for modern living.
+        At Ayurustic, craftsmanship begins with material integrity. Our Ayurvastra-inspired silk is created through a
+        considered process that unites fine mulberry silk with plant-based colour traditions. Each piece reflects
+        patience, precision, and respect for heritage techniques adapted for modern living.
       </p>
       <div class="section-divider">⸻</div>
     </section>
@@ -82,20 +102,17 @@
     <!-- Section 2 -->
     <section class="craft-section reveal delay-1">
       <div class="section-image-wrapper">
-        <img 
-          src="/assets/luxury.jpg" 
-          alt="100% Mulberry Silk" 
-          class="section-image"
-          (error)="onImageError($event)"
-        >
+        <img src="/assets/luxury.jpg" alt="100% Mulberry Silk" class="section-image" (error)="onImageError($event)">
         <div class="fallback-placeholder">Pure Mulberry Silk</div>
       </div>
       <h2 class="section-subheading">100% Mulberry Silk</h2>
       <p class="section-description">
-        We work exclusively with 100% mulberry silk, known for its long, uniform fibres and naturally smooth surface. The result is a fabric that feels lightweight, breathable, and refined against the skin.
+        We work exclusively with 100% mulberry silk, known for its long, uniform fibres and naturally smooth surface.
+        The result is a fabric that feels lightweight, breathable, and refined against the skin.
       </p>
       <p class="section-description">
-        Its natural sheen and fluid drape give each garment quiet elegance — a balance of comfort and understated luxury.
+        Its natural sheen and fluid drape give each garment quiet elegance — a balance of comfort and understated
+        luxury.
       </p>
       <div class="section-divider">⸻</div>
     </section>
@@ -103,20 +120,18 @@
     <!-- Section 3 -->
     <section class="craft-section reveal delay-2">
       <div class="section-image-wrapper">
-        <img 
-          src="/assets/luxury.jpg" 
-          alt="Botanical dyeing" 
-          class="section-image"
-          (error)="onImageError($event)"
-        >
+        <img src="/assets/luxury.jpg" alt="Botanical dyeing" class="section-image" (error)="onImageError($event)">
         <div class="fallback-placeholder">Botanical Colour</div>
       </div>
       <h2 class="section-subheading">Botanical Colour, Thoughtfully Applied</h2>
       <p class="section-description">
-        Our silk is coloured using plant-based dyeing traditions inspired by time-honoured herbal knowledge. Instead of conventional chemical dyes, botanical formulations are carefully prepared and applied to the fabric through a slow, controlled process.
+        Our silk is coloured using plant-based dyeing traditions inspired by time-honoured herbal knowledge. Instead of
+        conventional chemical dyes, botanical formulations are carefully prepared and applied to the fabric through a
+        slow, controlled process.
       </p>
       <p class="section-description">
-        This method allows the silk to absorb colour gradually, creating rich yet nuanced tones. Subtle variations may occur — a natural mark of authenticity that reflects the character of botanical dyeing.
+        This method allows the silk to absorb colour gradually, creating rich yet nuanced tones. Subtle variations may
+        occur — a natural mark of authenticity that reflects the character of botanical dyeing.
       </p>
       <p class="section-description">
         No two pieces are exactly alike. Each carries its own quiet individuality.
@@ -127,12 +142,7 @@
     <!-- Section 4 -->
     <section class="craft-section reveal delay-3">
       <div class="section-image-wrapper">
-        <img 
-          src="/assets/luxury.jpg" 
-          alt="Craftsmanship detail" 
-          class="section-image"
-          (error)="onImageError($event)"
-        >
+        <img src="/assets/luxury.jpg" alt="Craftsmanship detail" class="section-image" (error)="onImageError($event)">
         <div class="fallback-placeholder">Time & Skill</div>
       </div>
       <h2 class="section-subheading">Time, Skill, and Attention</h2>
@@ -140,7 +150,8 @@
         True craftsmanship cannot be rushed. From fabric preparation to finishing, every stage requires skill and care.
       </p>
       <p class="section-description">
-        Our production approach values attention to detail, material respect, and consistency in quality. The result is silk that not only looks refined but feels considered in every thread.
+        Our production approach values attention to detail, material respect, and consistency in quality. The result is
+        silk that not only looks refined but feels considered in every thread.
       </p>
       <div class="section-divider">⸻</div>
     </section>
@@ -148,17 +159,13 @@
     <!-- Section 5 -->
     <section class="craft-section reveal delay-4">
       <div class="section-image-wrapper">
-        <img 
-          src="/assets/luxury.jpg" 
-          alt="Mindful luxury silk" 
-          class="section-image"
-          (error)="onImageError($event)"
-        >
+        <img src="/assets/luxury.jpg" alt="Mindful luxury silk" class="section-image" (error)="onImageError($event)">
         <div class="fallback-placeholder">Crafted with Respect</div>
       </div>
       <h2 class="section-subheading">Crafted with Respect</h2>
       <p class="section-description">
-        We believe luxury should be mindful. Our process prioritises natural fibres and plant-based colour applications, reducing reliance on conventional synthetic dyes while honouring traditional inspiration.
+        We believe luxury should be mindful. Our process prioritises natural fibres and plant-based colour applications,
+        reducing reliance on conventional synthetic dyes while honouring traditional inspiration.
       </p>
       <p class="section-description">
         It is a modern expression of heritage — thoughtful, responsible, and quietly distinctive.
@@ -169,17 +176,13 @@
     <!-- Section 6 (last, no divider) -->
     <section class="craft-section reveal delay-5">
       <div class="section-image-wrapper">
-        <img 
-          src="/assets/luxury.jpg" 
-          alt="Herbal wisdom silk" 
-          class="section-image"
-          (error)="onImageError($event)"
-        >
+        <img src="/assets/luxury.jpg" alt="Herbal wisdom silk" class="section-image" (error)="onImageError($event)">
         <div class="fallback-placeholder">Herbal Wisdom</div>
       </div>
       <h2 class="section-subheading">Herbal Wisdom in Every Thread</h2>
       <p class="section-description">
-        Ayurustic is rooted in tradition yet designed for today. By bringing together fine mulberry silk and botanical colour practices, we create pieces that feel both timeless and contemporary.
+        Ayurustic is rooted in tradition yet designed for today. By bringing together fine mulberry silk and botanical
+        colour practices, we create pieces that feel both timeless and contemporary.
       </p>
       <p class="section-description">
         This is silk shaped by heritage — refined for modern living.

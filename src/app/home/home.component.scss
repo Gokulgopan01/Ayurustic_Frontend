@@ -281,15 +281,23 @@ $container-max-width: 1200px;
     flex: 1;
 
     .brand-logo {
-      height: 90px; // Increased from 60px
+      height: 120px; // Increased for better visibility
       width: auto;
       object-fit: contain;
       transition: all 0.3s ease;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 
+      @media (max-width: 768px) {
+        height: 90px;
+      }
+
       .scrolled & {
         filter: none; // Adjust if needed for scrolled state
-        height: 70px; // Slightly smaller on scroll but larger than before
+        height: 50px; // Slightly smaller on scroll but larger than before
+
+        @media (max-width: 768px) {
+          height: 70px;
+        }
       }
     }
   }
