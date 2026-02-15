@@ -241,7 +241,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   galleryItems = [
     {
-      image: 'assets/Lavender.png',
+      image: 'assets/Lavender.jpeg',
       alt: 'Lavender',
       title: 'Lavender',
       titleColor: '#967BB6',
@@ -251,7 +251,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Lavender is admired for its gentle nature and refined presence. In Ayurvastra textiles, it contributes subtle tones and a sense of calm elegance. Its inclusion reflects a thoughtful approach to creating fabrics that feel soothing and refined.'
     },
     {
-      image: 'assets/indigo.png',
+      image: 'assets/indigo.jpeg',
       alt: 'Indigo',
       title: 'Indigo',
       titleColor: '#4B0082',
@@ -261,7 +261,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Indigo is one of the most revered natural dyes in textile history. Extracted from fermented leaves, it produces rich blue shades with remarkable depth and character. Indigo-based Ayurvastra fabrics carry a timeless quality, connecting ancient dyeing traditions with contemporary elegance.'
     },
     {
-      image: 'assets/turmeric.png',
+      image: 'assets/turmeric.jpeg',
       alt: 'Turmeric',
       title: 'Turmeric',
       titleColor: '#DAA520',
@@ -271,7 +271,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Turmeric has been used for generations as a natural source of vibrant yellow dye. Its warm, luminous tones bring brightness and vitality to fabric, while symbolizing purity and auspiciousness in traditional practices. In Ayurvastra, turmeric reflects a celebration of natural colour without synthetic intervention.'
     },
     {
-      image: 'assets/Vettiver.png',
+      image: 'assets/Vettiver.jpeg',
       alt: 'Vettiver',
       title: 'Vettiver',
       titleColor: '#8B4513',
@@ -281,7 +281,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Vetiver roots have been traditionally valued in natural textile practices for their grounding, earthy qualities. In Ayurvastra-inspired dyeing, vetiver contributes subtle, understated shades that reflect nature’s calm palette. Its use represents balance, simplicity, and the quiet elegance of heritage craftsmanship.'
     },
     {
-      image: 'assets/Thulsi.png',
+      image: 'assets/Thulsi.jpeg',
       alt: 'Tulsi',
       title: 'Tulsi',
       titleColor: '#228B22',
@@ -291,7 +291,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Tulsi holds deep cultural significance in traditional Indian life. In textile use, it contributes gentle, natural tones and represents harmony and mindfulness. Its inclusion in Ayurvastra reflects respect for plants that have long been woven into everyday rituals and traditions.'
     },
     {
-      image: 'assets/Ashoka.png',
+      image: 'assets/Ashoka.jpeg',
       alt: 'Ashoka',
       title: 'Ashoka',
       titleColor: '#D2691E',
@@ -301,7 +301,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Ashoka bark has historically been used in natural dyeing to create warm, grounding shades. Its tones evoke earth and wood, adding depth and richness to fabric. Ashoka represents resilience and continuity within ancient botanical knowledge.'
     },
     {
-      image: 'assets/Red_Sandalwood.png',
+      image: 'assets/Red_Sandalwood.jpeg',
       alt: 'Red Sandalwood',
       title: 'Red Sandalwood',
       titleColor: '#B22222',
@@ -311,14 +311,44 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         'Red sandalwood has long been valued for its ability to impart warm reddish hues to textiles. The resulting shades are soft yet distinctive, adding richness and sophistication while honoring classical natural dye traditions.'
     },
     {
-      image: 'assets/Lekshmi_Tharu.png',
-      alt: 'Lekshmi Tharu',
-      title: 'Lekshmi Tharu',
-      titleColor: '#BDB76B',
-      scientificName: 'Regionally identified botanical',
-      colorContribution: 'Soft beige, warm brown, muted gold',
+      image: 'assets/neem.jpeg',
+      alt: 'Neem',
+      title: 'Neem',
+      titleColor: '#CFE3C1',
+      scientificName: 'Azadirachta indica',
+      colorContribution: 'Pale green, beige, light brown',
       description:
-        'Lekshmi Tharu is a locally recognized botanical used in traditional dyeing practices. It contributes gentle, natural hues and reflects the richness of regional plant knowledge and handcrafted textile heritage.'
+        'Neem has been part of traditional textile preparation for centuries. In Ayurvastra-inspired processes, neem contributes understated, natural shades and reflects a clean, minimal approach to plant-based dyeing rooted in heritage practices.'
+    },
+    {
+      image: 'assets/aloe.PNG',
+      alt: 'Aloe Vera',
+      title: 'Aloe Vera',
+      titleColor: '#C9E4CA',
+      scientificName: 'Aloe barbadensis miller',
+      colorContribution: 'Soft green, pale yellow-green, subtle earthy tones',
+      description:
+        'Aloe vera is known for its soothing properties and has been used in textile care and preparation. In Ayurvastra, it contributes gentle, natural tones and symbolizes healing and comfort, reflecting the holistic philosophy of using plants that nurture both fabric and wearer.'
+    },
+    {
+      image: 'assets/cuscus.jpeg',
+      alt: 'Cuscus Seed',
+      title: 'Cuscus Seed',
+      titleColor: '#D8CBB3',
+      scientificName: 'Chrysopogon zizanioides',
+      colorContribution: 'Light beige, off-white, subtle earthy tones',
+      description:
+        'Cuscus seeds are traditionally associated with cooling and aromatic qualities. In textile use, they support subtle tone development and reflect the close relationship between natural plants and fabric preparation methods.'
+    },
+    {
+      image: 'assets/karikali.jpeg',
+      alt: 'Karigaly ',
+      title: 'Karigaly ',
+      titleColor: '#5A3A22',
+      scientificName: 'Traditional / regionally referenced botanical',
+      colorContribution: 'Deep brown, charcoal, dark earthy shades',
+      description:
+        'Karigaly is a traditional herbal source known through regional knowledge systems. It is used to achieve darker, more grounded tones in Ayurvastra-inspired dyeing. Its use represents indigenous wisdom passed down through generations of artisans.'
     }
   ];
 

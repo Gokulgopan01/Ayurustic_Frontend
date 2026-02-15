@@ -1395,31 +1395,36 @@ $cream-white:      #F7F4EF;     // optional fallback text color
     display: none;
   }
 }
+/*Gallery___________________________________________________________________________________________________________________-*/
 
-/* home.component.scss - Gallery Carousel Styles __________________________________________________________________________________________________*/
+/* Gallery Carousel Section - Complete CSS */
 .gallery-carousel-section {
   padding: 2rem 0 3rem;
   background: #ffffff;
+  width: 100%;
+  overflow: hidden;
+}
 
-  .container {
-    max-width: 1400px; /* Increased max-width */
-    margin: 0 auto;
-    align-items: center;
-    padding: 0 1rem;
-  }
+.gallery-carousel-section .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
 
-  .section-title {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-    font-family: 'Georgia', serif;
-    font-weight: 600;
-  }
+.ayurvedic-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 2.5rem;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .gallery-carousel-wrapper {
   position: relative;
+  width: 100%;
   overflow: visible;
 }
 
@@ -1427,318 +1432,100 @@ $cream-white:      #F7F4EF;     // optional fallback text color
   position: relative;
   margin: 0 auto;
   max-width: 100%;
-  justify-content: center;
-  align-items: center;
   overflow: visible;
 }
 
+/* Navigation Arrows */
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  padding: 0 10px;
+}
+
+.carousel-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #e0e0e0;
+  color: #333;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-nav:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  transform: scale(1.1);
+}
+
+.carousel-nav.prev {
+  margin-left: -22px;
+}
+
+.carousel-nav.next {
+  margin-right: -22px;
+}
+
+/* Slides Container */
 .slides-container {
   display: flex;
   gap: 30px;
-  padding: 0.5rem 0 1rem;
-  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+  padding: 1rem 0 2rem;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
+/* Gallery Slide */
 .gallery-slide {
-  animation: premiumSlide .9s ease both;
-}
-
-.scientific-name {
-  font-size: 0.9rem;
-  color: #555;
-  font-style: italic;
-  margin-bottom: 0.6rem;
-  font-weight: 400;
-  line-height: 1.3;
-  font-family: 'Georgia', serif;
-}
-
-/* NEW: Section divider */
-.section-divider {
-  width: 45px;
-  height: 2.5px;
-  margin: 0.5rem 0 0.6rem 0;
-  border: none;
-  opacity: 0.7;
-  border-radius: 2px;
-}
-
-/* Color contribution styling - exactly like image */
-.color-contribution {
-  font-size: 0.9rem;
-  color: #333;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-  font-weight: 400;
-  font-family: 'Arial', sans-serif;
-}
-
-/* INCREASED CARD WIDTH - Desktop */
-@media (min-width: 1024px) {
-  .slides-container {
-    padding: 0 calc((100% - (3 * 400px + 40px)) / 2) 0 20px; /* Adjusted for larger cards */
-  }
-
-  .gallery-slide {
-    flex: 0 0 400px; /* Increased from 340px to 400px */
-    min-width: 400px;
-  }
-}
-
-/* Tablet */
-@media (max-width: 1023px) and (min-width: 769px) {
-  .slides-container {
-    padding: 0 calc((100% - 400px) / 2); /* Adjusted for larger cards */
-    gap: 25px;
-  }
-
-  .gallery-slide {
-    flex: 0 0 400px; /* Increased from 340px to 400px */
-    min-width: 400px;
-  }
-}
-
-/* Mobile - Large */
-@media (max-width: 768px) and (min-width: 369px) {
-  .slides-container {
-    padding: 0 calc((100% - 360px) / 2);
-    gap: 20px;
-  }
-
-  .gallery-slide {
-    flex: 0 0 360px; /* Increased from 320px to 360px */
-    min-width: 360px;
-  }
-}
-
-/* Mobile 368px and below - UPDATED with increased width */
-@media (max-width: 368px) {
-  .slides-container {
-    padding: 0.5rem calc((100% - 340px) / 2); /* Increased from 300px to 340px */
-    gap: 15px;
-  }
-
-  .gallery-slide {
-    flex: 0 0 340px; /* Increased from 300px to 340px */
-    min-width: 340px;
-  }
-
-  .slide-content {
-    border-width: 1.5px;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-  }
-  
-  /* Image wrapper takes left side (45% width for better image visibility) */
-  .image-wrapper {
-    width: 45%;
-    padding-top: 45%;
-    border-bottom: none;
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
-  }
-  
-  /* Card content takes right side (55% width) */
-  .card-content {
-    width: 55%;
-    padding: 0.85rem 0.75rem 0.85rem 0.5rem;
-  }
-  
-  .dye-title {
-    font-size: 1.1rem !important;
-    margin-bottom: 0.25rem !important;
-  }
-  
-  .scientific-name {
-    font-size: 0.75rem !important;
-    margin-bottom: 0.35rem !important;
-  }
-  
-  .section-divider {
-    margin: 0.35rem 0 !important;
-    width: 35px !important;
-    height: 2px !important;
-  }
-  
-  .color-contribution {
-    font-size: 0.7rem !important;
-    line-height: 1.3 !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  .description-toggle-wrapper {
-    margin-top: 0.25rem !important;
-  }
-  
-  .description-toggle {
-    padding: 0.25rem 0.6rem !important;
-    font-size: 0.7rem !important;
-  }
-  
-  .toggle-icon {
-    font-size: 0.65rem !important;
-  }
-  
-  /* Back side adjustments - FIXED OVERFLOW */
-  .back-header {
-    margin-bottom: 0.4rem !important;
-    flex-wrap: nowrap !important;
-    gap: 0.25rem !important;
-    
-    .dye-title {
-      font-size: 1rem !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      max-width: 100px !important;
-    }
-    
-    .description-toggle.back-toggle {
-      padding: 0.2rem 0.5rem !important;
-      min-width: 45px !important;
-      justify-content: center !important;
-      flex-shrink: 0 !important;
-      
-      .toggle-text {
-        font-size: 0.65rem !important;
-      }
-      
-      .toggle-icon {
-        font-size: 0.6rem !important;
-      }
-    }
-  }
-  
-  .dye-description {
-    font-size: 0.7rem !important;
-    line-height: 1.3 !important;
-    max-height: 90px !important;
-    overflow-y: auto;
-    padding-right: 0.2rem;
-  }
-}
-
-/* Very small devices */
-@media (max-width: 340px) {
-  .slides-container {
-    padding: 0.5rem calc((100% - 300px) / 2);
-    gap: 10px;
-  }
-
-  .gallery-slide {
-    flex: 0 0 300px;
-    min-width: 300px;
-  }
-  
-  .image-wrapper {
-    width: 45%;
-    padding-top: 45%;
-  }
-  
-  .card-content {
-    width: 55%;
-    padding: 0.7rem 0.5rem 0.7rem 0.4rem;
-  }
-  
-  .dye-title {
-    font-size: 1rem !important;
-  }
-  
-  .scientific-name {
-    font-size: 0.65rem !important;
-  }
-  
-  .section-divider {
-    width: 30px !important;
-    margin: 0.25rem 0 !important;
-  }
-  
-  .color-contribution {
-    font-size: 0.65rem !important;
-  }
-  
-  .description-toggle {
-    padding: 0.2rem 0.5rem !important;
-    font-size: 0.65rem !important;
-  }
-  
-  /* Back side fixes for very small screens */
-  .back-header {
-    .dye-title {
-      max-width: 80px !important;
-      font-size: 0.9rem !important;
-    }
-    
-    .description-toggle.back-toggle {
-      padding: 0.15rem 0.4rem !important;
-      
-      .toggle-text {
-        font-size: 0.6rem !important;
-      }
-    }
-  }
-  
-  .dye-description {
-    font-size: 0.65rem !important;
-    max-height: 80px !important;
-  }
-}
-
-@keyframes premiumSlide {
-  from {
-    opacity: 0;
-    transform: translateX(80px) scale(.95);
-    filter: blur(4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-
-.gallery-slide {
+  flex: 0 0 500px;
+  min-width: 500px;
   padding: 0;
-
+  animation: premiumSlide 0.9s ease both;
 }
 
+/* Slide Content - Main Card */
 .slide-content {
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
-  transition: transform .4s ease, box-shadow .4s ease;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   border-width: 2px;
   border-style: solid;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-  &:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, .18);
-  }
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
-.slide-content.is-active {
-  transform: translateY(-10px) scale(1.06);
+.slide-content:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-.slide-content:not(.is-active) {
-  transform: scale(0.97);
-  opacity: 0.85;
-}
-
-/* UPDATED: Image wrapper - left side */
+/* Image Wrapper - Left Side */
 .image-wrapper {
-  width: 40%;
-  padding-top: 40%;
+  width: 45%;
   position: relative;
   background: #ffffff;
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 2px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  aspect-ratio: 1/1;
 }
 
 .image-container {
@@ -1750,109 +1537,54 @@ $cream-white:      #F7F4EF;     // optional fallback text color
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   background: #fafafa;
+  padding: 15px;
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 12px;
 }
 
 .slide-content:hover .gallery-image {
   transform: scale(1.08);
 }
 
+/* Card Content - Right Side */
 .card-content {
-  width: 60%;
-  padding: 1.25rem 1rem 1rem 0.75rem;
-  flex-grow: 1;
+  width: 55%;
+  padding: 1.5rem 1.25rem 1.25rem 1rem;
+  background: white;
   display: flex;
   flex-direction: column;
-  background: white;
 }
 
-.flip-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-/* Different animations for slides */
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-/* Apply different animations based on slide index */
-.gallery-slide:nth-child(odd) .slide-content {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-.gallery-slide:nth-child(even) .slide-content {
-  animation: slideInRight 0.6s ease-out;
-}
-
-.gallery-slide:nth-child(3n) .slide-content {
-  animation: fadeIn 0.8s ease-out;
-}
-
+/* Flip Container */
 .flip-container {
   position: relative;
-  min-height: 280px;
+  min-height: 300px;
   height: 100%;
   perspective: 1000px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-
-  &.flipped {
-    .content-front {
-      transform: rotateY(180deg);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .content-back {
-      transform: rotateY(0deg);
-      opacity: 1;
-      pointer-events: all;
-    }
-  }
+  width: 100%;
 }
 
+.flip-container.flipped .content-front {
+  transform: rotateY(180deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flip-container.flipped .content-back {
+  transform: rotateY(0deg);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Front and Back Content */
 .content-front,
 .content-back {
   position: absolute;
@@ -1861,622 +1593,702 @@ $cream-white:      #F7F4EF;     // optional fallback text color
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  transition: transform 0.6s ease, opacity 0.6s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   background: white;
+  border-radius: 8px;
 }
-
 
 .content-front {
   opacity: 1;
-  justify-content: space-between;
+  transform: rotateY(0deg);
 }
 
 .content-back {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
   opacity: 0;
   pointer-events: none;
 }
 
+/* Typography */
 .dye-title {
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
   font-family: 'Georgia', serif;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-.dye-details {
-  display: none; /* Hide old detail items */
-}
-
-.detail-item {
+.scientific-name {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
   margin-bottom: 0.75rem;
-
-  .detail-label {
-    font-weight: 600;
-    color: #555;
-    display: block;
-    font-size: 0.85rem;
-    margin-bottom: 0.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .detail-value {
-    color: #333;
-    display: block;
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Georgia', serif;
 }
 
-/* Toggle button styling */
+/* Section Divider - Full Underline */
+.section-divider {
+  width: 100%;
+  height: 2px;
+  margin: 0.5rem 0 0.75rem 0;
+  border: none;
+  opacity: 0.3;
+  border-radius: 2px;
+}
+
+/* Color Contribution */
+.color-contribution {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Description Toggle Button */
 .description-toggle-wrapper {
-  margin-top: 0.75rem;
+  margin-top: auto;
 }
 
 .description-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 30px;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
-  border: 1.5px solid var(--btnColor);
+  border: 2px solid var(--btnColor);
   color: var(--btnColor);
-  
-  &:hover {
-    background: var(--btnColor);
-    color: white;
-    
-    .toggle-icon {
-      color: white;
-    }
-  }
+  font-weight: 500;
+}
+
+.description-toggle:hover {
+  background: var(--btnColor);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-text {
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .toggle-icon {
   font-size: 0.8rem;
   transition: transform 0.3s ease;
-  color: var(--btnColor);
 }
 
-.flip-container.flipped .toggle-icon {
-  transform: rotate(180deg);
+.description-toggle:hover .toggle-icon {
+  transform: translateY(2px);
 }
 
-/* Back side styles */
-/* Back side styles - FIXED OVERFLOW */
+/* Back Side Styles */
 .back-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.85rem;
-  gap: 0.5rem;
-  width: 100%;
-  
-  .dye-title {
-    margin-bottom: 0;
-    font-size: 1.2rem;
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .description-toggle.back-toggle {
-    padding: 0.3rem 0.7rem;
-    flex-shrink: 0;
-    min-width: 60px;
-    justify-content: center;
-    
-    .toggle-text {
-      font-size: 0.8rem;
-    }
-    
-    .toggle-icon {
-      font-size: 0.75rem;
-      transform: rotate(90deg); /* Points right to indicate going back */
-    }
-    
-    &:hover .toggle-icon {
-      transform: rotate(90deg) translateX(-2px);
-    }
-  }
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.flip-container.flipped .back-header .toggle-icon {
-  transform: rotate(90deg);
+.back-header .dye-title {
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+
+.description-toggle.back-toggle {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.description-toggle.back-toggle .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.description-toggle.back-toggle:hover .toggle-icon {
+  transform: rotate(180deg) translateY(2px);
 }
 
 .dye-description {
-  font-size: 0.9rem;
-  color: #444;
-  line-height: 1.5;
+  flex: 1;
   overflow-y: auto;
-  max-height: 130px;
-  padding-right: 0.35rem;
-  font-family: 'Arial', sans-serif;
-  
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
-  }
+  padding-right: 0.25rem;
 }
 
 .description-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
   margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Keep existing navigation and dots styles */
-.carousel-navigation {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.carousel-nav {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  font-size: 2.2rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: all 0.3s ease;
-  color: #333;
-  
-  &:hover {
-    background: #f8f8f8;
-    transform: scale(1.15);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  &.prev {
-    margin-left: -5px;
-  }
-  
-  &.next {
-    margin-right: -5px;
-  }
-}
-
-
-
-/* Responsive Styles for Mobile Screens */
-@media (max-width: 570px) {
-  .gallery-carousel {
-    max-width: 95%;
-  }
-
-  /* UPDATED: Larger image on mobile */
-  .image-container {
-    width: 100%;
-    height: 100%;
-  }
-
-  .carousel-nav {
-    top: 120px;
-    /* Adjusted for larger image */
-  }
-
-  .gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .card-content {
-    padding: 0 0.75rem 0.75rem;
-  }
-
-  .flip-container {
-    height: 260px;
-    /* Adjusted for balance */
-  }
-
-  .dye-title {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .detail-item {
-    margin-bottom: 0.6rem;
-
-    .detail-label {
-      font-size: 0.85rem;
-    }
-
-    .detail-value {
-      font-size: 0.9rem;
-    }
-  }
-
-  .description-toggle-wrapper {
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-  }
-
-  .description-toggle {
-    padding: 0.6rem 0.9rem;
-    min-width: 160px;
-
-
-    .toggle-text {
-      font-size: 0.9rem;
-    }
-  }
-
-  .dye-description {
-    max-height: 160px;
-  }
-
-  .carousel-nav {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .gallery-carousel-section {
-    padding: 1rem 0 1.5rem;
-  }
-
-  .image-container {
-    width: 100%;
-    height: 100%;
-  }
-
-  .gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .carousel-nav {
-    top: 110px;
-    /* Adjusted for larger image */
-  }
-
-  .card-content {
-    padding: 0 0.5rem 0.5rem;
-  }
-
-  .flip-container {
-    height: 240px;
-    /* Adjusted for balance */
-  }
-
-  .dye-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .dye-details {
-    margin-bottom: 0.75rem;
-  }
-
-  .image-wrapper {
-    aspect-ratio: 1 / 1;
-    padding-top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .detail-item {
-    margin-bottom: 0.5rem;
-
-    .detail-label {
-      font-size: 0.8rem;
-    }
-
-    .detail-value {
-      font-size: 0.85rem;
-    }
-  }
-
-  .description-toggle-wrapper {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-  }
-
-  .description-toggle {
-    padding: 0.5rem 0.75rem;
-    min-width: 140px;
-
-    .toggle-text {
-      font-size: 0.85rem;
-    }
-  }
-
-  .back-header {
-    margin-bottom: 1rem;
-
-    .dye-title {
-      font-size: 1.2rem;
-    }
-
-    .description-toggle {
-      padding: 0.4rem 0.6rem;
-    }
-  }
-
-  .dye-description {
-    max-height: 140px;
-
-    .description-text {
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-  }
-
-  .carousel-nav {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-
-
-
-  .section-title {
-    font-size: 1.3rem;
-    margin-bottom: 1.25rem;
-  }
-}
-
-/* Large screens */
-@media (min-width: 768px) {
-
-  /* UPDATED: Even larger image on tablets and desktops */
-  .image-container {
-    height: 280px;
-    /* More photo on larger screens */
-  }
-
-  .carousel-nav {
-    top: 140px;
-    /* Adjusted for larger image */
-  }
-}
-
-/* Extra large screens */
-@media (min-width: 1024px) {
-
-  /* UPDATED: Maximum photo display on large screens */
-  .image-container {
-    height: 300px;
-    /* Maximum photo display */
-  }
-
-  .carousel-nav {
-    top: 150px;
-    /* Adjusted for larger image */
-  }
-}
-
-/* Add these styles to your existing SCSS file */
-
-/* Swipe Instructions */
-.swipe-instructions {
-  position: absolute;
-  bottom: -40px;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  .swipe-text {
-    font-size: 0.85rem;
-    color: #7e8c9a;
-    font-weight: 500;
-  }
-
-  .swipe-icons {
-    display: flex;
-    gap: 1.5rem;
-
-    .swipe-icon {
-      font-size: 1.2rem;
-      color: #8B4513;
-      animation: swipeHint 2s infinite;
-
-      &:first-child {
-        animation-delay: 0.5s;
-      }
-    }
-  }
-}
-
-/* Swipe hint animation */
-@keyframes swipeHint {
-
-  0%,
-  100% {
-    transform: translateX(0);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: translateX(-5px);
-    opacity: 1;
-  }
-}
-
-/* Touch feedback for mobile */
-@media (hover: none) and (pointer: coarse) {
-  .slides-container {
-    cursor: grab;
-
-    &:active {
-      cursor: grabbing;
-    }
-  }
-
-  .swipe-instructions {
-    display: flex;
-    /* Show on touch devices */
-  }
-
-  /* Hide swipe instructions on desktop */
-  @media (hover: hover) and (pointer: fine) {
-    .swipe-instructions {
-      display: none;
-    }
-  }
-}
-
-/* Add smooth drag effect */
-.slides-container {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-  user-select: none;
-  /* Prevent text selection during drag */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  /* For iOS momentum scrolling prevention */
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Add active state for touch feedback */
-.slides-container:active {
-  transition: transform 0.3s ease;
-}
-
-/* Responsive adjustments for swipe instructions */
-@media (max-width: 570px) {
-  .swipe-instructions {
-    bottom: -35px;
-
-    .swipe-text {
-      font-size: 0.8rem;
-    }
-
-    .swipe-icons {
-      gap: 1rem;
-
-      .swipe-icon {
-        font-size: 1.1rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 380px) {
-  .swipe-instructions {
-    bottom: -30px;
-
-    .swipe-text {
-      font-size: 0.75rem;
-    }
-
-    .swipe-icons {
-      gap: 0.8rem;
-
-      .swipe-icon {
-        font-size: 1rem;
-      }
-    }
-  }
-}
-
-/* Hide swipe instructions on larger screens */
-@media (min-width: 768px) {
-  .swipe-instructions {
-    display: none;
-  }
-}
-
-/* Add cursor style for desktop drag */
-@media (hover: hover) and (pointer: fine) {
-  .slides-container {
-    cursor: grab;
-
-    &:active {
-      cursor: grabbing;
-    }
-  }
-}
-
-
-/* ===== SLIDE PROGRESS BAR ===== */
-
+/* Slide Progress Dots */
 .slide-progress {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 12px;
   margin-top: 2rem;
+  padding: 0.5rem 0;
 }
 
-/* Base rectangle */
 .slide-progress__bar {
-  all: unset; // 💥 kills inherited button styles
-  width: 26px;
-  height: 6px;
+  width: 45px;
+  height: 4px;
+  border: none;
   border-radius: 4px;
-  opacity: 0.35;
+  background: #ddd;
   cursor: pointer;
-  transition: all 0.35s ease;
+  padding: 0;
+  transition: all 0.3s ease;
+  opacity: 0.5;
 }
 
-/* Active rectangle */
 .slide-progress__bar.is-active {
-  width: 48px;
-  height: 8px;
+  width: 60px;
   opacity: 1;
+  height: 6px;
+  transform: translateY(-1px);
 }
 
+.slide-progress__bar:hover {
+  opacity: 0.8;
+  transform: scaleY(1.2);
+}
 
+/* Animations */
+@keyframes premiumSlide {
+  from {
+    opacity: 0;
+    transform: translateX(80px) scale(0.95);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
 
+/* Desktop Large (1400px and above) */
+@media (min-width: 1400px) {
+  .gallery-slide {
+    flex: 0 0 550px;
+    min-width: 550px;
+  }
+  
+  .dye-title {
+    font-size: 1.8rem;
+  }
+  
+  .scientific-name {
+    font-size: 1.1rem;
+  }
+  
+  .color-contribution {
+    font-size: 1.1rem;
+  }
+}
 
+/* Desktop (1024px to 1399px) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .slides-container {
+    padding: 0 calc((100% - (3 * 500px + 40px)) / 2) 0 20px;
+  }
+  
+  .gallery-slide {
+    flex: 0 0 500px;
+    min-width: 500px;
+  }
+}
+
+/* Tablet Landscape (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .slides-container {
+    padding: 0 calc((100% - 500px) / 2);
+    gap: 25px;
+  }
+  
+  .gallery-slide {
+    flex: 0 0 500px;
+    min-width: 500px;
+  }
+  
+  .dye-title {
+    font-size: 1.5rem;
+  }
+  
+  .scientific-name {
+    font-size: 0.95rem;
+  }
+  
+  .color-contribution {
+    font-size: 0.95rem;
+  }
+  
+  .description-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Large (569px to 767px) */
+@media (min-width: 569px) and (max-width: 767px) {
+  .slides-container {
+    padding: 0 calc((100% - 450px) / 2);
+    gap: 20px;
+  }
+  
+  .gallery-slide {
+    flex: 0 0 450px;
+    min-width: 450px;
+  }
+  
+  .image-wrapper {
+    width: 45%;
+  }
+  
+  .image-container {
+    padding: 12px;
+  }
+  
+  .card-content {
+    width: 55%;
+    padding: 1.25rem 1rem 1rem 0.85rem;
+  }
+  
+  .dye-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .scientific-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-divider {
+    margin: 0.4rem 0 0.6rem 0;
+  }
+  
+  .color-contribution {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description-toggle {
+    padding: 0.4rem 0.9rem;
+  }
+  
+  .toggle-text {
+    font-size: 0.85rem;
+  }
+  
+  .flip-container {
+    min-height: 280px;
+  }
+  
+  .back-header .dye-title {
+    font-size: 1.3rem;
+  }
+  
+  .description-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  
+  .slide-progress__bar {
+    width: 40px;
+  }
+  
+  .slide-progress__bar.is-active {
+    width: 55px;
+  }
+}
+
+/* Mobile Medium (361px to 568px) - CRITICAL FOR YOUR IMAGES */
+@media (min-width: 361px) and (max-width: 568px) {
+  .slides-container {
+    padding: 0 calc((100% - 420px) / 2);
+    gap: 15px;
+  }
+  
+  .gallery-slide {
+    flex: 0 0 420px;
+    min-width: 420px;
+  }
+  
+  .slide-content {
+    border-width: 2px;
+    border-radius: 18px;
+  }
+  
+  .image-wrapper {
+    width: 45%;
+    border-right: 2px solid rgba(0, 0, 0, 0.06);
+  }
+  
+  .image-container {
+    padding: 10px;
+  }
+  
+  .gallery-image {
+    border-radius: 10px;
+  }
+  
+  .card-content {
+    width: 55%;
+    padding: 1.1rem 0.9rem 0.9rem 0.75rem;
+  }
+  
+  .flip-container {
+    min-height: 260px;
+  }
+  
+  .dye-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .scientific-name {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .section-divider {
+    margin: 0.35rem 0 0.5rem 0;
+    height: 2px;
+  }
+  
+  .color-contribution {
+    font-size: 0.85rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .description-toggle-wrapper {
+    margin-top: 0.5rem;
+  }
+  
+  .description-toggle {
+    padding: 0.35rem 0.8rem;
+    gap: 0.4rem;
+    border-width: 1.5px;
+  }
+  
+  .toggle-text {
+    font-size: 0.8rem;
+  }
+  
+  .toggle-icon {
+    font-size: 0.7rem;
+  }
+  
+  /* Back side styles */
+  .back-header {
+    margin-bottom: 0.6rem;
+  }
+  
+  .back-header .dye-title {
+    font-size: 1.2rem;
+  }
+  
+  .description-toggle.back-toggle {
+    padding: 0.25rem 0.6rem;
+  }
+  
+  .description-toggle.back-toggle .toggle-text {
+    font-size: 0.75rem;
+  }
+  
+  .dye-description {
+    max-height: 160px;
+  }
+  
+  .description-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  /* Progress dots */
+  .slide-progress {
+    gap: 10px;
+    margin-top: 1.5rem;
+  }
+  
+  .slide-progress__bar {
+    width: 35px;
+    height: 4px;
+  }
+  
+  .slide-progress__bar.is-active {
+    width: 45px;
+    height: 5px;
+  }
+}
+
+/* Mobile Small (320px to 360px) - EXACT MATCH FOR YOUR IMAGES */
+@media (max-width: 360px) {
+  .gallery-carousel-section {
+    padding: 1.5rem 0 2rem;
+  }
+  
+  .ayurvedic-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .slides-container {
+    padding: 0 calc((100% - 360px) / 2);
+    gap: 12px;
+  }
+  
+  .gallery-slide {
+    flex: 0 0 360px;
+    min-width: 360px;
+  }
+  
+  .slide-content {
+    border-width: 2px;
+    border-radius: 16px;
+  }
+  
+  .image-wrapper {
+    width: 45%;
+    border-right: 2px solid rgba(0, 0, 0, 0.06);
+  }
+  
+  .image-container {
+    padding: 8px;
+  }
+  
+  .gallery-image {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    width: 55%;
+    padding: 1rem 0.75rem 0.75rem 0.6rem;
+  }
+  
+  .flip-container {
+    min-height: 240px;
+  }
+  
+  /* Front side - EXACT MATCH TO YOUR IMAGE */
+  .dye-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.1rem;
+    letter-spacing: -0.01em;
+  }
+  
+  .scientific-name {
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+    font-style: italic;
+  }
+  
+  .section-divider {
+    width: 100%;
+    height: 2px;
+    margin: 0.3rem 0 0.4rem 0;
+    opacity: 0.3;
+  }
+  
+  .color-contribution {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .description-toggle-wrapper {
+    margin-top: 0.3rem;
+  }
+  
+  .description-toggle {
+    padding: 0.3rem 0.7rem;
+    gap: 0.3rem;
+    border-width: 1.5px;
+    border-radius: 30px;
+  }
+  
+  .toggle-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  
+  .toggle-icon {
+    font-size: 0.6rem;
+  }
+  
+  /* Back side - EXACT MATCH */
+  .back-header {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+  }
+  
+  .back-header .dye-title {
+    font-size: 1.1rem;
+  }
+  
+  .description-toggle.back-toggle {
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .description-toggle.back-toggle .toggle-text {
+    font-size: 0.65rem;
+  }
+  
+  .description-toggle.back-toggle .toggle-icon {
+    font-size: 0.55rem;
+  }
+  
+  .dye-description {
+    max-height: 140px;
+    padding-right: 0.2rem;
+  }
+  
+  .description-text {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: #444;
+  }
+  
+  /* Progress dots - EXACT MATCH */
+  .slide-progress {
+    gap: 8px;
+    margin-top: 1.2rem;
+  }
+  
+  .slide-progress__bar {
+    width: 30px;
+    height: 3px;
+    border-radius: 3px;
+  }
+  
+  .slide-progress__bar.is-active {
+    width: 40px;
+    height: 4px;
+    transform: translateY(-0.5px);
+  }
+}
+
+/* Mobile Very Small (below 320px) */
+@media (max-width: 319px) {
+  .ayurvedic-title {
+    font-size: 1.4rem;
+  }
+  
+  .slides-container {
+    padding: 0 calc((100% - 300px) / 2);
+    gap: 10px;
+  }
+  
+  .gallery-slide {
+    flex: 0 0 300px;
+    min-width: 300px;
+  }
+  
+  .image-wrapper {
+    width: 45%;
+  }
+  
+  .card-content {
+    width: 55%;
+    padding: 0.8rem 0.6rem 0.6rem 0.5rem;
+  }
+  
+  .dye-title {
+    font-size: 1rem;
+  }
+  
+  .scientific-name {
+    font-size: 0.65rem;
+  }
+  
+  .section-divider {
+    margin: 0.2rem 0 0.3rem 0;
+  }
+  
+  .color-contribution {
+    font-size: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .description-toggle {
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .toggle-text {
+    font-size: 0.6rem;
+  }
+  
+  .flip-container {
+    min-height: 200px;
+  }
+  
+  .back-header .dye-title {
+    font-size: 0.9rem;
+  }
+  
+  .description-text {
+    font-size: 0.6rem;
+    line-height: 1.4;
+  }
+  
+  .slide-progress__bar {
+    width: 25px;
+  }
+  
+  .slide-progress__bar.is-active {
+    width: 35px;
+  }
+}
+
+/* Ensure images cover properly on all devices */
+.gallery-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hover effects only on non-touch devices */
+@media (hover: hover) {
+  .slide-content:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+  
+  .carousel-nav:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .slide-content:hover {
+    transform: none;
+  }
+  
+  .slide-content:active {
+    transform: scale(0.98);
+  }
+  
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+  }
+}
 //socil media icons hover effect---------------------------------------------------------------------------------------------------------
 
 .social-media {
