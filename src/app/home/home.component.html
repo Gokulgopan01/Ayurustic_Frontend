@@ -4,7 +4,7 @@
 
     <!-- MOBILE MENU BUTTON -->
     <div class="mobile-menu-btn" (click)="openMenu()">
-      <img src="assets/icons/3d/menu.svg" class="icon-3d nav-icon" alt="Menu">
+      <img src="assets/icons/luxury/menu.svg" class="icon-3d nav-icon" alt="Menu">
     </div>
 
     <!-- BRAND -->
@@ -14,18 +14,30 @@
 
     <!-- DESKTOP LINKS -->
     <div class="nav-middle" *ngIf="isDesktop">
-      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
-      <a class="nav-link" routerLink="/about" routerLinkActive="active">ABOUT US</a>
-      <a class="nav-link" routerLink="/shop" routerLinkActive="active">SHOP</a>
-      <a class="nav-link" routerLink="/clothes" routerLinkActive="active">CLOTHES</a>
-      <a class="nav-link" routerLink="/accessories" routerLinkActive="active">ACCESSORIES</a>
-      <a class="nav-link" routerLink="/discover" routerLinkActive="active">DISCOVER</a>
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <img src="assets/icons/luxury/home.svg" class="nav-menu-icon" alt=""> HOME
+      </a>
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">
+        <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
+      </a>
+      <a class="nav-link" routerLink="/shop" routerLinkActive="active">
+        <img src="assets/icons/luxury/shop_store.svg" class="nav-menu-icon" alt=""> SHOP
+      </a>
+      <a class="nav-link" routerLink="/clothes" routerLinkActive="active">
+        <img src="assets/icons/luxury/clothes.svg" class="nav-menu-icon" alt=""> CLOTHES
+      </a>
+      <a class="nav-link" routerLink="/accessories" routerLinkActive="active">
+        <img src="assets/icons/luxury/accessories.svg" class="nav-menu-icon" alt=""> ACCESSORIES
+      </a>
+      <a class="nav-link" routerLink="/discover" routerLinkActive="active">
+        <img src="assets/icons/luxury/discover.svg" class="nav-menu-icon" alt=""> DISCOVER
+      </a>
     </div>
 
     <!-- CART -->
     <div class="nav-right">
       <div class="icon-circle cart-icon">
-        <img src="assets/icons/3d/cart.svg" class="icon-3d nav-icon" alt="Cart">
+        <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
         <!-- <span class="cart-count">0</span> -->
       </div>
     </div>
@@ -42,12 +54,24 @@
   </div>
 
   <div class="drawer-links">
-    <a routerLink="/home" (click)="closeMenu()">HOME</a>
-    <a routerLink="/about" (click)="closeMenu()">ABOUT US</a>
-    <a routerLink="/shop" (click)="closeMenu()">SHOP</a>
-    <a routerLink="/clothes" (click)="closeMenu()">CLOTHES</a>
-    <a routerLink="/accessories" (click)="closeMenu()">ACCESSORIES</a>
-    <a routerLink="/discover" (click)="closeMenu()">DISCOVER</a>
+    <a routerLink="/home" (click)="closeMenu()">
+      <img src="assets/icons/luxury/home.svg" class="drawer-icon" alt=""> HOME
+    </a>
+    <a routerLink="/about" (click)="closeMenu()">
+      <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
+    </a>
+    <a routerLink="/shop" (click)="closeMenu()">
+      <img src="assets/icons/luxury/shop_store.svg" class="drawer-icon" alt=""> SHOP
+    </a>
+    <a routerLink="/clothes" (click)="closeMenu()">
+      <img src="assets/icons/luxury/clothes.svg" class="drawer-icon" alt=""> CLOTHES
+    </a>
+    <a routerLink="/accessories" (click)="closeMenu()">
+      <img src="assets/icons/luxury/accessories.svg" class="drawer-icon" alt=""> ACCESSORIES
+    </a>
+    <a routerLink="/discover" (click)="closeMenu()">
+      <img src="assets/icons/luxury/discover.svg" class="drawer-icon" alt=""> DISCOVER
+    </a>
   </div>
 </aside>
 
@@ -152,11 +176,11 @@
                   <!-- Front Side - Basic Info -->
                   <div class="content-front">
                     <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
-                    
+
                     <div class="scientific-name">{{item.scientificName}}</div>
-                    
+
                     <div class="section-divider" [style.backgroundColor]="item.titleColor"></div>
-                    
+
                     <div class="color-contribution">{{item.colorContribution}}</div>
 
                     <!-- Description Toggle Button -->
