@@ -17,21 +17,23 @@
       <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <img src="assets/icons/luxury/home.svg" class="nav-menu-icon" alt=""> HOME
       </a>
-      <a class="nav-link" routerLink="/about" routerLinkActive="active">
-        <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
-      </a>
       <a class="nav-link" routerLink="/shop" routerLinkActive="active">
         <img src="assets/icons/luxury/shop_store.svg" class="nav-menu-icon" alt=""> SHOP
-      </a>
-      <a class="nav-link" routerLink="/clothes" routerLinkActive="active">
-        <img src="assets/icons/luxury/clothes.svg" class="nav-menu-icon" alt=""> CLOTHES
-      </a>
-      <a class="nav-link" routerLink="/accessories" routerLinkActive="active">
-        <img src="assets/icons/luxury/accessories.svg" class="nav-menu-icon" alt=""> ACCESSORIES
       </a>
       <a class="nav-link" routerLink="/discover" routerLinkActive="active">
         <img src="assets/icons/luxury/discover.svg" class="nav-menu-icon" alt=""> DISCOVER
       </a>
+      <a class="nav-link" routerLink="/wishlist" routerLinkActive="active">
+        <img src="assets/icons/3d/whishlist.svg" class="nav-menu-icon" alt=""> wishlist
+      </a>
+      <a class="nav-link" routerLink="/account" routerLinkActive="active">
+        <img src="assets/icons/3d/user.svg" class="nav-menu-icon" alt=""> Account
+      </a>
+
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">
+        <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
+      </a>
+
     </div>
 
     <!-- CART -->
@@ -57,21 +59,22 @@
     <a routerLink="/home" (click)="closeMenu()">
       <img src="assets/icons/luxury/home.svg" class="drawer-icon" alt=""> HOME
     </a>
-    <a routerLink="/about" (click)="closeMenu()">
-      <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
-    </a>
     <a routerLink="/shop" (click)="closeMenu()">
       <img src="assets/icons/luxury/shop_store.svg" class="drawer-icon" alt=""> SHOP
-    </a>
-    <a routerLink="/clothes" (click)="closeMenu()">
-      <img src="assets/icons/luxury/clothes.svg" class="drawer-icon" alt=""> CLOTHES
-    </a>
-    <a routerLink="/accessories" (click)="closeMenu()">
-      <img src="assets/icons/luxury/accessories.svg" class="drawer-icon" alt=""> ACCESSORIES
     </a>
     <a routerLink="/discover" (click)="closeMenu()">
       <img src="assets/icons/luxury/discover.svg" class="drawer-icon" alt=""> DISCOVER
     </a>
+    <a routerLink="/wishlist" (click)="closeMenu()">
+      <img src="assets/icons/3d/whishlist.svg" class="drawer-icon" alt=""> wishlist
+    </a>
+    <a routerLink="/account" (click)="closeMenu()">
+      <img src="assets/icons/3d/user.svg" class="drawer-icon" alt=""> Account
+    </a>
+    <a routerLink="/about" (click)="closeMenu()">
+      <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
+    </a>
+
   </div>
 </aside>
 
@@ -160,7 +163,7 @@
           (touchstart)="handleTouchStart($event)" (touchmove)="handleTouchMove($event)" (touchend)="handleTouchEnd()"
           (mousedown)="handleMouseDown($event)" (mouseup)="handleMouseUp($event)" (mouseleave)="handleMouseLeave()">
           <div class="gallery-slide" *ngFor="let item of galleryItems; let i = index">
-            <div class="slide-content" [style.borderColor]="item.titleColor">
+            <div class="slide-content">
               <!-- Image on left side -->
               <div class="image-wrapper">
                 <div class="image-container">
@@ -170,47 +173,18 @@
 
               <!-- Card Content on right side -->
               <div class="card-content">
-                <!-- Flip Container -->
-                <div class="flip-container" [class.flipped]="expandedDescriptions[i]">
-
-                  <!-- Front Side - Basic Info -->
-                  <div class="content-front">
-                    <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
-
-                    <div class="scientific-name">{{item.scientificName}}</div>
-
-                    <div class="section-divider" [style.backgroundColor]="item.titleColor"></div>
-
-                    <div class="color-contribution">{{item.colorContribution}}</div>
-
-                    <!-- Description Toggle Button -->
-                    <div class="description-toggle-wrapper">
-                      <div class="description-toggle" (click)="toggleDescription(i, $event)"
-                        [attr.style]="'--btnColor:' + item.titleColor">
-                        <span class="toggle-text">Show Description</span>
-                        <span class="toggle-icon">▼</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Back Side - Description -->
-                  <div class="content-back">
-                    <div class="back-header">
-                      <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
-                      <div class="description-toggle back-toggle" (click)="toggleDescription(i, $event)"
-                        [attr.style]="'--btnColor:' + item.titleColor">
-                        <span class="toggle-text">Back</span>
-                        <span class="toggle-icon">▼</span>
-                      </div>
-                    </div>
-                    <div class="dye-description">
-                      <p class="description-text">{{item.description}}</p>
-                    </div>
-                  </div>
-                </div>
+                <h3 class="dye-title" [style.color]="item.titleColor">{{item.title}}</h3>
+                <div class="scientific-name">{{item.scientificName}}</div>
+                <div class="section-divider" [style.backgroundColor]="item.titleColor"></div>
+                <div class="color-contribution">{{item.colorContribution}}</div>
+                <p class="dye-one-liner">{{item.description}}</p>
+                <button class="discover-btn" [style.color]="item.titleColor"
+                  [style.border-color]="item.titleColor">Discover
+                  Tone</button>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -226,100 +200,92 @@
 </section>
 
 <!--    -__________________________________________________________________________________________________-->
+<!-- Craft Section -->
+<section class="craft-section">
+  <div class="craft-container">
 
-<!-- Benefits Section -->
-<section class="benefits-section" #benefitsSection>
-  <div class="container">
-    <div class="benefits-grid">
-      <!-- Left Column: Photo -->
-      <div class="benefits-photo reveal left">
-        <img src="assets/inspired.jpg" alt="Vellada Mulberry Silk Benefits" class="benefits-image">
+    <!-- Heading with leaf icon -->
+    <div class="craft-heading">
+      <div class="craft-heading-row">
+        <img src="assets/craft/craft_icon.png" alt="icon" class="craft-leaf-icon">
+        <h2 class="craft-title">Crafted with intention.</h2>
+      </div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="craft-row">
+      <div class="craft-point">
+        <div class="craft-point-image">
+          <img src="assets/craft/mulbery_silk.png" alt="100% Mulberry Silk">
+        </div>
+        <h3 class="craft-point-subheading">100% Mulberry Silk</h3>
+        <p class="craft-point-desc">Pure, breathable silk with a naturally smooth drape.</p>
       </div>
 
-      <!-- Right Column: Content - Same height as photo -->
-      <div class="benefits-content">
-        <!-- Main Title -->
-        <div class="benefits-header">
-          <h2 class="benefits-title reveal up">
-            <span class="title-line">AYURUSTIC Wellness-inspired lifestyle products</span>
-          </h2>
+      <div class="craft-vertical-line"></div>
+
+      <div class="craft-point">
+        <div class="craft-point-image">
+          <img src="assets/craft/dye_process.png" alt="Botanical Dyeing Process">
         </div>
+        <h3 class="craft-point-subheading">Botanical Dyeing Process</h3>
+        <p class="craft-point-desc">Coloured using plant-based extracts, free from synthetic dyes.</p>
+      </div>
+    </div>
 
-        <!-- Scrollable Content Area -->
-        <div class="content-scrollable">
-          <!-- Main Text Content -->
-          <div class="benefits-text">
-            <p class="benefit-paragraph">
-              Inspired by Ayurvedic wisdom, Ayurvastra emphasizes harmony — between <span class="bold-text">Nature,
-              </span>
-              <span class="bold-text">Body,</span> and <span class="bold-text">Environment,</span>.
-              While not a medical product, the philosophy behind Ayurvastra values gentleness, balance,
-              and mindful living, which naturally aligns with skin comfort and everyday wellbeing.
-            </p>
-          </div>
-          <button class="shop-now-btn secondary" (click)="shopNow()" @buttonPulse>
-            SHOP NOW
-          </button>
+    <div class="craft-horizontal-line"></div>
 
-          <!-- Ayurvedic Benefits -->
-          <div class="ayurvedic-benefits">
-            <h3 class="ayurvedic-title">Ayurvastra Cloth Benefits</h3>
-            <div class="benefits-list reveal stagger">
-              <div class="benefit-item reveal scale">
-                <img src="assets/icons/3d/leaf.svg" class="icon-3d benefit-icon-3d" alt="Eco">
-                <div class="benefit-details">
-                  <h4 class="benefit-name">Eco-conscious & sustainable</h4>
-                  <p class="benefit-desc">Crafted using natural fibers and plant-based dyeing processes inspired by
-                    traditional practices</p>
-                </div>
-              </div>
-
-              <div class="benefit-item">
-                <img src="assets/icons/3d/lotus.svg" class="icon-3d benefit-icon-3d" alt="Soft">
-                <div class="benefit-details">
-                  <h4 class="benefit-name">Soft, breathable & comfortable</h4>
-                  <p class="benefit-desc">Naturally lightweight and smooth, designed for all-day comfort</p>
-                </div>
-              </div>
-
-              <div class="benefit-item">
-                <img src="assets/icons/3d/heart.svg" class="icon-3d benefit-icon-3d" alt="Hypoallergenic">
-                <div class="benefit-details">
-                  <h4 class="benefit-name">Hypoallergenic (generally considered)</h4>
-                  <p class="benefit-desc">Made with natural fibers and gentle processes that are commonly suitable for
-                    sensitive skin</p>
-                </div>
-              </div>
-
-              <div class="benefit-item">
-                <img src="assets/icons/3d/heart.svg" class="icon-3d benefit-icon-3d" alt="Gentle">
-                <div class="benefit-details">
-                  <h4 class="benefit-name">Gentle on skin</h4>
-                  <p class="benefit-desc">Designed to feel calm, smooth, and kind against the skin</p>
-                </div>
-              </div>
-
-              <div class="benefit-item">
-                <img src="assets/icons/3d/wind.svg" class="icon-3d benefit-icon-3d" alt="No Chemicals">
-                <div class="benefit-details">
-                  <h4 class="benefit-name">Free from harsh synthetic chemicals</h4>
-                  <p class="benefit-desc">Dyed without conventional chemical dyes, focusing on plant- and herb-based
-                    formulations</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- Row 2 -->
+    <div class="craft-row">
+      <div class="craft-point">
+        <div class="craft-point-image">
+          <img src="assets/craft/Responsible_production.png" alt="Responsible Production">
         </div>
+        <h3 class="craft-point-subheading">Responsible Production</h3>
+        <p class="craft-point-desc">Small-batch creation that respects artisans and materials.</p>
+      </div>
+
+      <div class="craft-vertical-line"></div>
+
+      <div class="craft-point">
+        <div class="craft-point-image">
+          <img src="assets/craft/skin_consious.png" alt="Skin-Conscious Fabric">
+        </div>
+        <h3 class="craft-point-subheading">Skin-Conscious Fabric</h3>
+        <p class="craft-point-desc">Lightweight, breathable, and gentle in everyday wear.</p>
+      </div>
+    </div>
+
+    <div class="craft-horizontal-line"></div>
+
+    <!-- Row 3 -->
+    <div class="craft-row">
+      <div class="craft-point">
+        <div class="craft-point-image">
+          <img src="assets/craft/mulbery_silk.png" alt="Artisan Heritage">
+        </div>
+        <h3 class="craft-point-subheading">Artisan Heritage</h3>
+        <p class="craft-point-desc">Handcrafted techniques passed through generations of skilled weavers.</p>
+      </div>
+
+      <div class="craft-vertical-line"></div>
+
+      <div class="craft-point">
+        <div class="craft-point-image">
+          <img src="assets/craft/dye_process.png" alt="Everyday Luxury">
+        </div>
+        <h3 class="craft-point-subheading">Everyday Luxury</h3>
+        <p class="craft-point-desc">Designed to elevate daily comfort with timeless elegance.</p>
       </div>
     </div>
   </div>
 </section>
 
+
 <!--############################################################################################################################################-->
 
 
 
-<!--social media links ________________________________________________________________________________________________________________-->
 <footer class="premium-footer">
   <div class="particles-layer">
     <!-- 12 particles – you can duplicate more if you want denser effect -->
@@ -374,27 +340,29 @@
 
 <!-- Bottom Navbar -->
 <nav class="mobile-bottom-nav">
-  <a class="nav-item active">
-    <!-- <img src="assets/icons/shopping.png" alt="Shop" /> -->
+
+  <a class="nav-item" routerLink="/home">
+    <span class="nav-icon">🏠</span>
+    <span>Home</span>
+  </a>
+
+  <a class="nav-item active" routerLink="/shop">
     <img src="assets/icons/3d/shopping.svg" alt="Shop" />
     <span>Shop</span>
   </a>
 
-  <a class="nav-item">
-    <!-- <img src="assets/icons/heart.png" alt="Wishlist" /> -->
+  <a class="nav-item" routerLink="/wishlist">
     <img src="assets/icons/3d/whishlist.svg" alt="Wishlist" />
     <span>Wishlist</span>
   </a>
 
-  <a class="nav-item cart">
-    <!-- <img src="assets/icons/trolley.png" alt="Cart" /> -->
+  <a class="nav-item cart" routerLink="/cart">
     <img src="assets/icons/3d/cart.svg" alt="Cart" />
     <span>Cart</span>
     <span class="badge">0</span>
   </a>
 
-  <a class="nav-item">
-    <!-- <img src="assets/icons/user.png" alt="Account" /> -->
+  <a class="nav-item" routerLink="/account">
     <img src="assets/icons/3d/user.svg" alt="Account" />
     <span>Account</span>
   </a>

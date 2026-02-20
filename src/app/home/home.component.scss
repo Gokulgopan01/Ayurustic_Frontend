@@ -1114,175 +1114,6 @@ $cream-white: #F7F4EF; // optional fallback text color
 
 //########################################################################################################################################################
 
-// Benefits Section Styles
-// Benefits Section Styles - SIMPLIFIED VERSION
-// Benefits Section Styles
-.benefits-section {
-  background-color: $white;
-  padding: $section-padding-desktop;
-  position: relative;
-
-  .container {
-    @include section-container;
-  }
-
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-
-    @media (max-width: 992px) {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  }
-
-  .benefits-photo {
-    width: 100%;
-
-    .benefits-image {
-      width: 100%;
-      height: 700px; // Standard height
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-
-      @media (max-width: 992px) {
-        height: 500px;
-      }
-
-      @media (max-width: 480px) {
-        height: 350px;
-      }
-    }
-  }
-
-  .benefits-content {
-    display: flex;
-    flex-direction: column;
-
-    .benefits-header {
-      margin-bottom: 2rem;
-      text-align: center; // Center header for uniformity? or left? user said "make shio now buttons all centred"
-
-      @media(min-width: 993px) {
-        text-align: left; // Keep left on desktop for side-by-side
-      }
-
-      @media(max-width: 992px) {
-        text-align: center;
-      }
-    }
-
-    .benefits-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: $gray;
-      line-height: 1.2;
-
-      @media (max-width: 768px) {
-        font-size: 2rem;
-      }
-    }
-
-    .content-scrollable {
-      display: flex;
-      flex-direction: column;
-      // align-items: center; // This would center everything.
-    }
-
-    .benefits-text {
-      margin-bottom: 2rem;
-
-      .benefit-paragraph {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: $gray;
-        font-weight: 300;
-
-        @media(max-width: 992px) {
-          text-align: center;
-        }
-      }
-    }
-
-    // Centered Shop Now Button
-    .shop-now-btn {
-      align-self: flex-start; // Default
-      margin-bottom: 3rem;
-
-      @media(max-width: 992px) {
-        align-self: center; // Center on mobile/tablet
-      }
-
-      // User asked to "make shio now buttons all centred". If they mean visually in the section flow:
-      // In this layout (side by side), usually left aligned is better. But if user insists...
-      // I will make it centered on mobile, and maybe center on desktop if it looks good.
-      // Let's stick to alignment with text.
-    }
-
-    .ayurvedic-benefits {
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: linear-gradient(135deg, rgba($gold, 0.05) 0%, rgba($gold, 0.02) 100%);
-      border-radius: 12px;
-      border: 1px solid rgba($gold, 0.1);
-
-      .ayurvedic-title {
-        font-size: 1.5rem;
-        color: $gray;
-        margin-bottom: 1.5rem;
-        font-family: 'Playfair Display', serif;
-        text-align: center; // Center title
-      }
-
-      .benefits-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-
-        @media (max-width: 576px) {
-          grid-template-columns: 1fr;
-        }
-
-        .benefit-item {
-          display: flex;
-          gap: 1rem;
-
-          .benefit-icon {
-            color: $gold;
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-          }
-
-          .benefit-details {
-            h4 {
-              margin: 0 0 0.5rem;
-              font-size: 1rem;
-              color: $gray;
-            }
-
-            p {
-              margin: 0;
-              font-size: 0.9rem;
-              color: #666;
-              line-height: 1.5;
-            }
-          }
-        }
-      }
-    }
-
-
-  }
-}
-
-
-
-
-
 //Mobile bottom nav-------------------------------------------------------------------------------------------------------
 /* ================= MOBILE BOTTOM NAV ================= */
 .mobile-bottom-nav {
@@ -1292,14 +1123,14 @@ $cream-white: #F7F4EF; // optional fallback text color
   width: 100%;
   height: 64px;
   background: $white;
-  border-top: 1px solid rgba($black, 0.15);
+  // border-top: 1px solid $dark-luxury-green;
   z-index: 1200;
 
   display: none;
   justify-content: space-around;
   align-items: center;
 
-  box-shadow: 0 -4px 14px rgba($black, 0.12);
+  box-shadow: 0 -4px 14px $dark-luxury-green;
 }
 
 /* ================= NAV ITEM ================= */
@@ -1544,8 +1375,7 @@ $cream-white: #F7F4EF; // optional fallback text color
   display: flex;
   flex-direction: row;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  border-width: 2px;
-  border-style: solid;
+  border: none;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
@@ -1559,7 +1389,7 @@ $cream-white: #F7F4EF; // optional fallback text color
   width: 45%;
   position: relative;
   background: #ffffff;
-  border-right: 2px solid rgba(0, 0, 0, 0.06);
+  border-right: none;
   overflow: hidden;
   aspect-ratio: 1/1;
 }
@@ -1597,54 +1427,7 @@ $cream-white: #F7F4EF; // optional fallback text color
   background: white;
   display: flex;
   flex-direction: column;
-}
-
-/* Flip Container */
-.flip-container {
-  position: relative;
-  min-height: 300px;
-  height: 100%;
-  perspective: 1000px;
-  width: 100%;
-}
-
-.flip-container.flipped .content-front {
-  transform: rotateY(180deg);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.flip-container.flipped .content-back {
-  transform: rotateY(0deg);
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* Front and Back Content */
-.content-front,
-.content-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 8px;
-}
-
-.content-front {
-  opacity: 1;
-  transform: rotateY(0deg);
-}
-
-.content-back {
-  transform: rotateY(-180deg);
-  opacity: 0;
-  pointer-events: none;
+  justify-content: center;
 }
 
 /* Typography */
@@ -1681,94 +1464,52 @@ $cream-white: #F7F4EF; // optional fallback text color
 .color-contribution {
   font-size: 1rem;
   color: #333;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.6rem;
   line-height: 1.5;
   font-weight: 400;
   font-family: 'Arial', sans-serif;
 }
 
-/* Description Toggle Button */
-.description-toggle-wrapper {
-  margin-top: auto;
-}
-
-.description-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 1rem;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: transparent;
-  border: 2px solid var(--btnColor);
-  color: var(--btnColor);
-  font-weight: 500;
-}
-
-.description-toggle:hover {
-  background: var(--btnColor);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.toggle-text {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.toggle-icon {
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
-}
-
-.description-toggle:hover .toggle-icon {
-  transform: translateY(2px);
-}
-
-/* Back Side Styles */
-.back-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.back-header .dye-title {
-  font-size: 1.4rem;
-  margin-bottom: 0;
-}
-
-.description-toggle.back-toggle {
-  padding: 0.3rem 0.8rem;
+/* One-line description */
+.dye-one-liner {
   font-size: 0.85rem;
-}
-
-.description-toggle.back-toggle .toggle-icon {
-  transform: rotate(180deg);
-}
-
-.description-toggle.back-toggle:hover .toggle-icon {
-  transform: rotate(180deg) translateY(2px);
-}
-
-.dye-description {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 0.25rem;
-}
-
-.description-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #444;
+  color: #666;
+  line-height: 1.4;
   margin: 0;
   font-family: 'Arial', sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+
+.discover-btn {
+  margin-top: 1rem;
+  align-self: flex-start;
+
+  padding: 0.55rem 1.4rem;
+  font-size: 0.9rem;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.03em;
+
+  color: #b07a4f;
+  background: transparent;
+
+  border: 1.5px solid #d2a679;
+  border-radius: 999px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.discover-btn:hover {
+  background: #d2a679;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
 
 /* Slide Progress Dots */
 .slide-progress {
@@ -1920,28 +1661,11 @@ $cream-white: #F7F4EF; // optional fallback text color
 
   .color-contribution {
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
-  .description-toggle {
-    padding: 0.4rem 0.9rem;
-  }
-
-  .toggle-text {
-    font-size: 0.85rem;
-  }
-
-  .flip-container {
-    min-height: 280px;
-  }
-
-  .back-header .dye-title {
-    font-size: 1.3rem;
-  }
-
-  .description-text {
-    font-size: 0.85rem;
-    line-height: 1.5;
+  .dye-one-liner {
+    font-size: 0.8rem;
   }
 
   .slide-progress__bar {
@@ -1953,26 +1677,24 @@ $cream-white: #F7F4EF; // optional fallback text color
   }
 }
 
-/* Mobile Medium (361px to 568px) - CRITICAL FOR YOUR IMAGES */
+/* Mobile Medium (361px to 568px) */
 @media (min-width: 361px) and (max-width: 568px) {
   .slides-container {
-    padding: 0 calc((100% - 420px) / 2);
+    padding: 0 calc((100% - min(420px, 100vw - 20px)) / 2);
     gap: 15px;
   }
 
   .gallery-slide {
-    flex: 0 0 420px;
-    min-width: 420px;
+    flex: 0 0 min(420px, calc(100vw - 20px));
+    min-width: min(420px, calc(100vw - 20px));
   }
 
   .slide-content {
-    border-width: 2px;
     border-radius: 18px;
   }
 
   .image-wrapper {
     width: 45%;
-    border-right: 2px solid rgba(0, 0, 0, 0.06);
   }
 
   .image-container {
@@ -1986,10 +1708,6 @@ $cream-white: #F7F4EF; // optional fallback text color
   .card-content {
     width: 55%;
     padding: 1.1rem 0.9rem 0.9rem 0.75rem;
-  }
-
-  .flip-container {
-    min-height: 260px;
   }
 
   .dye-title {
@@ -2009,52 +1727,13 @@ $cream-white: #F7F4EF; // optional fallback text color
 
   .color-contribution {
     font-size: 0.85rem;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.4rem;
     line-height: 1.4;
   }
 
-  .description-toggle-wrapper {
-    margin-top: 0.5rem;
-  }
-
-  .description-toggle {
-    padding: 0.35rem 0.8rem;
-    gap: 0.4rem;
-    border-width: 1.5px;
-  }
-
-  .toggle-text {
-    font-size: 0.8rem;
-  }
-
-  .toggle-icon {
-    font-size: 0.7rem;
-  }
-
-  /* Back side styles */
-  .back-header {
-    margin-bottom: 0.6rem;
-  }
-
-  .back-header .dye-title {
-    font-size: 1.2rem;
-  }
-
-  .description-toggle.back-toggle {
-    padding: 0.25rem 0.6rem;
-  }
-
-  .description-toggle.back-toggle .toggle-text {
+  .dye-one-liner {
     font-size: 0.75rem;
-  }
 
-  .dye-description {
-    max-height: 160px;
-  }
-
-  .description-text {
-    font-size: 0.8rem;
-    line-height: 1.5;
   }
 
   /* Progress dots */
@@ -2074,7 +1753,7 @@ $cream-white: #F7F4EF; // optional fallback text color
   }
 }
 
-/* Mobile Small (320px to 360px) - EXACT MATCH FOR YOUR IMAGES */
+/* Mobile Small (320px to 360px) — fits one full slide */
 @media (max-width: 360px) {
   .gallery-carousel-section {
     padding: 1.5rem 0 2rem;
@@ -2086,27 +1765,25 @@ $cream-white: #F7F4EF; // optional fallback text color
   }
 
   .slides-container {
-    padding: 0 calc((100% - 360px) / 2);
+    padding: 0 calc((100% - (100vw - 24px)) / 2);
     gap: 12px;
   }
 
   .gallery-slide {
-    flex: 0 0 360px;
-    min-width: 360px;
+    flex: 0 0 calc(100vw - 24px);
+    min-width: calc(100vw - 24px);
   }
 
   .slide-content {
-    border-width: 2px;
     border-radius: 16px;
   }
 
   .image-wrapper {
-    width: 45%;
-    border-right: 2px solid rgba(0, 0, 0, 0.06);
+    width: 42%;
   }
 
   .image-container {
-    padding: 8px;
+    padding: 6px;
   }
 
   .gallery-image {
@@ -2115,94 +1792,41 @@ $cream-white: #F7F4EF; // optional fallback text color
   }
 
   .card-content {
-    width: 55%;
-    padding: 1rem 0.75rem 0.75rem 0.6rem;
+    width: 58%;
+    padding: 0.8rem 0.7rem 0.7rem 0.6rem;
   }
 
-  .flip-container {
-    min-height: 240px;
-  }
-
-  /* Front side - EXACT MATCH TO YOUR IMAGE */
   .dye-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0.1rem;
     letter-spacing: -0.01em;
   }
 
   .scientific-name {
-    font-size: 0.75rem;
-    margin-bottom: 0.3rem;
-    font-style: italic;
+    font-size: 0.7rem;
+    margin-bottom: 0.25rem;
   }
 
   .section-divider {
     width: 100%;
     height: 2px;
-    margin: 0.3rem 0 0.4rem 0;
+    margin: 0.25rem 0 0.35rem 0;
     opacity: 0.3;
   }
 
   .color-contribution {
-    font-size: 0.75rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .description-toggle-wrapper {
-    margin-top: 0.3rem;
-  }
-
-  .description-toggle {
-    padding: 0.3rem 0.7rem;
-    gap: 0.3rem;
-    border-width: 1.5px;
-    border-radius: 30px;
-  }
-
-  .toggle-text {
     font-size: 0.7rem;
-    font-weight: 600;
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
   }
 
-  .toggle-icon {
-    font-size: 0.6rem;
-  }
-
-  /* Back side - EXACT MATCH */
-  .back-header {
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.3rem;
-  }
-
-  .back-header .dye-title {
-    font-size: 1.1rem;
-  }
-
-  .description-toggle.back-toggle {
-    padding: 0.2rem 0.5rem;
-  }
-
-  .description-toggle.back-toggle .toggle-text {
+  .dye-one-liner {
     font-size: 0.65rem;
+
+    line-height: 1.3;
   }
 
-  .description-toggle.back-toggle .toggle-icon {
-    font-size: 0.55rem;
-  }
-
-  .dye-description {
-    max-height: 140px;
-    padding-right: 0.2rem;
-  }
-
-  .description-text {
-    font-size: 0.7rem;
-    line-height: 1.5;
-    color: #444;
-  }
-
-  /* Progress dots - EXACT MATCH */
+  /* Progress dots */
   .slide-progress {
     gap: 8px;
     margin-top: 1.2rem;
@@ -2228,30 +1852,26 @@ $cream-white: #F7F4EF; // optional fallback text color
   }
 
   .slides-container {
-    padding: 0 calc((100% - 300px) / 2);
+    padding: 0 calc((100% - (100vw - 20px)) / 2);
     gap: 10px;
   }
 
   .gallery-slide {
-    flex: 0 0 300px;
-    min-width: 300px;
-  }
-
-  .image-wrapper {
-    width: 45%;
+    flex: 0 0 calc(100vw - 20px);
+    min-width: calc(100vw - 20px);
   }
 
   .card-content {
-    width: 55%;
-    padding: 0.8rem 0.6rem 0.6rem 0.5rem;
+    width: 58%;
+    padding: 0.6rem 0.5rem 0.5rem 0.4rem;
   }
 
   .dye-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .scientific-name {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .section-divider {
@@ -2259,29 +1879,13 @@ $cream-white: #F7F4EF; // optional fallback text color
   }
 
   .color-contribution {
-    font-size: 0.65rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .description-toggle {
-    padding: 0.2rem 0.5rem;
-  }
-
-  .toggle-text {
     font-size: 0.6rem;
+    margin-bottom: 0.3rem;
   }
 
-  .flip-container {
-    min-height: 200px;
-  }
+  .dye-one-liner {
+    font-size: 0.55rem;
 
-  .back-header .dye-title {
-    font-size: 0.9rem;
-  }
-
-  .description-text {
-    font-size: 0.6rem;
-    line-height: 1.4;
   }
 
   .slide-progress__bar {
@@ -2292,6 +1896,7 @@ $cream-white: #F7F4EF; // optional fallback text color
     width: 35px;
   }
 }
+
 
 /* Ensure images cover properly on all devices */
 .gallery-image {
@@ -2785,32 +2390,256 @@ $cream-white: #F7F4EF; // optional fallback text color
 }
 
 // ============================================================================
+// Brown color palette
+$brown-primary: #5C3E2F; // Main brown from your reference
+$brown-light: #8B6B4F; // Lighter brown for accents
+$brown-soft: #D9C5B3; // Soft brown for lines
+$text-dark: #2C2C2C; // Almost black for text
+$text-gray: #4A4A4A; // Gray for descriptions
+$white: #FFFFFF;
+$craft-line-color: #D9C5B3; // Soft brown for all separators
+
+.craft-section {
+  padding: 5rem 2rem;
+  background: $white;
+  position: relative;
+  overflow: hidden;
+
+  // Mobile-only background image
+  @media (max-width: 768px) {
+    min-height: 60vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.92),
+        rgba(255, 255, 255, 0.92)), url('/assets/craft/craft_background.jpeg') center / cover no-repeat;
+  }
+}
+
+.craft-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// ── Heading ──
+.craft-heading {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.craft-leaf-icon {
+  width: 52px;
+  height: 36px;
+}
+
+.craft-title {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  color: $brown-primary;
+  letter-spacing: 0.06em;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.35rem;
+  }
+}
+
+.craft-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+
+// ── Row (2 items) ──
+.craft-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+
+  @media (max-width: 480px) {
+    gap: 0;
+  }
+}
+
+// ── Individual Point ──
+.craft-point {
+  flex: 1;
+  text-align: center;
+  padding: 2rem 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0.6rem;
+  }
+}
+
+.craft-point-image {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba($brown-primary, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .craft-point:hover & {
+    transform: translateY(-4px) scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.7rem;
+  }
+}
+
+.craft-point-subheading {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  color: $brown-primary;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.82rem;
+  }
+}
+
+.craft-point-desc {
+  font-size: 0.9rem;
+  color: $text-gray;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 280px;
+  margin-inline: auto;
+
+  @media (max-width: 768px) {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+}
+
+// ── Separators (brown tones) ──
+.craft-horizontal-line {
+  width: 80%;
+  max-width: 700px;
+  height: 1px;
+  background: $craft-line-color;
+  margin: 0 auto;
+}
+
+.craft-vertical-line {
+  width: 1px;
+  align-self: stretch;
+  background: $craft-line-color;
+  flex-shrink: 0;
+}
+
+.craft-leaf-icon {
+  width: 60px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .craft-leaf-icon {
+    width: 48px;
+  }
+}
+
+
+// ── Ensure vertical lines are visible on all screens ──
+@media (max-width: 600px) {
+  .craft-vertical-line {
+    display: block; // Keep vertical lines visible
+    width: 1px;
+    background: $craft-line-color;
+  }
+
+  .craft-horizontal-line {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .craft-vertical-line {
+    display: block; // Still keep vertical lines
+    width: 1px;
+    background: $craft-line-color;
+  }
+
+  .craft-point {
+    padding: 1rem 0.4rem;
+  }
+}
+
+
+// ============================================================================
 // Premium Footer with Floating Gold Particles – 2026 Luxury Edition
 // ============================================================================
 
-$gold: #d4af37;
-$gold-dark: #b8972e;
-$gold-glow: rgba($gold, 0.7);
-$green-dark: #0a3d2e;
-$green-med: #1a5c45;
-$cream: #f8f1e9;
-$almost-black: #0f0f0f;
+$gold-footer: #d4af37;
+$gold-dark-f: #b8972e;
+$gold-glow-f: rgba($gold-footer, 0.7);
+$green-dark-f: #0a3d2e;
+$cream-f: #f8f1e9;
 
 .premium-footer {
   position: relative;
   margin-bottom: 80px;
-  background: linear-gradient(145deg, $green-dark 0%, #0d2f23 100%);
-  color: $cream;
+  background: linear-gradient(145deg, $green-dark-f 0%, #0d2f23 100%);
+  color: $cream-f;
   padding: 6rem 5% 3rem;
   overflow: hidden;
   font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
-  isolation: isolate; // helps with blend modes & layers
+  isolation: isolate;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 20% 80%, rgba($gold, 0.09) 0%, transparent 45%);
+    background: radial-gradient(ellipse at 20% 80%, rgba($gold-footer, 0.09) 0%, transparent 45%);
     pointer-events: none;
     z-index: 1;
   }
@@ -2820,25 +2649,24 @@ $almost-black: #0f0f0f;
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 1; // behind content
+  z-index: 1;
   overflow: hidden;
 }
 
 .particle {
   position: absolute;
-  background: $gold;
+  background: $gold-footer;
   border-radius: 50%;
   box-shadow:
-    0 0 8px 2px $gold-glow,
-    0 0 20px 4px rgba($gold, 0.4),
+    0 0 8px 2px $gold-glow-f,
+    0 0 20px 4px rgba($gold-footer, 0.4),
     inset 0 0 6px rgba(white, 0.35);
   opacity: 0;
   width: 3px;
   height: 3px;
-  animation: float linear infinite;
+  animation: floatParticle linear infinite;
   will-change: transform, opacity;
 
-  // Random variations using :nth-child
   &:nth-child(1) {
     left: 8%;
     animation-duration: 18s;
@@ -2922,18 +2750,9 @@ $almost-black: #0f0f0f;
     animation-delay: -5s;
     width: 4.5px;
   }
-
-  // Optional: some particles drift sideways more
-  &:nth-child(odd) {
-    animation-timing-function: ease-in-out;
-  }
-
-  &:nth-child(even) {
-    animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
-  }
 }
 
-@keyframes float {
+@keyframes floatParticle {
   0% {
     transform: translateY(120%) scale(0.4);
     opacity: 0;
@@ -2958,8 +2777,7 @@ $almost-black: #0f0f0f;
   }
 }
 
-/* ──────────────────────────────────────────────── Content ── */
-
+// Footer content
 .footer-content {
   position: relative;
   z-index: 3;
@@ -2975,14 +2793,14 @@ $almost-black: #0f0f0f;
 .brand-name {
   font-size: 2.8rem;
   letter-spacing: 0.18em;
-  color: $gold;
+  color: $gold-footer;
   margin: 0 0 0.7rem;
-  text-shadow: 0 3px 14px rgba($gold, 0.35);
+  text-shadow: 0 3px 14px rgba($gold-footer, 0.35);
 }
 
 .tagline {
   font-size: 1.15rem;
-  color: rgba($cream, 0.8);
+  color: rgba($cream-f, 0.8);
   letter-spacing: 0.09em;
   margin: 0;
   font-style: italic;
@@ -2995,7 +2813,7 @@ $almost-black: #0f0f0f;
 
 .social-title {
   font-size: 1.4rem;
-  color: $gold;
+  color: $gold-footer;
   letter-spacing: 0.14em;
   margin-bottom: 1.8rem;
   font-weight: 500;
@@ -3013,42 +2831,37 @@ $almost-black: #0f0f0f;
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: rgba($gold, 0.08);
-  color: $gold;
+  background: rgba($gold-footer, 0.08);
+  color: $gold-footer;
   font-size: 1.5rem;
   transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid rgba($gold, 0.22);
+  border: 1px solid rgba($gold-footer, 0.22);
   backdrop-filter: blur(4px);
 
   &:hover,
   &:focus-visible {
-    background: linear-gradient(135deg, $gold 0%, #f0c14b 100%);
-    color: $green-dark;
+    background: linear-gradient(135deg, $gold-footer 0%, #f0c14b 100%);
+    color: $green-dark-f;
     transform: translateY(-8px) scale(1.12);
-    box-shadow: 0 14px 34px rgba($gold, 0.32);
+    box-shadow: 0 14px 34px rgba($gold-footer, 0.32);
     border-color: transparent;
-  }
-
-  &:active {
-    transform: translateY(-3px) scale(1.03);
   }
 }
 
-/* ──────────────────────────────────────────────── Bottom ── */
-
+// Footer bottom
 .footer-bottom {
   position: relative;
   z-index: 3;
   margin-top: 5rem;
   padding-top: 2.8rem;
-  border-top: 1px solid rgba($gold, 0.14);
+  border-top: 1px solid rgba($gold-footer, 0.14);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.6rem;
   font-size: 0.98rem;
-  color: rgba($cream, 0.72);
+  color: rgba($cream-f, 0.72);
   max-width: 1400px;
   margin-inline: auto;
 }
@@ -3059,12 +2872,11 @@ $almost-black: #0f0f0f;
 }
 
 .year {
-  color: $gold;
+  color: $gold-footer;
   font-weight: 600;
 }
 
-/* ──────────────────────────────────────────────── Responsive ── */
-
+// Footer responsive
 @media (max-width: 768px) {
   .premium-footer {
     padding: 5rem 6% 3rem;
@@ -3092,9 +2904,34 @@ $almost-black: #0f0f0f;
     height: 50px;
     font-size: 1.35rem;
   }
+}
 
-  .particle {
-    width: 2.2px !important;
-    height: 2.2px !important;
+@media (max-width: 380px) {
+  .premium-footer {
+    padding: 3rem 4% 2rem;
+  }
+
+  .brand-name {
+    font-size: 1.8rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .social-title {
+    font-size: 1.1rem;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.8rem;
+    font-size: 0.85rem;
   }
 }

@@ -250,7 +250,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Lavandula Angustifolia',
       colorContribution: 'Very soft lilac, pale grey-purple',
       description:
-        'Lavender is admired for its gentle nature and refined presence. In Ayurvastra textiles, it contributes subtle tones and a sense of calm elegance. Its inclusion reflects a thoughtful approach to creating fabrics that feel soothing and refined.'
+        'Lavender is admired for its gentle nature and refined presence.'
     },
     {
       image: 'assets/indigo.jpeg',
@@ -260,7 +260,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Indigofera tinctoria',
       colorContribution: 'Deep blue, indigo, midnight tones',
       description:
-        'Indigo is one of the most revered natural dyes in textile history. Extracted from fermented leaves, it produces rich blue shades with remarkable depth and character. Indigo-based Ayurvastra fabrics carry a timeless quality, connecting ancient dyeing traditions with contemporary elegance.'
+        'Indigo-based Ayurvastra fabrics carry a timeless quality'
     },
     {
       image: 'assets/turmeric.jpeg',
@@ -270,7 +270,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Curcuma longa',
       colorContribution: 'Golden yellow, warm mustard',
       description:
-        'Turmeric has been used for generations as a natural source of vibrant yellow dye. Its warm, luminous tones bring brightness and vitality to fabric, while symbolizing purity and auspiciousness in traditional practices. In Ayurvastra, turmeric reflects a celebration of natural colour without synthetic intervention.'
+        'Turmeric reflects a celebration of natural colour without synthetic intervention.'
     },
     {
       image: 'assets/Vettiver.jpeg',
@@ -280,7 +280,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Chrysopogon zizanioides',
       colorContribution: 'Soft beige, light brown, earthy neutral tones',
       description:
-        'Vetiver roots have been traditionally valued in natural textile practices for their grounding, earthy qualities. In Ayurvastra-inspired dyeing, vetiver contributes subtle, understated shades that reflect nature’s calm palette. Its use represents balance, simplicity, and the quiet elegance of heritage craftsmanship.'
+        'Vetiver use represents balance, simplicity, and the quiet elegance of heritage craftsmanship.'
     },
     {
       image: 'assets/Thulsi.jpeg',
@@ -290,7 +290,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Ocimum tenuiflorum',
       colorContribution: 'Soft greenish, muted brown hues',
       description:
-        'Tulsi holds deep cultural significance in traditional Indian life. In textile use, it contributes gentle, natural tones and represents harmony and mindfulness. Its inclusion in Ayurvastra reflects respect for plants that have long been woven into everyday rituals and traditions.'
+        'Tulsi reflects respect for plants that have long been woven into everyday rituals and traditions.'
     },
     {
       image: 'assets/Ashoka.jpeg',
@@ -300,7 +300,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Saraca asoca',
       colorContribution: 'Warm brown, soft reddish-brown',
       description:
-        'Ashoka bark has historically been used in natural dyeing to create warm, grounding shades. Its tones evoke earth and wood, adding depth and richness to fabric. Ashoka represents resilience and continuity within ancient botanical knowledge.'
+        'Ashoka represents resilience and continuity within ancient botanical knowledge.'
     },
     {
       image: 'assets/Red_Sandalwood.jpeg',
@@ -310,7 +310,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Pterocarpus santalinus',
       colorContribution: 'Muted red, rose, terracotta tones',
       description:
-        'Red sandalwood has long been valued for its ability to impart warm reddish hues to textiles. The resulting shades are soft yet distinctive, adding richness and sophistication while honoring classical natural dye traditions.'
+        'Red sandalwood has long been valued for its ability to impart warm reddish hues to textiles.'
     },
     {
       image: 'assets/neem.jpeg',
@@ -320,7 +320,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Azadirachta indica',
       colorContribution: 'Pale green, beige, light brown',
       description:
-        'Neem has been part of traditional textile preparation for centuries. In Ayurvastra-inspired processes, neem contributes understated, natural shades and reflects a clean, minimal approach to plant-based dyeing rooted in heritage practices.'
+        'Neem contributes understated, natural shades and reflects a clean, minimal approach to plant-based dyeing rooted in heritage practices.'
     },
     {
       image: 'assets/aloe.PNG',
@@ -330,7 +330,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Aloe barbadensis miller',
       colorContribution: 'Soft green, pale yellow-green, subtle earthy tones',
       description:
-        'Aloe vera is known for its soothing properties and has been used in textile care and preparation. In Ayurvastra, it contributes gentle, natural tones and symbolizes healing and comfort, reflecting the holistic philosophy of using plants that nurture both fabric and wearer.'
+        'Aloe vera contributes gentle, natural tones and symbolizes healing and comfort.'
     },
     {
       image: 'assets/cuscus.jpeg',
@@ -340,7 +340,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Chrysopogon zizanioides',
       colorContribution: 'Light beige, off-white, subtle earthy tones',
       description:
-        'Cuscus seeds are traditionally associated with cooling and aromatic qualities. In textile use, they support subtle tone development and reflect the close relationship between natural plants and fabric preparation methods.'
+        'Cuscus support subtle tone development and reflect the close relationship between natural plants and fabric preparation methods.'
     },
     {
       image: 'assets/karikali.jpeg',
@@ -350,7 +350,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       scientificName: 'Traditional / regionally referenced botanical',
       colorContribution: 'Deep brown, charcoal, dark earthy shades',
       description:
-        'Karigaly is a traditional herbal source known through regional knowledge systems. It is used to achieve darker, more grounded tones in Ayurvastra-inspired dyeing. Its use represents indigenous wisdom passed down through generations of artisans.'
+        'Karigaly represents indigenous wisdom passed down through generations of artisans.'
     }
   ];
 
