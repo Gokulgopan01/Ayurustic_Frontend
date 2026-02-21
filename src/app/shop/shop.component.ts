@@ -73,6 +73,12 @@ export interface CartItem {
 export class ShopComponent {
     constructor(private router: Router) { }
 
+    ngOnInit(): void {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }
+
     isMenuOpen = false;
     isDesktop = window.innerWidth >= 1024;
 

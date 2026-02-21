@@ -38,12 +38,12 @@
 
     <!-- CART -->
     <a routerLink="/cart">
-  <div class="nav-right">
-    <div class="icon-circle cart-icon">
-      <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
-    </div>
-  </div>
-</a>
+      <div class="nav-right">
+        <div class="icon-circle cart-icon">
+          <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
+        </div>
+      </div>
+    </a>
   </div>
 </nav>
 
@@ -195,8 +195,8 @@
                 <div class="section-divider" [style.backgroundColor]="item.titleColor"></div>
                 <div class="color-contribution">{{item.colorContribution}}</div>
                 <!-- <p class="dye-one-liner">{{item.description}}</p> -->
-                <button class="discover-btn" [style.color]="item.titleColor"
-                  [style.border-color]="item.titleColor" (click)="shopNow()">Discover
+                <button class="discover-btn" [style.color]="item.titleColor" [style.border-color]="item.titleColor"
+                  (click)="shopNow()">Discover
                   Tone</button>
               </div>
             </div>
@@ -298,6 +298,86 @@
   </div>
 </section>
 
+
+<!--############################################################################################################################################-->
+
+<!-- Loom to Life (Process) Section -->
+<section class="process-section reveal">
+  <div class="container">
+    <h2 class="section-title">Loom to Life</h2>
+    <p class="section-subtitle">The Sacred Journey of Ayurustic Silk</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-icon">
+          <img src="assets/icons/3d/leaf.svg" class="icon-3d" alt="">
+        </div>
+        <h3>Ethical Harvesting</h3>
+        <p>Ahimsa silk harvested from mulberry leaves, respecting every form of life.</p>
+      </div>
+
+      <div class="process-arrow">
+        <span class="arrow-icon">→</span>
+      </div>
+
+      <div class="process-step">
+        <div class="step-icon">
+          <img src="assets/icons/3d/water.svg" class="icon-3d" alt="">
+        </div>
+        <h3>Botanical Infusion</h3>
+        <p>Fabrics steeped in medicinal herb baths for lasting skin-conscious properties.</p>
+      </div>
+
+      <div class="process-arrow">
+        <span class="arrow-icon">→</span>
+      </div>
+
+      <div class="process-step">
+        <div class="step-icon">
+          <img src="assets/icons/3d/sun.svg" class="icon-3d" alt="">
+        </div>
+        <h3>Sunkissed Drying</h3>
+        <p>Naturally dried under the Kerala sun to cure the herbal essences into every thread.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Artisan Voices (Testimonials) Section -->
+<section class="testimonials-section reveal">
+  <div class="container">
+    <div class="testimonial-card">
+      <div class="quote-mark">“</div>
+      <p class="testimonial-text">
+        Every thread we weave is a prayer for the earth. By choosing Ayurustic, you are not just wearing silk, you are
+        wearing an ancient legacy of healing.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-line"></div>
+        <span class="author-name">— Master Weaver, Kerala</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Luminous Lifestyle (Gallery/CTA) Section -->
+<section class="lifestyle-section reveal">
+  <div class="lifestyle-grid">
+    <div class="lifestyle-item">
+      <img src="assets/home_cor1.jpeg" alt="Fine Products">
+    </div>
+    <div class="lifestyle-cta">
+      <div class="cta-content">
+        <h2>Live Luminous</h2>
+        <p>Elegance that breathes. Heritage that heals.</p>
+        <button class="btn-shop-luxury" (click)="shopNow()">Shop the Collection</button>
+      </div>
+    </div>
+    <div class="lifestyle-item">
+      <img src="assets/home_cor2.jpeg" alt="Luxury Collection">
+    </div>
+  </div>
+</section>
 
 <!--############################################################################################################################################-->
 

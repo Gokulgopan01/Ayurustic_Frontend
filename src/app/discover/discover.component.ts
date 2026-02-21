@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, HostListener } from '@angular/core';
+import { Component, AfterViewInit, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router'; // IMPORT RouterModule
 
@@ -9,14 +9,19 @@ import { RouterModule } from '@angular/router'; // IMPORT RouterModule
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.scss'
 })
-export class DiscoverComponent implements AfterViewInit {
+export class DiscoverComponent implements AfterViewInit, OnInit {
+  ngOnInit(): void {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
   isMenuOpen = false;
   isDesktop = window.innerWidth >= 1024;
 
   @HostListener('window:resize')
   onResize() {
     this.isDesktop = window.innerWidth >= 1024;
-    
+
     // Auto-close menu when switching to desktop
     if (this.isDesktop) {
       this.isMenuOpen = false;

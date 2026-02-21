@@ -189,6 +189,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isMenuOpen: boolean = false;
   translateValue = 0;
   isDesktop = window.innerWidth >= 1024;
+  isUltraMobile = window.innerWidth <= 368;
 
   touchStartX: number = 0;
   touchEndX: number = 0;
@@ -207,6 +208,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('window:resize')
   onResize() {
     this.isDesktop = window.innerWidth >= 1024;
+    this.isUltraMobile = window.innerWidth <= 368;
   }
 
   carouselItems = [
@@ -362,6 +364,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private observer!: IntersectionObserver;
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     this.startCarousel();
     this.startGalleryCarousel(); // ADDED
   }
