@@ -79,9 +79,6 @@ export class ShopComponent {
         document.body.scrollTop = 0;
     }
 
-    isMenuOpen = false;
-    isDesktop = window.innerWidth >= 1024;
-
     // Filter & Sort state
     selectedCategory = 'All';
     sortOption = 'default';
@@ -198,10 +195,6 @@ export class ShopComponent {
         }
     ];
 
-    @HostListener('window:resize')
-    onResize() {
-        this.isDesktop = window.innerWidth >= 1024;
-    }
 
     get filteredProducts(): Product[] {
         let filtered = [...this.products];
@@ -312,19 +305,9 @@ export class ShopComponent {
         this.priceRange = 15000;
     }
 
-    openMenu(): void {
-        this.isMenuOpen = true;
-        document.body.style.overflow = 'hidden';
-    }
-
-    closeMenu(): void {
-        this.isMenuOpen = false;
-        document.body.style.overflow = '';
-    }
 
     @HostListener('document:keydown.escape')
     onEscapePress() {
-        this.closeMenu();
         this.closeQuickView();
         this.isCartOpen = false;
     }

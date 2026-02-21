@@ -186,10 +186,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isSocialVisible: boolean = false;
   showScrollTop: boolean = false;
   currentInstagramSlide = 0;
-  isMenuOpen: boolean = false;
   translateValue = 0;
   isDesktop = window.innerWidth >= 1024;
-  isUltraMobile = window.innerWidth <= 368;
 
   touchStartX: number = 0;
   touchEndX: number = 0;
@@ -205,10 +203,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('benefitsSection') benefitsSection!: ElementRef;
   @ViewChild('socialSection') socialSection!: ElementRef;
 
-  @HostListener('window:resize')
   onResize() {
     this.isDesktop = window.innerWidth >= 1024;
-    this.isUltraMobile = window.innerWidth <= 368;
   }
 
   carouselItems = [
@@ -530,13 +526,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.expandedDescriptions[index] ? 'flipped' : 'default';
   }
 
-  openMenu(): void {
-    this.isMenuOpen = true;
-  }
-
-  closeMenu(): void {
-    this.isMenuOpen = false;
-  }
 
   nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.carouselItems.length;

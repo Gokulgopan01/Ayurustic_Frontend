@@ -15,26 +15,6 @@ export class DiscoverComponent implements AfterViewInit, OnInit {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
   }
-  isMenuOpen = false;
-  isDesktop = window.innerWidth >= 1024;
-
-  @HostListener('window:resize')
-  onResize() {
-    this.isDesktop = window.innerWidth >= 1024;
-
-    // Auto-close menu when switching to desktop
-    if (this.isDesktop) {
-      this.isMenuOpen = false;
-      document.body.style.overflow = '';
-    }
-  }
-
-  // Close menu when clicking escape key
-  @HostListener('document:keydown.escape')
-  onEscapePress() {
-    this.closeMenu();
-  }
-
   ngAfterViewInit() {
     const reveals = document.querySelectorAll('.reveal');
 
@@ -52,17 +32,6 @@ export class DiscoverComponent implements AfterViewInit, OnInit {
     reveals.forEach(el => observer.observe(el));
   }
 
-  openMenu(): void {
-    this.isMenuOpen = true;
-    // Prevent body scrolling when menu is open
-    document.body.style.overflow = 'hidden';
-  }
-
-  closeMenu(): void {
-    this.isMenuOpen = false;
-    // Restore body scrolling
-    document.body.style.overflow = '';
-  }
 
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;

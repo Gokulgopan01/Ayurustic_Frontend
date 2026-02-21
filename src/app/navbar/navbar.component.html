@@ -1,0 +1,101 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+    <div class="nav-container">
+
+        <!-- MOBILE MENU BUTTON -->
+        <div class="mobile-menu-btn" (click)="openMenu()">
+            <img src="assets/icons/luxury/menu.svg" class="icon-3d nav-icon" alt="Menu">
+        </div>
+
+        <!-- BRAND -->
+        <div class="nav-left">
+            <img src="assets/logo/ayurus_logo_2.png" alt="Ayurustic" class="brand-logo" routerLink="/">
+        </div>
+
+        <!-- DESKTOP LINKS -->
+        <div class="nav-middle" *ngIf="isDesktop">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <img src="assets/icons/luxury/home.svg" class="nav-menu-icon" alt=""> HOME
+            </a>
+            <a class="nav-link" routerLink="/shop" routerLinkActive="active">
+                <img src="assets/icons/luxury/shop_store.svg" class="nav-menu-icon" alt=""> SHOP
+            </a>
+            <a class="nav-link" routerLink="/discover" routerLinkActive="active">
+                <img src="assets/icons/luxury/discover.svg" class="nav-menu-icon" alt=""> DISCOVER
+            </a>
+            <a class="nav-link" routerLink="/wishlist" routerLinkActive="active">
+                <img src="assets/icons/3d/whishlist.svg" class="nav-menu-icon" alt=""> WISHLIST
+            </a>
+            <a class="nav-link" routerLink="/account" routerLinkActive="active">
+                <img src="assets/icons/3d/user.svg" class="nav-menu-icon" alt=""> ACCOUNT
+            </a>
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">
+                <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
+            </a>
+        </div>
+
+        <!-- CART -->
+        <a routerLink="/cart">
+            <div class="nav-right">
+                <div class="icon-circle cart-icon">
+                    <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
+                </div>
+            </div>
+        </a>
+    </div>
+</nav>
+
+<!-- MOBILE SLIDE MENU -->
+<div class="mobile-overlay" [class.active]="isMenuOpen" (click)="isMenuOpen=false"></div>
+
+<aside class="mobile-drawer" [class.open]="isMenuOpen">
+    <div class="drawer-header">
+        <span class="close-btn" (click)="isMenuOpen=false">&times;</span>
+        <input type="text" placeholder="Search products..." />
+    </div>
+
+    <div class="drawer-links">
+        <a routerLink="/" (click)="closeMenu()">
+            <img src="assets/icons/luxury/home.svg" class="drawer-icon" alt=""> HOME
+        </a>
+        <a routerLink="/shop" (click)="closeMenu()">
+            <img src="assets/icons/luxury/shop_store.svg" class="drawer-icon" alt=""> SHOP
+        </a>
+        <a routerLink="/discover" (click)="closeMenu()">
+            <img src="assets/icons/luxury/discover.svg" class="drawer-icon" alt=""> DISCOVER
+        </a>
+        <a routerLink="/wishlist" (click)="closeMenu()">
+            <img src="assets/icons/3d/whishlist.svg" class="drawer-icon" alt=""> WISHLIST
+        </a>
+        <a routerLink="/account" (click)="closeMenu()">
+            <img src="assets/icons/3d/user.svg" class="drawer-icon" alt=""> ACCOUNT
+        </a>
+        <a routerLink="/about" (click)="closeMenu()">
+            <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
+        </a>
+    </div>
+</aside>
+
+<!-- Bottom Navbar (Mobile Only) -->
+<nav class="mobile-bottom-nav">
+    <a class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+    </a>
+    <a class="nav-item" routerLink="/shop" routerLinkActive="active">
+        <img src="assets/icons/3d/shopping.svg" alt="Shop" />
+        <span>Shop</span>
+    </a>
+    <a class="nav-item" routerLink="/wishlist" routerLinkActive="active">
+        <img src="assets/icons/3d/whishlist.svg" alt="Wishlist" />
+        <span>Wishlist</span>
+    </a>
+    <a class="nav-item cart" routerLink="/cart" routerLinkActive="active">
+        <img src="assets/icons/3d/cart.svg" alt="Cart" />
+        <span>Cart</span>
+        <span class="badge">0</span>
+    </a>
+    <a class="nav-item" routerLink="/account" routerLinkActive="active">
+        <img src="assets/icons/3d/user.svg" alt="Account" />
+        <span>Account</span>
+    </a>
+</nav>
