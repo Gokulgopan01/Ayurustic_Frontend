@@ -2401,15 +2401,14 @@ $craft-line-color: #D9C5B3; // Soft brown for all separators
 
 .craft-section {
   padding: 5rem 2rem;
-  background: $white;
+  background: url('/assets/craft/craft_background.jpeg') center / cover no-repeat;
   position: relative;
   overflow: hidden;
 
   // Mobile-only background image
   @media (max-width: 768px) {
     min-height: 60vh;
-    background: linear-gradient(rgba(255, 255, 255, 0.92),
-        rgba(255, 255, 255, 0.92)), url('/assets/craft/craft_background.jpeg') center / cover no-repeat;
+ 
   }
 }
 
