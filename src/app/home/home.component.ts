@@ -540,12 +540,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   shopNow(): void {
-    console.log('Shop Now clicked');
+    this.router.navigate(['/shop'])
     // Add your navigation logic here
   }
 
   exploreCraft(): void {
     this.router.navigate(['/discover']);
-
   }
 }
