@@ -37,12 +37,13 @@
     </div>
 
     <!-- CART -->
-    <div class="nav-right">
-      <div class="icon-circle cart-icon">
-        <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
-        <!-- <span class="cart-count">0</span> -->
-      </div>
+    <a routerLink="/cart">
+  <div class="nav-right">
+    <div class="icon-circle cart-icon">
+      <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
     </div>
+  </div>
+</a>
   </div>
 </nav>
 
@@ -128,13 +129,29 @@
 
 
 <!--####################################################################################################################-->
-<!--Discover section__________________________________________________________________________-->
 <section class="hero-simple">
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Botanical Colour.<br>
+      Naturally Refined.
+    </h1>
+
+    <div class="divider">
+      <span></span>
+    </div>
+
+    <p class="hero-sub">
+      Inspired by heritage and<br>
+      crafted with care.
+    </p>
+  </div>
+
   <button class="btn-explore" (click)="exploreCraft()">
     Explore the Craft
   </button>
-</section>
 
+</section>
 
 <!--##################################################################################################################################-->
 
@@ -179,7 +196,7 @@
                 <div class="color-contribution">{{item.colorContribution}}</div>
                 <!-- <p class="dye-one-liner">{{item.description}}</p> -->
                 <button class="discover-btn" [style.color]="item.titleColor"
-                  [style.border-color]="item.titleColor">Discover
+                  [style.border-color]="item.titleColor" (click)="shopNow()">Discover
                   Tone</button>
               </div>
             </div>
