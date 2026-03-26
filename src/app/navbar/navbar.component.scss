@@ -134,11 +134,12 @@
 /* MOBILE RESPONSIVENESS (MATCHING HOME) */
 @media (max-width: 768px) {
     .navbar {
-        padding: 1rem;
+        padding: 0.5rem 1rem; // Reduced from 1rem
 
         .nav-container {
             display: grid;
             grid-template-columns: auto 1fr auto;
+            gap: 1rem;
         }
 
         .nav-middle {
@@ -147,9 +148,12 @@
 
         .nav-left {
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             .brand-logo {
-                height: 40px;
+                height: 32px; // Reduced from 40px for a more compact feel
             }
         }
     }
@@ -160,8 +164,38 @@
         cursor: pointer;
 
         .nav-icon {
-            width: 36px;
-            height: 36px;
+            width: 28px; // Reduced from 36px
+            height: 28px; // Reduced from 36px
+        }
+    }
+
+    .nav-right {
+        .icon-circle {
+            width: 44px; // Reduced from 54px
+            height: 44px; // Reduced from 54px
+
+            .nav-icon {
+                width: 28px; // Reduced from 36px
+                height: 28px; // Reduced from 36px
+            }
+        }
+    }
+
+    .navbar.scrolled {
+        padding: 0.4rem 1rem;
+        
+        .brand-logo {
+            height: 28px;
+        }
+
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+
+            .nav-icon {
+                width: 24px;
+                height: 24px;
+            }
         }
     }
 }
