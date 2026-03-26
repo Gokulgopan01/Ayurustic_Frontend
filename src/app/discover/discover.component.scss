@@ -607,7 +607,7 @@ $container-max-width: 1200px;
 }
 
 .main-title {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-size: clamp(1.8rem, 8vw, 4.5rem); // Reduced min-size from 2.5rem to 1.8rem for small mobiles
   font-weight: 700;
   color: $dark-luxury-green;
   margin: 0;
@@ -629,6 +629,77 @@ $container-max-width: 1200px;
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  }
+
+  &.premium-intro {
+    background: white; // Main card background
+    padding: 0;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    
+    .section-content {
+      padding: 3.5rem 2rem 2.5rem;
+      text-align: center;
+      background: white;
+      
+      @media (max-width: 450px) {
+        padding: 2.5rem 1.2rem 1.8rem;
+      }
+    }
+
+    .section-image-wrapper {
+      position: relative;
+      height: 600px; // Solid height for desktop
+      width: 100%;
+      border-radius: 0 0 16px 16px; // Only bottom corners
+      
+      @media (max-width: 768px) {
+        height: auto; // Content dictates height
+        min-height: 250px;
+      }
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: clamp(2rem, 5.5vw, 3.5rem);
+      color: $dark-luxury-green;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      line-height: 1.2;
+
+      @media (max-width: 450px) {
+        font-size: 1.65rem;
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    .section-text {
+      font-family: 'Lora', 'Georgia', serif;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      line-height: 1.8;
+      color: #3a4a44;
+      max-width: 850px;
+      margin: 0 auto;
+      opacity: 0.95;
+
+      @media (max-width: 450px) {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+
+    .section-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Better for block layout bottom
+      display: block;
+
+      @media (max-width: 768px) {
+        height: auto;
+        object-fit: contain; // Full image visible as requested
+      }
+    }
   }
 }
 
@@ -731,7 +802,7 @@ img:error+.fallback-placeholder {
 /* ────────────────────────────── Very small screens (368px ↓) */
 @media (max-width: 380px) {
   .discover-page {
-    padding: 1.5rem 0.8rem 3rem;
+    padding: 2.5rem 0.8rem 3rem; // Increased top padding from 1.5rem to 2.5rem
   }
 
   .page-header {
