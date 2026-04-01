@@ -37,7 +37,9 @@
         <a routerLink="/cart">
             <div class="nav-right">
                 <div class="icon-circle cart-icon">
+
                     <app-icon name="cart" [size]="26" class="icon-3d nav-icon"></app-icon>
+
                 </div>
             </div>
         </a>
@@ -89,10 +91,9 @@
         <app-icon name="wishlist" [size]="24" class="nav-icon"></app-icon>
         <span>Wishlist</span>
     </a>
-    <a class="nav-item cart" routerLink="/cart" routerLinkActive="active">
+    <a class="nav-item cart" routerLink="/discover" routerLinkActive="active">
         <app-icon name="cart" [size]="24" class="nav-icon"></app-icon>
-        <span>Cart</span>
-        <span class="badge">0</span>
+        <span>Discover</span>
     </a>
     <a class="nav-item" routerLink="/account" routerLinkActive="active">
         <app-icon name="user" [size]="24" class="nav-icon"></app-icon>
