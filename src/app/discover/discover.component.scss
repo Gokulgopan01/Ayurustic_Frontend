@@ -601,6 +601,118 @@ $container-max-width: 1200px;
   padding: 2rem 1rem 4rem;
 }
 
+.lang-selector-container {
+  position: fixed;
+  bottom: 5.8rem; /* Above the mobile bottom navbar */
+  right: 1.2rem;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .lang-popup {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    width: 200px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.95);
+    transform-origin: bottom right;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba($gold, 0.1);
+
+    &.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .lang-popup-header {
+      padding: 1rem 1.2rem 0.6rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba($text-gray, 0.7);
+      font-weight: 600;
+      border-bottom: 1px solid rgba($black, 0.05);
+      margin-bottom: 0.3rem;
+    }
+
+    .lang-popup-list {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0.5rem 0.5rem;
+
+      button {
+        background: transparent;
+        border: none;
+        padding: 0.8rem 1rem;
+        text-align: left;
+        font-size: 0.95rem;
+        color: $text-gray;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        margin-bottom: 2px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:hover {
+          background: rgba($gold, 0.08);
+          color: $dark-luxury-green;
+        }
+
+        &.active {
+          background: rgba($dark-luxury-green, 0.05);
+          color: $dark-luxury-green;
+          font-weight: 700;
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 3px;
+            background: $gold;
+            border-radius: 0 3px 3px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .lang-toggle-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: $dark-luxury-green;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba($dark-luxury-green, 0.3);
+    transition: all 0.4s ease;
+
+    &.rotated {
+      transform: rotate(-360deg);
+      background: $gold;
+      box-shadow: 0 4px 15px rgba($gold, 0.3);
+    }
+  }
+}
+
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -953,8 +1065,18 @@ img:error+.fallback-placeholder {
     .mulberry-overlay {
       padding: 0.8rem 0.8rem 0.5rem; // Minimal padding to maximize white space usage
 
-      .overlay-heading,
-      .colour-overlay-heading,
+      .overlay-heading {
+        font-size: 1.15rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.1;
+      }
+
+      .colour-overlay-heading {
+        font-size: 1.15rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.1;
+      }
+
       .mulberry-heading {
         font-size: 1.15rem;
         margin-bottom: 0.6rem;
@@ -964,7 +1086,7 @@ img:error+.fallback-placeholder {
       .overlay-description,
       .mulberry-description {
         margin: 0.5rem auto 0 auto;
-        font-size: 0.64rem;
+        font-size: 0.62rem;
         line-height: 1.4;
         max-width: 95%;
 
@@ -972,7 +1094,7 @@ img:error+.fallback-placeholder {
 
       .colour-overlay-description {
         margin: 0.5rem auto 0 auto;
-        font-size: 0.55rem;
+        font-size: 0.52rem;
         line-height: 1.4;
         max-width: 95%;
 
@@ -991,7 +1113,7 @@ img:error+.fallback-placeholder {
 
       .intention-description {
         margin: 0;
-        font-size: 0.68rem;
+        font-size: 0.65rem;
         line-height: 1.4;
         max-width: 95%;
       }

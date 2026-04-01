@@ -1,7 +1,21 @@
 <div class="discover-page">
 
+  <div class="lang-selector-container">
+    <div class="lang-popup" [class.open]="isLangMenuOpen">
+      <div class="lang-popup-header">Select Language</div>
+      <div class="lang-popup-list">
+        <button *ngFor="let lang of languages" [class.active]="currentLang === lang.code" (click)="setLang(lang.code)">
+          {{ lang.name }}
+        </button>
+      </div>
+    </div>
+    <button class="lang-toggle-btn" [class.rotated]="isLangMenuOpen" (click)="toggleLangMenu()">
+      {{ currentLang }}
+    </button>
+  </div>
+
   <header class="page-header">
-    <h1 class="main-title reveal">Discover the Craft</h1>
+    <h1 class="main-title reveal" [innerHTML]="t.mainTitle"></h1>
   </header>
 
   <div class="sections-container">
@@ -11,15 +25,10 @@
         <img src="/assets/Discover_1_without_content.jpeg" alt="The Art of Botanical Silk" class="section-image"
           (error)="onImageError($event)">
         <div class="section-overlay">
-          <h2 class="overlay-heading">The Art of Botanical Silk</h2>
-          <p class="overlay-description">
-            At Ayurustic, craftsmanship begins with material integrity.<br>
-            We combine 100% mulberry silk with plant-based colour traditions<br>
-            inspired by Ayurvastra practices. The result is silk shaped by<br>
-            heritage and refined for modern living.
-          </p>
+          <h2 class="overlay-heading" [innerHTML]="t.s1h"></h2>
+          <p class="overlay-description" [innerHTML]="t.s1b"></p>
         </div>
-        <div class="fallback-placeholder">Botanical Silk Art</div>
+        <div class="fallback-placeholder" [innerHTML]="t.s1h"></div>
       </div>
     </section>
 
@@ -28,15 +37,10 @@
         <img src="/assets/Discover_2_without_content.jpeg" alt="100% Mulberry Silk" class="section-image"
           (error)="onImageError($event)">
         <div class="mulberry-overlay">
-          <h2 class="mulberry-heading">100% Mulberry Silk</h2>
-          <p class="mulberry-description">
-            We use only long-fibre mulberry silk, valued for its smooth<br>
-            texture, strength, and natural sheen.<br>
-            The fabric is lightweight, breathable, and fluid in drape —<br>
-            offering comfort without compromising refinement
-          </p>
+          <h2 class="mulberry-heading" [innerHTML]="t.s2h"></h2>
+          <p class="mulberry-description" [innerHTML]="t.s2b"></p>
         </div>
-        <div class="fallback-placeholder">100% Mulberry Silk</div>
+        <div class="fallback-placeholder" [innerHTML]="t.s2h"></div>
       </div>
     </section>
 
@@ -45,17 +49,10 @@
         <img src="/assets/Discover_3_without_content.PNG" alt="Botanical Colour" class="section-image"
           (error)="onImageError($event)">
         <div class="botanical-colour-overlay">
-          <h2 class="colour-overlay-heading">Botanical Colour</h2>
-          <p class="colour-overlay-description">
-            Our silk is coloured using plant-based formulations prepared through a slow,<br>
-            controlled process. Unlike conventional chemical dyes, botanical applications<br>
-            allow the fabric to absorb tone gradually, producing depth and subtle variation.<br>
-            <br>
-            No two pieces are identical. Slight tonal shifts are not flaws — they<br>
-            are the natural signature of botanical dyeing.
-          </p>
+          <h2 class="colour-overlay-heading" [innerHTML]="t.s3h"></h2>
+          <p class="colour-overlay-description" [innerHTML]="t.s3b"></p>
         </div>
-        <div class="fallback-placeholder">Botanical Colour</div>
+        <div class="fallback-placeholder" [innerHTML]="t.s3h"></div>
       </div>
     </section>
 
@@ -65,17 +62,10 @@
         <img src="/assets/Discover_4_without_content.jpeg" alt="Crafted with Intention" class="section-image"
           (error)="onImageError($event)">
         <div class="silk-overlay-description">
-          <h2 class="intention-heading">Crafted with<br>Intention</h2>
-          <p class="intention-description">
-            From preparation to finishing,<br>
-            each stage demands time<br>
-            and precision. We prioritise<br>
-            material respect, careful<br>
-            handling, and consistency<br>
-            in quality.
-          </p>
+          <h2 class="intention-heading" [innerHTML]="t.s4h"></h2>
+          <p class="intention-description" [innerHTML]="t.s4b"></p>
         </div>
-        <div class="fallback-placeholder">Crafted with Intention</div>
+        <div class="fallback-placeholder" [innerHTML]="t.s4h"></div>
       </div>
     </section>
 
