@@ -637,12 +637,12 @@ $container-max-width: 1200px;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    
+
     .section-content {
       padding: 3.5rem 2rem 2.5rem;
       text-align: center;
       background: white;
-      
+
       @media (max-width: 450px) {
         padding: 2.5rem 1.2rem 1.8rem;
       }
@@ -653,7 +653,7 @@ $container-max-width: 1200px;
       height: 600px; // Solid height for desktop
       width: 100%;
       border-radius: 0 0 16px 16px; // Only bottom corners
-      
+
       @media (max-width: 768px) {
         height: auto; // Content dictates height
         min-height: 250px;
@@ -837,5 +837,208 @@ img:error+.fallback-placeholder {
     font-size: 1.7rem;
     letter-spacing: 6px;
     padding-bottom: 1.2rem;
+  }
+}
+
+/* --- REFINED STYLES FOR OVERLAYS TO MATCH REFERENCE --- */
+.botanical-silk-section {
+  .section-image-wrapper {
+    position: relative;
+    z-index: 1;
+    background-color: #fdfaf5;
+  }
+}
+
+.section-overlay,
+.botanical-colour-overlay,
+.mulberry-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem 1rem;
+  color: #0F3D2E;
+  z-index: 5;
+  pointer-events: none;
+
+  .overlay-heading,
+  .colour-overlay-heading,
+  .mulberry-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5.5vw, 3.5rem);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #0F3D2E;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+
+  .overlay-description,
+  .colour-overlay-description,
+  .mulberry-description {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    max-width: 800px;
+    line-height: 1.8;
+    color: #3b4a44;
+    font-weight: 400;
+  }
+}
+
+.mulberry-overlay {
+  color: #3B2818;
+
+  .mulberry-heading {
+    color: #3B2818;
+  }
+
+  .mulberry-description {
+    color: #3B2818;
+    font-weight: 500;
+  }
+}
+
+.silk-overlay-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 3rem 10%;
+  color: #0F3D2E;
+  z-index: 5;
+  pointer-events: none;
+
+  .intention-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5.5vw, 3.5rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #8C7B5F;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+
+  .intention-description {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    max-width: 450px;
+    line-height: 1.8;
+    color: #3b4a44;
+    font-weight: 400;
+  }
+}
+
+
+// Mobile specific optimization for 450-300 focus
+@media (max-width: 480px) {
+  .botanical-silk-section {
+    .section-image-wrapper {
+      height: 310px !important;
+    }
+
+    .section-overlay,
+    .botanical-colour-overlay,
+    .mulberry-overlay {
+      padding: 0.8rem 0.8rem 0.5rem; // Minimal padding to maximize white space usage
+
+      .overlay-heading,
+      .colour-overlay-heading,
+      .mulberry-heading {
+        font-size: 1.15rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.1;
+      }
+
+      .overlay-description,
+      .mulberry-description {
+        margin: 0.5rem auto 0 auto;
+        font-size: 0.64rem;
+        line-height: 1.4;
+        max-width: 95%;
+
+      }
+
+      .colour-overlay-description {
+        margin: 0.5rem auto 0 auto;
+        font-size: 0.55rem;
+        line-height: 1.4;
+        max-width: 95%;
+
+      }
+    }
+
+    .silk-overlay-description {
+      padding: 1.5rem 8%;
+      justify-content: center;
+
+      .intention-heading {
+        font-size: 1.40rem;
+        margin: 0 0 0.6rem 0;
+        line-height: 1.1;
+      }
+
+      .intention-description {
+        margin: 0;
+        font-size: 0.68rem;
+        line-height: 1.4;
+        max-width: 95%;
+      }
+    }
+  }
+}
+
+// Fixed sizing for very narrow 320px width
+@media (max-width: 350px) {
+  .botanical-silk-section {
+
+    .section-overlay,
+    .botanical-colour-overlay,
+    .mulberry-overlay {
+      padding-top: 0.6rem;
+
+      .overlay-heading,
+      .colour-overlay-heading,
+      .mulberry-heading {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .overlay-description,
+      .mulberry-description {
+        margin: 0.4rem auto 0 auto;
+        font-size: 0.54rem;
+      }
+
+      .colour-overlay-description {
+        margin: 0.4rem auto 0 auto;
+        font-size: 0.48rem;
+      }
+    }
+
+    .silk-overlay-description {
+      padding-top: 1rem;
+
+      .intention-heading {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .intention-description {
+        margin: 0;
+        font-size: 0.48rem;
+      }
+    }
   }
 }
