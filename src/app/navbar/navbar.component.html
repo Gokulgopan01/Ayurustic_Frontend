@@ -3,7 +3,7 @@
 
         <!-- MOBILE MENU BUTTON -->
         <div class="mobile-menu-btn" (click)="openMenu()">
-            <img src="assets/icons/luxury/menu.svg" class="icon-3d nav-icon" alt="Menu">
+            <app-icon name="menu" [size]="28" class="icon-3d nav-icon"></app-icon>
         </div>
 
         <!-- BRAND -->
@@ -14,22 +14,22 @@
         <!-- DESKTOP LINKS -->
         <div class="nav-middle" *ngIf="isDesktop">
             <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <img src="assets/icons/luxury/home.svg" class="nav-menu-icon" alt=""> HOME
+                <app-icon name="home" [size]="18" class="nav-menu-icon"></app-icon> HOME
             </a>
             <a class="nav-link" routerLink="/shop" routerLinkActive="active">
-                <img src="assets/icons/luxury/shop_store.svg" class="nav-menu-icon" alt=""> SHOP
+                <app-icon name="shop" [size]="18" class="nav-menu-icon"></app-icon> SHOP
             </a>
             <a class="nav-link" routerLink="/discover" routerLinkActive="active">
-                <img src="assets/icons/luxury/discover.svg" class="nav-menu-icon" alt=""> DISCOVER
+                <app-icon name="discover" [size]="18" class="nav-menu-icon"></app-icon> DISCOVER
             </a>
             <a class="nav-link" routerLink="/wishlist" routerLinkActive="active">
-                <img src="assets/icons/3d/whishlist.svg" class="nav-menu-icon" alt=""> WISHLIST
+                <app-icon name="wishlist" [size]="18" class="nav-menu-icon"></app-icon> WISHLIST
             </a>
             <a class="nav-link" routerLink="/account" routerLinkActive="active">
-                <img src="assets/icons/3d/user.svg" class="nav-menu-icon" alt=""> ACCOUNT
+                <app-icon name="user" [size]="18" class="nav-menu-icon"></app-icon> ACCOUNT
             </a>
             <a class="nav-link" routerLink="/about" routerLinkActive="active">
-                <img src="assets/icons/luxury/about.svg" class="nav-menu-icon" alt=""> ABOUT US
+                <app-icon name="about" [size]="18" class="nav-menu-icon"></app-icon> ABOUT US
             </a>
         </div>
 
@@ -37,7 +37,7 @@
         <a routerLink="/cart">
             <div class="nav-right">
                 <div class="icon-circle cart-icon">
-                    <img src="assets/icons/luxury/cart.svg" class="icon-3d nav-icon" alt="Cart">
+                    <app-icon name="cart" [size]="26" class="icon-3d nav-icon"></app-icon>
                 </div>
             </div>
         </a>
@@ -55,22 +55,22 @@
 
     <div class="drawer-links">
         <a routerLink="/" (click)="closeMenu()">
-            <img src="assets/icons/luxury/home.svg" class="drawer-icon" alt=""> HOME
+            <app-icon name="home" [size]="20" class="drawer-icon"></app-icon> HOME
         </a>
         <a routerLink="/shop" (click)="closeMenu()">
-            <img src="assets/icons/luxury/shop_store.svg" class="drawer-icon" alt=""> SHOP
+            <app-icon name="shop" [size]="20" class="drawer-icon"></app-icon> SHOP
         </a>
         <a routerLink="/discover" (click)="closeMenu()">
-            <img src="assets/icons/luxury/discover.svg" class="drawer-icon" alt=""> DISCOVER
+            <app-icon name="discover" [size]="20" class="drawer-icon"></app-icon> DISCOVER
         </a>
         <a routerLink="/wishlist" (click)="closeMenu()">
-            <img src="assets/icons/3d/whishlist.svg" class="drawer-icon" alt=""> WISHLIST
+            <app-icon name="wishlist" [size]="20" class="drawer-icon"></app-icon> WISHLIST
         </a>
         <a routerLink="/account" (click)="closeMenu()">
-            <img src="assets/icons/3d/user.svg" class="drawer-icon" alt=""> ACCOUNT
+            <app-icon name="user" [size]="20" class="drawer-icon"></app-icon> ACCOUNT
         </a>
         <a routerLink="/about" (click)="closeMenu()">
-            <img src="assets/icons/luxury/about.svg" class="drawer-icon" alt=""> ABOUT US
+            <app-icon name="about" [size]="20" class="drawer-icon"></app-icon> ABOUT US
         </a>
     </div>
 </aside>
@@ -78,24 +78,24 @@
 <!-- Bottom Navbar (Mobile Only) -->
 <nav class="mobile-bottom-nav">
     <a class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <span class="nav-icon">🏠</span>
+        <app-icon name="home" [size]="24" class="nav-icon"></app-icon>
         <span>Home</span>
     </a>
     <a class="nav-item" routerLink="/shop" routerLinkActive="active">
-        <img src="assets/icons/3d/shopping.svg" alt="Shop" />
+        <app-icon name="shop" [size]="24" class="nav-icon"></app-icon>
         <span>Shop</span>
     </a>
     <a class="nav-item" routerLink="/wishlist" routerLinkActive="active">
-        <img src="assets/icons/3d/whishlist.svg" alt="Wishlist" />
+        <app-icon name="wishlist" [size]="24" class="nav-icon"></app-icon>
         <span>Wishlist</span>
     </a>
     <a class="nav-item cart" routerLink="/cart" routerLinkActive="active">
-        <img src="assets/icons/3d/cart.svg" alt="Cart" />
+        <app-icon name="cart" [size]="24" class="nav-icon"></app-icon>
         <span>Cart</span>
         <span class="badge">0</span>
     </a>
     <a class="nav-item" routerLink="/account" routerLinkActive="active">
-        <img src="assets/icons/3d/user.svg" alt="Account" />
+        <app-icon name="user" [size]="24" class="nav-icon"></app-icon>
         <span>Account</span>
     </a>
 </nav>

@@ -603,12 +603,14 @@ $container-max-width: 1200px;
 
 .lang-selector-container {
   position: fixed;
-  bottom: 5.8rem; /* Above the mobile bottom navbar */
+  bottom: 5.8rem;
+  /* Above the mobile bottom navbar */
   right: 1.2rem;
   z-index: 99;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  pointer-events: none;
 
   .lang-popup {
     background: white;
@@ -673,7 +675,7 @@ $container-max-width: 1200px;
           color: $dark-luxury-green;
           font-weight: 700;
           position: relative;
-          
+
           &::before {
             content: '';
             position: absolute;
@@ -704,6 +706,7 @@ $container-max-width: 1200px;
     justify-content: center;
     box-shadow: 0 4px 15px rgba($dark-luxury-green, 0.3);
     transition: all 0.4s ease;
+    pointer-events: auto;
 
     &.rotated {
       transform: rotate(-360deg);
@@ -715,14 +718,31 @@ $container-max-width: 1200px;
 
 .page-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .main-title {
-  font-size: clamp(1.8rem, 8vw, 4.5rem); // Reduced min-size from 2.5rem to 1.8rem for small mobiles
-  font-weight: 700;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(1.8rem, 8vw, 4.5rem);
+  font-weight: 500;
   color: $dark-luxury-green;
   margin: 0;
+  letter-spacing: 1px;
+
+  /* Accent line below the title */
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: $gold;
+    margin: 0.8rem auto 0;
+  }
 }
 
 .sections-container {

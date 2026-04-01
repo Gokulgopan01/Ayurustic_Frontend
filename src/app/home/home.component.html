@@ -27,11 +27,11 @@
 
     <!-- Controls -->
     <button class="carousel-control prev" (click)="prevSlide()">
-      <img src="assets/icons/3d/arrow-left.svg" class="icon-3d nav-icon" alt="Prev">
+      <app-icon name="arrow-left" [size]="28" class="icon-3d nav-icon" color="#ffffff"></app-icon>
     </button>
 
     <button class="carousel-control next" (click)="nextSlide()">
-      <img src="assets/icons/3d/arrow-right.svg" class="icon-3d nav-icon" alt="Next">
+      <app-icon name="arrow-right" [size]="28" class="icon-3d nav-icon" color="#ffffff"></app-icon>
     </button>
 
     <!-- Indicators -->
@@ -141,7 +141,7 @@
     <!-- Heading with leaf icon -->
     <div class="craft-heading">
       <div class="craft-heading-row">
-        <img src="assets/craft/craft_icon.png" alt="icon" class="craft-leaf-icon">
+        <app-icon name="leaf" [size]="40" class="craft-leaf-icon"></app-icon>
         <h2 class="craft-title">Crafted with intention.</h2>
       </div>
     </div>
@@ -150,7 +150,7 @@
     <div class="craft-row">
       <div class="craft-point">
         <div class="craft-point-image">
-          <img src="assets/craft/mulbery_silk.png" alt="100% Mulberry Silk">
+          <app-icon name="silk" [size]="64"></app-icon>
         </div>
         <h3 class="craft-point-subheading">100% Mulberry Silk</h3>
         <p class="craft-point-desc">Pure, breathable silk with a naturally smooth drape.</p>
@@ -160,7 +160,7 @@
 
       <div class="craft-point">
         <div class="craft-point-image">
-          <img src="assets/craft/dye_process.png" alt="Botanical Dyeing Process">
+          <app-icon name="dye" [size]="64"></app-icon>
         </div>
         <h3 class="craft-point-subheading">Botanical Dyeing Process</h3>
         <p class="craft-point-desc">Coloured using plant-based extracts, free from synthetic dyes.</p>
@@ -173,7 +173,7 @@
     <div class="craft-row">
       <div class="craft-point">
         <div class="craft-point-image">
-          <img src="assets/craft/Responsible_production.png" alt="Responsible Production">
+          <app-icon name="responsible" [size]="64"></app-icon>
         </div>
         <h3 class="craft-point-subheading">Responsible Production</h3>
         <p class="craft-point-desc">Small-batch creation that respects artisans and materials.</p>
@@ -183,7 +183,7 @@
 
       <div class="craft-point">
         <div class="craft-point-image">
-          <img src="assets/craft/skin_consious.png" alt="Skin-Conscious Fabric">
+          <app-icon name="skin" [size]="64"></app-icon>
         </div>
         <h3 class="craft-point-subheading">Skin-Conscious Fabric</h3>
         <p class="craft-point-desc">Lightweight, breathable, and gentle in everyday wear.</p>
@@ -196,7 +196,7 @@
     <div class="craft-row">
       <div class="craft-point">
         <div class="craft-point-image">
-          <img src="assets/craft/mulbery_silk.png" alt="Artisan Heritage">
+          <app-icon name="heritage" [size]="64"></app-icon>
         </div>
         <h3 class="craft-point-subheading">Artisan Heritage</h3>
         <p class="craft-point-desc">Handcrafted techniques passed through generations of skilled weavers.</p>
@@ -206,7 +206,7 @@
 
       <div class="craft-point">
         <div class="craft-point-image">
-          <img src="assets/craft/dye_process.png" alt="Everyday Luxury">
+          <app-icon name="luxury" [size]="64"></app-icon>
         </div>
         <h3 class="craft-point-subheading">Everyday Luxury</h3>
         <p class="craft-point-desc">Designed to elevate daily comfort with timeless elegance.</p>
@@ -268,7 +268,7 @@
     <div class="process-steps">
       <div class="process-step">
         <div class="step-icon">
-          <img src="assets/icons/3d/leaf.svg" class="icon-3d" alt="">
+          <app-icon name="leaf" [size]="48" class="icon-3d"></app-icon>
         </div>
         <h3>Ethical Harvesting</h3>
         <p>Ahimsa silk harvested from mulberry leaves, respecting every form of life.</p>
@@ -280,7 +280,7 @@
 
       <div class="process-step">
         <div class="step-icon">
-          <img src="assets/icons/3d/water.svg" class="icon-3d" alt="">
+          <app-icon name="water" [size]="48" class="icon-3d"></app-icon>
         </div>
         <h3>Botanical Infusion</h3>
         <p>Fabrics steeped in medicinal herb baths for lasting skin-conscious properties.</p>
@@ -292,7 +292,7 @@
 
       <div class="process-step">
         <div class="step-icon">
-          <img src="assets/icons/3d/sun.svg" class="icon-3d" alt="">
+          <app-icon name="sun" [size]="48" class="icon-3d"></app-icon>
         </div>
         <h3>Sunkissed Drying</h3>
         <p>Naturally dried under the Kerala sun to cure the herbal essences into every thread.</p>
